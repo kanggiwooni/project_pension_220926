@@ -19,7 +19,7 @@ public class MemberDAO {
 		objPool = DBConnectionMgr.getInstance();
 	}
 	
-	// 회원가입 시작
+	/* 회원가입 시작 */
 	public int mtd_join(MemberVO objVO) {
 		
 		int rtnCnt = 0;
@@ -52,9 +52,40 @@ public class MemberDAO {
 		return rtnCnt;
 		
 	}
-	// 회원가입 끝
+	/* 회원가입 끝 */
 	
-	// 로그인 시작
+	/* ID중복확인 시작 */
+	public int mtd_idCheck(String uid) {
+		
+		int idCheck = -1;
+		
+		try {
+			
+			objConn = objPool.getConnection();
+			
+			String sql = "select count(*) from member";
+			sql += " where uid=?";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uid);
+			objRS = objPstmt.executeQuery();
+			
+			if (objRS.next()) {
+				idCheck = objRS.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return idCheck;
+		
+	}
+	/* ID중복확인 끝 */
+	
+	/* 로그인 시작 */
 	public String mtd_login(String uid, String upw) {
 		
 		String uName = null;
@@ -83,6 +114,6 @@ public class MemberDAO {
 		
 		return uName;
 	}
-	// 로그인 끝
+	/* 로그인 끝 */
 	
 }

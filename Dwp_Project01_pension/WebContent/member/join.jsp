@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
+<%
+request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -25,7 +27,9 @@
 							<td>
 								<input type="text" id="uid"
 									name="uid" maxlength="20">
-								<button type="button">ID중복확인</button>
+								<button type="button" id="idChkBtn">ID중복확인</button>
+								<span id="idChkTxt"></span>
+								<input type="hidden" id="idCheck" value="">
 								<p id="idGuideTxt">
 									3~20자의 영문 대소문자, 숫자만 사용 가능합니다.
 								</p>
@@ -42,7 +46,7 @@
 									비밀번호 보기
 								</label>
 								<p id="pwGuideTxt">
-									6~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.
+									3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.
 								</p>
 							</td>
 						</tr>
@@ -57,8 +61,8 @@
 						<tr>
 							<td>이름*</td>
 							<td>
-								<input type="text" name="uName"
-									maxlength="30">
+								<input type="text" id="uName"
+									name="uName" maxlength="30">
 							</td>
 						</tr>
 						<tr>
@@ -83,10 +87,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td>생일</td>
+							<td>생년월일</td>
 							<td>
-								<input type="text" name="uBirth"
-									maxlength="10">
+								<input type="text" name="uBirth" maxlength="6">
 							</td>
 						</tr>
 						<tr>

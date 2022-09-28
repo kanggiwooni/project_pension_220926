@@ -65,7 +65,20 @@ $(function(){
 	});
 	
 	/* ////////// 아이디 비밀번호 유효성 검사 시작 ////////// */
+	function idChk() {
+		let uid = $("input#uid").val().trim();
+		let reg = /[^a-z|A-Z|0-9]/;
+		let ToF = reg.test(uid) || $("#uid").val().length < 3;
+		return ToF; 
+	}
+	function pwChk() {
+		let upw = $("input#upw").val().trim();
+		let reg = /[^a-z|A-Z|0-9|_\-\!@]/;
+		let ToF = reg.test(upw) || $("#upw").val().length < 3;
+		return ToF;
+	}
 	$("input#uid").keyup(function(){
+		$("input#idCheck").val(0);
 		if (idChk()) {
 			$("p#idGuideTxt").css("color", "red");
 		} else {
@@ -79,19 +92,59 @@ $(function(){
 			$("p#pwGuideTxt").css("color", "black");
 		}
 	});
-	function idChk() {
-		let uid = $("input#uid").val().trim();
-		let reg = /[^a-z|A-Z|0-9]/;
-		let ToF = reg.test(uid) || $("#uid").val().length < 3;
-		return ToF; 
-	}
-	function pwChk() {
-		let upw = $("input#upw").val().trim();
-		let reg = /[^a-z|A-Z|0-9|_\-\!@]/;
-		let ToF = reg.test(upw) || $("#upw").val().length < 6;
-		return ToF;
-	}
 	/* ////////// 아이디 비밀번호 유효성 검사 끝 ////////// */
+	
+	/* ID 중복확인 팝업 */
+	$("button#idChkBtn").click(function(){
+		let uid = $("#uid").val().trim();
+		
+		if (uid == "") {
+			alert("아이디를 입력해주세요.");
+			$("#uid").focus();
+			
+		} else if (idChk()) {
+			alert("아이디는 3~20자의 영문 대소문자, 숫자만 사용 가능합니다.");
+			$("#uid").focus();
+			
+		} else {
+			let url = "/member/idCheckPop.jsp?uid=" + uid;
+			let nickName = "idCheckPop";
+	
+			let w = screen.width;     // 1920
+			let popWidth = 480;
+			let leftPos = (w - popWidth) / 2; // left Position 팝업창 왼쪽 시작위치
+	
+			let h = screen.height;    // 1080
+			let popHeight = 320;
+			let topPos = (h - popHeight) / 2; 		
+			
+	
+			let prop = "width="+ popWidth +", height="+ popHeight;
+				  prop += ", left=" + leftPos + ", top=" + topPos; 
+			window.open(url, nickName, prop);
+			
+			// 사용 예 : 팝업창의 가로폭 200px, 높이 100px 이며
+			//            화면의 왼쪽에서 300px, 위쪽에서 400px 에 위치한 곳에 팝업창 출력
+			//             =>  window.open("파일명", "닉네임", 
+			//                      "width=200, height=100, left=300, top=400")          
+		}
+	});
+	
+	// 아이디 중복체크 팝업창 닫기
+	$("button#popCloseBtn").click(function(){
+		let idCheck = $(this).val();
+		
+		if (idCheck == 1) {
+			$("span#idChkTxt", opener.document).text("중복된 아이디입니다.");
+		} else {
+			$("span#idChkTxt", opener.document).text("사용 가능한 아이디입니다.");
+		}
+		$("input#idCheck", opener.document).val(idCheck);
+		window.close();
+		opener.joinFrm.uid.focus();
+		// DOM으로 접근
+		// opener객체는 팝업창을 실행한 부모페이지를 지칭함.
+	});
 	
 	/* 이메일 직접입력/선택입력 처리 */
 	$("select#selectEmail").change(function(){
@@ -101,33 +154,64 @@ $(function(){
 	
 	/* 회원가입 버튼 submit 처리 */
 	$("button#joinSubmitBtn").click(function(){
-		
 		joinSubmit();
+	});
+	$("input").keyup(function(e){
+		if (e.which == 13) {
+			joinSubmit();
+		}
 	});
 	
 	function joinSubmit() {
 		
 		let uid = $("#uid").val().trim();
 		let upw = $("#upw").val().trim();
+		let upw2 = $("#upw2").val().trim();
 		let uName = $("#uName").val().trim();
 		let uEmail1 = $("#uEmail1").val().trim();
 		let uEmail2 = $("#uEmail2").val().trim();
+		let idCheck = $("#idCheck").val().trim();
 		
 		if (uid == "") {
 			alert("아이디를 입력해주세요.");
 			$("#uid").focus();
+			
+		} else if (idChk()) {
+			alert("아이디는 3~20자의 영문 대소문자, 숫자만 사용 가능합니다.");
+			$("#uid").focus();
+			
+		} else if (idCheck == "") {
+			alert("ID 중복확인 해주세요.");
+			$("#uid").focus();
+			
+		} else if (idCheck == "1") {
+			alert("중복된 아이디입니다.");
+			$("#uid").focus();
+			
 		} else if (upw == "") {
 			alert("비밀번호를 입력해주세요.");
 			$("#upw").focus();
+			
+		} else if (pwChk()) {
+			alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
+			$("#upw").focus();
+			
+		} else if (upw2 == "" || upw != upw2) {
+			alert("비밀번호가 일치하지 않습니다.");
+			$("#upw2").focus();
+			
 		} else if (uName == "") {
 			alert("이름을 입력해주세요.");
 			$("#uName").focus();
+			
 		} else if (uEmail1 == "") {
 			alert("이메일을 입력해주세요.");
 			$("#uEmail1").focus();
+			
 		} else if (uEmail2 == "") {
 			alert("이메일을 입력해주세요.");
 			$("#uEmail2").focus();
+			
 		} else {
 			let uEmail = uEmail1 + "@" + uEmail2;
 			$("input[name=uEmail]").val(uEmail);

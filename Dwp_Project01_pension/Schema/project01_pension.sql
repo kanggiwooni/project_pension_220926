@@ -33,6 +33,7 @@ values
 
 
 select * from member order by num desc;
+select count(*) from member where uid = 'sample';
 
 ######### 세션 : uidKey
 
