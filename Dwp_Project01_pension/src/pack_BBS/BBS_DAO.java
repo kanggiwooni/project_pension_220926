@@ -25,9 +25,7 @@ public class BBS_DAO {
 	BBS_VO objVO = null;
 	List<BBS_VO> objList = null;
 	
-	private String sql = "";
-	private String session = "uid";
-	
+	private String sql = "";	
 
 	public BBS_DAO() {
 		objPool = DBConnectionMgr.getInstance();
@@ -123,5 +121,37 @@ public class BBS_DAO {
 		return objList;
 	}
 	//리뷰페이지 출력 메서드 시작
+	
+	//리뷰페이지 자세히보기 페이지 출력 메서드 시작
+	public List<BBS_VO> mtd_reviewsDetail(int num){
+		
+
+		
+		try {
+			objConn = objPool.getConnection();
+			//select title, uid, reportingDate, views, content from BBS_reviews where num=1;
+			sql = "select title, uid, reportingDate, views, content from BBS_reviews where num="+num;
+			objStmt = objConn.createStatement();
+			objRS = objStmt.executeQuery(sql);
+			
+			objList = new Vector<BBS_VO>();
+			
+			if(objRS.next()) {
+					objVO = new BBS_VO();
+					objVO.setTitle(objRS.getString("title"));
+					objVO.setUid(objRS.getString("uid"));
+					objVO.setReportingDate(objRS.getString("reportingDate"));
+					objVO.setViews(objRS.getInt("views"));
+					objVO.setContent(objRS.getString("content"));
+					objList.add(objVO);
+			}
+		}catch(Exception e) {
+			System.out.print("reviewsList e : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		return objList;
+	}
+	//리뷰페이지 자세히보기 페이지 출력 메서드 종료
 	
 }
