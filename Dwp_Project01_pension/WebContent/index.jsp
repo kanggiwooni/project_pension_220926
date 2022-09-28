@@ -15,7 +15,7 @@
 		<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 		
 		<div id="wrap" >
-			<h1>업데이트 테스트</h1>
+			
 			
 			
 		</div>
