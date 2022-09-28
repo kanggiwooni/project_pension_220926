@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,17 +21,25 @@ public class BBS_DAO {
 	private Statement objStmt = null;
 	private PreparedStatement objPstmt = null;
 	private ResultSet objRS = null;
-	private List<BBS_VO> objList = null;
+	
+	BBS_VO objVO = null;
+	List<BBS_VO> objList = null;
+	
 	private String sql = "";
 	private String session = "uid";
 	
+
 	public BBS_DAO() {
 		objPool = DBConnectionMgr.getInstance();
 	}
 	
-	public int mtd_reviewsWrite(HttpServletRequest req) {
-		
-		String savePath = "D:/Bigdata_Java_220511/wonho/silsp/07_JSP/Dwp_Project01_pension/WebContent/BBS/reviews/reviews_Upload";
+	
+	//리뷰페이지 글쓰기 메서드 시작	
+	public int mtd_reviewsWrite(HttpServletRequest req, String uid, String uName) {
+
+		System.out.println("들어는왔다!");
+		//String savePath = "D:/Bigdata_Java_220511/wonho/silsp/07_JSP/Dwp_Project01_pension/WebContent/BBS/reviews/reviews_Upload";
+		String savePath = "C:/Users/EZEN201/git/project_pension/Dwp_Project01_pension/WebContent/BBS/reviews/reviews_Upload";
 		int rtn=0;
 		
 		try {
@@ -58,16 +67,18 @@ public class BBS_DAO {
 			//insert into BBS_reviews(title, content, originalFN, systemFN,
 			//fileSize, reportingDate, writer) values('제목','테스트용',
 			//'파일이름','서버에저장된파일이름',1,now(),'이용자')
-			sql="insert into BBS_reviews(title, content, originalFN, systemFN, ";
-			sql+="fileSize, reportingDate, writer) values(?,?,?,?,?,now(),?)";
+			sql="insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, ";
+			sql+="fileSize, reportingDate) values(?,?,?,?,?,?,?,now())";
 			
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setString(1, title);
-			objPstmt.setString(2, content);
-			objPstmt.setString(3, originalFN);
-			objPstmt.setString(4, systemFN);
-			objPstmt.setLong(5, fileSize);
-			objPstmt.setString(6, session);
+			objPstmt.setString(1, uid);
+			objPstmt.setString(2, uName);
+			objPstmt.setString(3, title);
+			objPstmt.setString(4, content);
+			objPstmt.setString(5, originalFN);
+			objPstmt.setString(6, systemFN);
+			objPstmt.setLong(7, fileSize);
+
 			rtn = objPstmt.executeUpdate();
 			
 		}catch(Exception e) {
@@ -79,4 +90,38 @@ public class BBS_DAO {
 		
 		return rtn;
 	}
+	//리뷰페이지 글쓰기 메서드 종료
+
+	
+	//리뷰페이지 출력 메서드 시작
+	public List<BBS_VO> mtd_reviewsList(){
+		
+
+		
+		try {
+			objConn = objPool.getConnection();
+			sql = "select num, title, uid, reportingDate, views from BBS_reviews order by num";
+			objStmt = objConn.createStatement();
+			objRS = objStmt.executeQuery(sql);
+			
+			objList = new Vector<BBS_VO>();
+			
+			while(objRS.next()) {
+					objVO = new BBS_VO();
+					objVO.setNum(objRS.getInt("num"));
+					objVO.setTitle(objRS.getString("title"));
+					objVO.setUid(objRS.getString("uid"));
+					objVO.setReportingDate(objRS.getString("reportingDate"));
+					objVO.setViews(objRS.getInt("views"));
+					objList.add(objVO);
+			}
+		}catch(Exception e) {
+			System.out.print("reviewsList e : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		return objList;
+	}
+	//리뷰페이지 출력 메서드 시작
+	
 }
