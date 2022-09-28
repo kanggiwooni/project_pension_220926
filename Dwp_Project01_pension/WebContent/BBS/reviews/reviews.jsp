@@ -1,8 +1,13 @@
+<%@page import="pack_BBS.BBS_VO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
 
 <jsp:useBean id="objBBSDAO" class="pack_BBS.BBS_DAO"></jsp:useBean>
-
+<%
+BBS_VO objVO = null;
+List<BBS_VO> objList = objBBSDAO.mtd_reviewsList();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -28,41 +33,21 @@
 						<th>작성일</th>
 						<th>조회</th>
 					</tr>
+					<%
+					for(int i=0;i<objList.size();i++){
+						objVO = objList.get(i);
+					%>
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-					</tr>
+						<td><%=objVO.getNum()%></td>
+						<td><%=objVO.getTitle()%></td>
+						<td><%=objVO.getUid()%></td>
+						<td><%=objVO.getReportingDate()%></td>
+						<td><%=objVO.getViews()%></td>
+					</tr>					
+					<%
+					}
+					%>
+
 				</tbody>
 				<tfoot>
 					<tr>
