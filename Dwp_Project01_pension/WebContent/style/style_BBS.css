@@ -20,6 +20,11 @@ div#wrap.bbs_noticeWrap>table>tfoot{
 
 /* //////////////////// div#wrap.bbs_noticeWrap 끝 ////////////////////// */
 
+/* //////////////////// 공지사항 게시판 스타일작업 끝 //////////////////// */
+
+
+/* //////////////////// 리뷰 게시판 스타일작업 시작 //////////////////// */
+
 /* **************** div#wrap.bbs_reviewsWrap 시작 **************** */
 div#wrap.bbs_reviewsWrap{
 	margin-top: 0;
@@ -29,12 +34,19 @@ div#wrap.bbs_reviewsWrap>table{
 	width: 100%;
 	border: 1px solid #000;
 }
+div#wrap.bbs_reviewsWrap>table td:not(:nth-child(2)){
+	text-align: center;
+}
+div#wrap.bbs_reviewsWrap>table td:nth-child(2):hover{
+	font-weight: bold;
+	cursor: pointer;
+}
 div#wrap.bbs_reviewsWrap>table>tfoot{
 	cursor: pointer;
 }
 /* **************** div#wrap.bbs_reviewsWrap 끝 **************** */
 
-/* //////////////////// 공지사항 게시판 스타일작업 끝 ////////////////////// */
+/* //////////////////// 리뷰 게시판 스타일작업 끝 //////////////////// */
 
 /* ////////// 시작 ////////// */
 /* ////////// 끝 //////////// */

@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
 
-<jsp:useBean id="objBBSDAO" class="pack_BBS.BBS_DAO"></jsp:useBean>
+<jsp:useBean id="objBBSDAO" class="pack_BBS.BBS_DAO" />
 <%
 BBS_VO objVO = null;
 List<BBS_VO> objList = objBBSDAO.mtd_reviewsList();
@@ -23,6 +23,7 @@ List<BBS_VO> objList = objBBSDAO.mtd_reviewsList();
 		<iframe src="/iframe/iframe_header.jsp" scrolling="no" id="iframe_header"></iframe> 
 		<div id="wrap" class="bbs_reviewsWrap">
 			<h1>이용후기</h1>
+			<hr>
 			
 			<table>
 				<tbody>
@@ -39,7 +40,7 @@ List<BBS_VO> objList = objBBSDAO.mtd_reviewsList();
 					%>
 					<tr>
 						<td><%=objVO.getNum()%></td>
-						<td><%=objVO.getTitle()%></td>
+						<td class="reviewsTitle"><%=objVO.getTitle()%></td>
 						<td><%=objVO.getUid()%></td>
 						<td><%=objVO.getReportingDate()%></td>
 						<td><%=objVO.getViews()%></td>
