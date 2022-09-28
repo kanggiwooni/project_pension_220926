@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+
+
+/* //////////////////// 공지사항 게시판 스타일작업 시작 //////////////////// */
+
+/* //////////////////// div#wrap.bbs_noticeWrap 시작 //////////////////// */
+div#wrap.bbs_noticeWrap{
+	margin-top: 0;
+	border: 1px solid #000;
+}
+
+div#wrap.bbs_noticeWrap>table{
+	width: 100%;
+	border: 1px solid #000;
+}
+div#wrap.bbs_noticeWrap>table>tfoot{
+	cursor: pointer;
+}
+
+/* //////////////////// div#wrap.bbs_noticeWrap 끝 ////////////////////// */
+
+/* **************** div#wrap.bbs_reviewsWrap 시작 **************** */
+div#wrap.bbs_reviewsWrap{
+	margin-top: 0;
+	border: 1px solid #000;
+}
+div#wrap.bbs_reviewsWrap>table{
+	width: 100%;
+	border: 1px solid #000;
+}
+div#wrap.bbs_reviewsWrap>table>tfoot{
+	cursor: pointer;
+}
+/* **************** div#wrap.bbs_reviewsWrap 끝 **************** */
+
+/* //////////////////// 공지사항 게시판 스타일작업 끝 ////////////////////// */
+
+/* ////////// 시작 ////////// */
+/* ////////// 끝 //////////// */
+
+/* ////////// 시작 ////////// */
+/* ////////// 끝 //////////// */
+
+/* ////////// 시작 ////////// */
+/* ////////// 끝 //////////// */
+
+/* ////////// 시작 ////////// */
+/* ////////// 끝 //////////// */
+

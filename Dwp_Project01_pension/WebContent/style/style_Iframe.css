@@ -1,0 +1,101 @@
+@charset "UTF-8";
+@import url("style_Reset.css");
+
+
+/* div#headerWap시작 */
+div#headerWrap {
+	height: 300px;
+    /* border: 3px solid #08f; */
+    background-color: #d2b993;
+}
+
+/* header#header시작 */
+div#headerWrap>header#header {
+    margin: 0 auto;
+    align-items: flex-end;
+    
+}
+
+
+/* div#headerWrap>header#header>div#headerLogoArea 시작 */
+
+div#headerWrap>header#header>div#headerLogoArea {
+    height: 100px;
+    padding-top: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* div#headerWrap>header#header>div#headerLogoArea 종료*/
+
+/* div#headerWrap>header#header>nav#headerGNBArea 시작*/
+
+#headerWrap>#header>nav#headerGNBArea {
+    /* height: 100px; */
+    margin: auto 0;
+
+    flex : 1;
+    text-align: center;
+
+}
+#headerWrap #headerGNBArea>ul#mainMenu {
+	width: 800px;
+	margin: 0 auto;
+}
+#headerWrap #headerGNBArea>#mainMenu a {
+    width: 150px;
+    font-size: 16.5px;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
+    display: inline-block;
+}
+
+#headerWrap #headerGNBArea>#mainMenu a:hover {
+    /* background-color: rgba(255, 255, 255, 0.9) */
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6)
+}
+
+#headerWrap #headerGNBArea>#mainMenu>li.mainLi {
+	cursor: pointer;
+    position: relative;
+}
+
+/* 메인메뉴 좌우 테두리선 겹침 처리 */
+#headerWrap #headerGNBArea>#mainMenu>li.mainLi:not(:last-child)>a {
+    border-right: none;
+}
+
+/* 메인메뉴 상하 테두리선 겹침 처리 */
+#headerWrap #headerGNBArea #mainMenu ul.subMenu>li.subLi>a {
+    border-top: none;
+    width: 151px;
+    /* border: 1px solid #f00; */
+}
+
+#headerWrap #headerGNBArea>#mainMenu>li.mainLi>ul.subMenu {
+    position: absolute;
+    display: none;
+}
+
+/* div#headerWrap>header#header>nav#headerGNBArea 종료*/
+
+/* header#header종료 */
+
+/* div#headerWap종료 */
+
+/* footer#footerWrap 시작///////////////////////////////// */
+footer#footerWrap{
+	height: 150px;
+	text-align: center;
+	padding: 30px 0;
+}
+footer#footerWrap>p{
+	background-color: #fff;
+}
+
+
+/* footer#footerWrap 종료/////////////////////////////////// */

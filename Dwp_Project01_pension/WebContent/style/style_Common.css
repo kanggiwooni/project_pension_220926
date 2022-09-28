@@ -1,0 +1,87 @@
+@charset "UTF-8";
+@import url("style_Reset.css");
+
+
+/* //////////////////////////// 공통요소시작 //////////////////////////// */
+h1 {
+	font-size: 30px;
+	text-align: center;
+	margin: 20px 0;
+}
+input[type=text],
+input[type=password] {
+	font-size: 18px;
+	padding: 6px 12px;
+}
+input[type=text]:focus,
+input[type=password]:focus {
+	outline: none;
+}
+input[type=checkbox],
+input[type=radio] {
+	width: 20px;
+	height: 20px;
+}
+button {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 6px 12px;
+}
+select {
+	font-size: 18px;
+	padding: 6px 12px;
+}
+/* //////////////////////////// 공통요소 끝 //////////////////////////// */
+
+
+
+
+
+/* //////////////////////////// div#wrap 시작 //////////////////////////// */
+div#wrap {
+	width: 1200px;
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin: 0 auto;
+}
+/* //////////////////////////// div#wrap 끝 //////////////////////////// */
+
+
+
+
+
+/* //////////////////////////// iframe 시작 //////////////////////////// */
+iframe {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #aaa;
+}
+
+/* iframe_header 시작 */
+iframe#iframe_header {
+	height: 250px;
+	position : relative;
+}
+/* iframe_header 끝 */
+
+/* iframe_footer 시작 */
+iframe#iframe_footer {
+	height: 100px;
+	border: none;
+	border-top: 1px solid #aaa;
+	position: relative;
+	bottom: 0;
+}
+/* iframe_footer 끝 */
+/* //////////////////////////// iframe 끝 //////////////////////////// */
+
+
+
+
+
+/* ////////////////////////////  시작 //////////////////////////// */
+/* ////////////////////////////  끝 //////////////////////////// */
+/* ///////////////  시작 /////////////// */
+/* ///////////////  끝 /////////////// */
+/* 시작 */
+/* 끝 */
