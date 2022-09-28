@@ -52,7 +52,7 @@ $(function(){
 	});
 	
 	/* 비밀번호 확인 일치여부 확인 */
-	upw2.keyup(function(){
+	$("input#upw2").keyup(function(){
 		let upw = $("input#upw").val();
 		let upw2 = $("input#upw2").val();
 		if (upw2 == "") {
