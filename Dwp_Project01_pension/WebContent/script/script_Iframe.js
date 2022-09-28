@@ -14,17 +14,23 @@ $(function () {
 	$("a#mainPage").click(function(){
 		window.parent.location.href="/index.jsp";
 	});
+	$("a#joinPage").click(function(){
+		window.parent.location.href="/member/joinAgreement.jsp";
+	});
+	$("a#loginPage").click(function(){
+		window.parent.location.href="/member/login.jsp";
+	});
+	$("a#logoutPage").click(function(){
+		window.parent.location.href="/member/logoutProc.jsp";
+	});
+	$("a#myPage").click(function(){
+		window.parent.location.href="/member/myPage.jsp";
+	});
 	$("a#noticePage").click(function(){
 		window.parent.location.href="/BBS/notice/notice.jsp";
 	});
 	$("a#reviewsPage").click(function(){
 		window.parent.location.href="/BBS/reviews/reviews.jsp";
-	});
-	$("a#loginPage").click(function(){
-		window.parent.location.href="/member/login.jsp";
-	});
-	$("a#joinPage").click(function(){
-		window.parent.location.href="/member/joinAgreement.jsp";
 	});
 	/* GNB 이동관련 소스 끝 */
 	

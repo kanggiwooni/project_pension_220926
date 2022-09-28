@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
-<%
-request.setCharacterEncoding("UTF-8");
-
-
-%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -26,22 +21,33 @@ request.setCharacterEncoding("UTF-8");
 				<table id="joinTbl">
 					<tbody>
 						<tr>
-							<td>아이디</td>
+							<td>아이디*</td>
 							<td>
-								<input type="text" name="uid"
-									maxlength="30">
+								<input type="text" id="uid"
+									name="uid" maxlength="20">
 								<button type="button">ID중복확인</button>
+								<p id="idGuideTxt">
+									3~20자의 영문 대소문자, 숫자만 사용 가능합니다.
+								</p>
+								<!-- span#idGuideTxt -->
 							</td>
 						</tr>
 						<tr>
-							<td>비밀번호</td>
+							<td>비밀번호*</td>
 							<td>
-								<input type="password" name="upw"
-									maxlength="30">
+								<input type="password" id="upw"
+									name="upw" maxlength="20">
+								<label>
+									<input type="checkbox" id="showPwChk">
+									비밀번호 보기
+								</label>
+								<p id="pwGuideTxt">
+									6~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.
+								</p>
 							</td>
 						</tr>
 						<tr>
-							<td>비밀번호 확인</td>
+							<td>비밀번호 확인*</td>
 							<td>
 								<input type="password" id="upw2"
 									maxlength="30">
@@ -49,14 +55,14 @@ request.setCharacterEncoding("UTF-8");
 							</td>
 						</tr>
 						<tr>
-							<td>이름</td>
+							<td>이름*</td>
 							<td>
 								<input type="text" name="uName"
 									maxlength="30">
 							</td>
 						</tr>
 						<tr>
-							<td>이메일</td>
+							<td>이메일*</td>
 							<td>
 								<input type="text" id="uEmail1" name="uEmail">
 								@

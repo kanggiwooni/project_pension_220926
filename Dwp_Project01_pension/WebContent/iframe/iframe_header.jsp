@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
+<%
+String uid = (String) session.getAttribute("uidKey");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -68,19 +71,22 @@
 	                            -->
 	                        </ul>
 	                    </li>
- 	                    
- 	                    <li class="mainLi">
-	                        <a id="loginPage">로그인</a>
-	                    </li>
-	                    
- 	                    <li class="mainLi">
-	                        <a id="joinPage">회원가입</a>
-	                    </li>
 	                </ul>
 	                <!-- ul#mainMenu -->
 
 	            </nav>
 	            <!-- nav#headerGNBArea -->
+	            
+	            <div id="headerMemArea">
+	            	<% if (uid == null) { %>
+						<a id="loginPage">로그인</a>
+						<a id="joinPage">회원가입</a>
+	            	<% } else { %>
+	            		<a id="logoutPage">로그아웃</a>
+						<a id="myPage">마이페이지</a>
+	            	<% } %>
+	            </div>
+	            <!-- div#headerMemArea -->
 
 	        </header>
 	        <!-- header#header -->

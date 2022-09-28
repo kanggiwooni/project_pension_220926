@@ -10,6 +10,6 @@ request.setCharacterEncoding("UTF-8");
 int rtnCnt = mDAO.mtd_join(mVO);
 
 if (rtnCnt == 1) {
-	out.print("join OK");
+	response.sendRedirect("/index.jsp");
 }
 %>
