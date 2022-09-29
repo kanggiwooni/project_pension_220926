@@ -7,6 +7,7 @@
 		<title>이용약관 동의</title>
 		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="/style/style_Common.css">
+		<link rel="stylesheet" href="/style/style_Member.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="/script/script_Join.js"></script>
 	</head>
@@ -18,7 +19,7 @@
 			<div id="chkAllArea">
 				<label>
 					<input type="checkbox" id="chkAllBtn">
-					이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.
+					<span>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</span>
 				</label>
 			</div>
 			<!-- div#chkAllArea -->
@@ -28,10 +29,9 @@
 					<h3>[필수] 이용약관 동의</h3>
 					<iframe src="/iframe/terms_usingAgree.html"></iframe>
 					<label>
-						이용약관에 동의하십니까?
 						<input type="checkbox" class="agreeChk required"
 							name="usingAgree">
-						동의함 (필수)
+						이용약관에 동의합니다. (필수)
 					</label>
 				</div>
 				
@@ -39,10 +39,9 @@
 					<h3>[필수] 개인정보 수집 및 이용 동의</h3>
 					<iframe src="/iframe/terms_personalInfo.html"></iframe>
 					<label>
-						개인정보 수집 및 이용에 동의하십니까?
 						<input type="checkbox" class="agreeChk required"
 							name="personalInfo">
-						동의함 (필수)
+						개인정보 수집 및 이용에 동의합니다. (필수)
 					</label>
 				</div>
 				
@@ -50,10 +49,9 @@
 					<h3>[선택] 쇼핑정보 수신 동의</h3>
 					<iframe src="/iframe/terms_shoppingInfo.html"></iframe>
 					<label>
-						쇼핑정보 수신에 동의하십니까?
 						<input type="checkbox" class="agreeChk"
 							name="shoppingInfoAgree" form="agreeFrm">
-						동의함 (선택)
+						쇼핑정보 수신에 동의합니다. (선택)
 					</label>
 				</div>
 			</div>

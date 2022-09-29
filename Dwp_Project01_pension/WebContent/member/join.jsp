@@ -17,28 +17,28 @@ request.setCharacterEncoding("UTF-8");%>
 	
 		<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 		
-		<div id="wrap">
-			<h1>회원가입 페이지</h1>
+		<div id="wrap" class="joinWrap">
+			<!-- <h1>회원가입 페이지</h1> -->
 			<form action="/member/joinProc.jsp" id="joinFrm">
 				<table id="joinTbl">
+					<caption>* 표시는 필수 입력사항입니다.</caption>
 					<tbody>
 						<tr>
-							<td>아이디*</td>
+							<td>*아이디</td>
 							<td>
-								<input type="text" id="uid"
-									name="uid" maxlength="20">
+								<input type="text" id="uid" name="uid"
+								maxlength="20">
 								<button type="button" id="idChkBtn">ID중복확인</button>
 								<span id="idChkTxt"></span>
 								<input type="hidden" id="idCheck" value="">
-								<p id="idGuideTxt"
-								>
+								<p id="idGuideTxt" class="guideTxt">
 									3~20자의 영문 대소문자, 숫자만 사용 가능합니다.
 								</p>
 								<!-- span#idGuideTxt -->
 							</td>
 						</tr>
 						<tr>
-							<td>비밀번호*</td>
+							<td>*비밀번호</td>
 							<td>
 								<input type="password" id="upw"
 									name="upw" maxlength="20">
@@ -46,13 +46,13 @@ request.setCharacterEncoding("UTF-8");%>
 									<input type="checkbox" id="showPwChk">
 									비밀번호 보기
 								</label>
-								<p id="pwGuideTxt">
+								<p id="pwGuideTxt" class="guideTxt">
 									3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.
 								</p>
 							</td>
 						</tr>
 						<tr>
-							<td>비밀번호 확인*</td>
+							<td>*비밀번호 확인</td>
 							<td>
 								<input type="password" id="upw2"
 									maxlength="30">
@@ -60,14 +60,14 @@ request.setCharacterEncoding("UTF-8");%>
 							</td>
 						</tr>
 						<tr>
-							<td>이름*</td>
+							<td>*이름</td>
 							<td>
 								<input type="text" id="uName"
 									name="uName" maxlength="30">
 							</td>
 						</tr>
 						<tr>
-							<td>이메일*</td>
+							<td>*이메일</td>
 							<td>
 								<input type="text" id="uEmail1" name="uEmail">
 								@
@@ -83,15 +83,20 @@ request.setCharacterEncoding("UTF-8");%>
 						<tr>
 							<td>성별</td>
 							<td>
-								남<input type="radio" name="gender" value="1">
-								여<input type="radio" name="gender" value="2">
+								<label>
+									남 <input type="radio" name="gender" value="1">
+								</label>
+								&nbsp;&nbsp;
+								<label>
+									여 <input type="radio" name="gender" value="2">
+								</label>
 							</td>
 						</tr>
 						<tr>
 							<td>생년월일</td>
 							<td>
-								<input type="text" name="uBirth" maxlength="6"
-								placeholder="ex) 930428">
+								<input type="text" name="uBirth" maxlength="6">
+								<span class="guideTxt">예시) 930428</span>
 							</td>
 						</tr>
 						<tr>
@@ -112,7 +117,7 @@ request.setCharacterEncoding("UTF-8");%>
 					</tbody>
 					<tfoot>
 						<tr>
-							<td>
+							<td colspan="2">
 								<button type="button" id="joinSubmitBtn">회원가입</button>
 							</td>
 						</tr>

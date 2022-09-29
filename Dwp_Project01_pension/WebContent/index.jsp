@@ -14,7 +14,7 @@ String uName = (String) session.getAttribute("uNameKey");
 		<script src="/script/script_Iframe.js"></script>
 	</head>
 	<body>
-	
+		
 		<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 		
 		<div id="wrap" >

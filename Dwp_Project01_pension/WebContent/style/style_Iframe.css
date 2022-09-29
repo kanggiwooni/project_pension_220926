@@ -2,47 +2,55 @@
 @import url("style_Reset.css");
 
 
-/* div#headerWap시작 */
+a {
+	cursor: pointer;
+}
+
+/* div#headerWap 시작 */
 div#headerWrap {
 	height: 300px;
     /* border: 3px solid #08f; */
-    background-color: #d2b993;
-}
-
-/* header#header시작 */
-div#headerWrap>header#header {
     margin: 0 auto;
-    align-items: flex-end;
-    
 }
+/* div#headerWap 끝 */
 
 
-/* div#headerWrap>header#header>div#headerLogoArea 시작 */
+/* header#header 시작 */
+div#headerWrap>header#header {
+	width: 1200px;
+	border: 1px solid #000;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+/* header#header 끝 */
 
-div#headerWrap>header#header>div#headerLogoArea {
+
+
+/* ////////////////// div#headerLogoArea 시작 ////////////////// */
+div#headerLogoArea {
+	width: 300px;
     height: 100px;
     padding-top: 5px;
+    border: 1px solid #000;
     margin: 0 10px;
     cursor: pointer;
 }
+/* ////////////////// div#headerLogoArea 끝 ////////////////// */
 
-/* div#headerWrap>header#header>div#headerLogoArea 종료*/
 
-/* div#headerWrap>header#header>nav#headerGNBArea 시작*/
 
-#headerWrap>#header>nav#headerGNBArea {
-    /* height: 100px; */
-    margin: auto 0;
-
-    flex : 1;
+/* ////////////////// nav#headerGNBArea 시작 ////////////////// */
+nav#headerGNBArea {
+	width: 300px;
     text-align: center;
-
+    border: 1px solid #000;
+    margin: auto 0;
 }
-#headerWrap #headerGNBArea>ul#mainMenu {
+#headerGNBArea>ul#mainMenu {
 	width: 800px;
 	margin: 0 auto;
 }
-#headerWrap #headerGNBArea>#mainMenu a {
+#headerGNBArea>#mainMenu a {
     width: 150px;
     font-size: 16.5px;
     font-weight: bold;
@@ -53,49 +61,58 @@ div#headerWrap>header#header>div#headerLogoArea {
     display: inline-block;
 }
 
-#headerWrap #headerGNBArea>#mainMenu a:hover {
+#headerGNBArea>#mainMenu a:hover {
     /* background-color: rgba(255, 255, 255, 0.9) */
     color: #fff;
     background-color: rgba(0, 0, 0, 0.6)
 }
 
-#headerWrap #headerGNBArea>#mainMenu>li.mainLi {
+#headerGNBArea>#mainMenu>li.mainLi {
 	cursor: pointer;
     position: relative;
 }
 
 /* 메인메뉴 좌우 테두리선 겹침 처리 */
-#headerWrap #headerGNBArea>#mainMenu>li.mainLi:not(:last-child)>a {
+#headerGNBArea>#mainMenu>li.mainLi:not(:last-child)>a {
     border-right: none;
 }
 
 /* 메인메뉴 상하 테두리선 겹침 처리 */
-#headerWrap #headerGNBArea #mainMenu ul.subMenu>li.subLi>a {
+#headerGNBArea #mainMenu ul.subMenu>li.subLi>a {
     border-top: none;
     width: 151px;
     /* border: 1px solid #f00; */
 }
 
-#headerWrap #headerGNBArea>#mainMenu>li.mainLi>ul.subMenu {
+#headerGNBArea>#mainMenu>li.mainLi>ul.subMenu {
     position: absolute;
     display: none;
 }
 
-/* div#headerWrap>header#header>nav#headerGNBArea 종료*/
+/* div#headerMemberArea 시작 */
+div#headerMemberArea {
+	width: 300px;
+	height: 200px;
+	border: 1px solid #000;
+}
+/* div#headerMemberArea 끝 */
 
-/* header#header종료 */
+/* ////////////////// nav#headerGNBArea 끝 ////////////////// */
 
-/* div#headerWap종료 */
 
-/* footer#footerWrap 시작///////////////////////////////// */
+
+/* ////////////////// footer#footerWrap 시작 ////////////////// */
 footer#footerWrap{
+	width: 1200px;
+	height: 100%;
 	height: 150px;
 	text-align: center;
 	padding: 30px 0;
+	margin: 0 auto;
 }
 footer#footerWrap>p{
 	background-color: #fff;
 }
+/* ////////////////// footer#footerWrap 끝 ////////////////// */
 
 
-/* footer#footerWrap 종료/////////////////////////////////// */

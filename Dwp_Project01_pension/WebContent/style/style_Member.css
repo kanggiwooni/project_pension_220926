@@ -1,6 +1,85 @@
 @charset "UTF-8";
 
+/* //////////////////////////// 이용약관 페이지 (/member/joinAgreement.jps) 시작 //////////////////////////// */
+div#wrap.joinAgreementWrap {
+	width: 1000px;
+	padding: 30px;
+	margin: 30px auto;
+}
+#wrap.joinAgreementWrap .termsArea {
+	margin: 50px 0;
+}
+#wrap.joinAgreementWrap .termsArea label {
+	font-size: 16px;
+}
+#wrap.joinAgreementWrap iframe {
+	border: 1px solid #aaa;
+	margin: 20px 0 10px;
+}
+#wrap.joinAgreementWrap #chkAllArea input#chkAllBtn {
+	width: 24px;
+	height: 24px;
+}
+#wrap.joinAgreementWrap #chkAllArea span {
+	font-size: 20px;
+}
+#wrap.joinAgreementWrap div#joinBtnArea {
+	text-align: center;
+	/* border: 1px solid #000; */
+}
+#wrap.joinAgreementWrap button#agreeSubmitBtn {
+	width: 300px;
+	height: 55px;
+	font-size: 18px;
+}
+/* //////////////////////////// 이용약관 페이지 (/member/joinAgreement.jps) 끝 //////////////////////////// */
 
+
+
+/* //////////////////////////// 회원가입 페이지 (/member/join.jps) 시작 //////////////////////////// */
+div#wrap.joinWrap table#joinTbl {
+	width: 1000px;
+	padding: 20px;
+	/* border: 1px solid #aaa; */
+	border-collapse: collapse;
+	margin: 30px auto;
+}
+#joinTbl caption {
+	text-align: right;
+	padding-bottom: 10px;
+}
+#joinTbl tbody td {
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+#joinTbl tbody td:first-child {
+	text-align: right;
+	background-color: #fafafa;
+}
+#joinTbl tbody .guideTxt {
+	color: #888;
+	font-size: 14px;
+}
+#joinTbl tbody p.guideTxt {
+	line-height: 2em;
+	vertical-align: bottom;
+}
+#joinTbl tbody input[type=text]:focus,
+#joinTbl tbody input[type=password]:focus {
+	border: 2px solid #009cff;
+	outline: none;
+}
+
+#joinTbl tfoot td {
+	text-align: center;
+	padding-top: 40px;
+}
+#joinTbl #joinSubmitBtn {
+	width: 300px;
+	height: 55px;
+	font-size: 18px;
+}
+/* //////////////////////////// 회원가입 페이지 (/member/join.jps) 끝 //////////////////////////// */
 
 
 
