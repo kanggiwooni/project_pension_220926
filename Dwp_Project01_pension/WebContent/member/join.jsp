@@ -11,7 +11,7 @@ request.setCharacterEncoding("UTF-8");%>
 		<link rel="stylesheet" href="/style/style_Common.css">
 		<link rel="stylesheet" href="/style/style_Member.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="/script/script_Member.js"></script>
+		<script src="/script/script_Join.js"></script>
 	</head>
 	<body>
 	
@@ -30,7 +30,8 @@ request.setCharacterEncoding("UTF-8");%>
 								<button type="button" id="idChkBtn">ID중복확인</button>
 								<span id="idChkTxt"></span>
 								<input type="hidden" id="idCheck" value="">
-								<p id="idGuideTxt">
+								<p id="idGuideTxt"
+								>
 									3~20자의 영문 대소문자, 숫자만 사용 가능합니다.
 								</p>
 								<!-- span#idGuideTxt -->
@@ -89,19 +90,22 @@ request.setCharacterEncoding("UTF-8");%>
 						<tr>
 							<td>생년월일</td>
 							<td>
-								<input type="text" name="uBirth" maxlength="6">
+								<input type="text" name="uBirth" maxlength="6"
+								placeholder="ex) 930428">
 							</td>
 						</tr>
 						<tr>
 							<td>우편번호</td>
 							<td>
-								<input type="text" name="uZipcode" readonly>
+								<input type="text" id="uZipcode" name="uZipcode"
+								maxlength="7" readonly>
+								<button type="button" id="findZipBtn">우편번호 찾기</button>
 							</td>
 						</tr>
 						<tr>
 							<td>주소</td>
 							<td>
-								<input type="text" name="uAddr"
+								<input type="text" id="uAddr" name="uAddr"
 									maxlength="100">
 							</td>
 						</tr>

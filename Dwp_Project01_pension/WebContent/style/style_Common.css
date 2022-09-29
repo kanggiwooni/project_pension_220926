@@ -39,7 +39,6 @@ select {
 
 /* //////////////////////////// div#wrap 시작 //////////////////////////// */
 div#wrap {
-	width: 1200px;
 	border: 1px solid #ddd;
 	padding: 10px;
 	margin: 0 auto;

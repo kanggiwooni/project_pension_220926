@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
+import java.util.Vector;
 
 import pack_DBCP.DBConnectionMgr;
 
@@ -84,6 +86,46 @@ public class MemberDAO {
 		
 	}
 	/* ID중복확인 끝 */
+	
+	/* 우편번호 찾기 시작 */
+	public List<ZipcodeBean> zipcodeRead(String area3) {
+		
+		List<ZipcodeBean> objList = new Vector<>(); 
+		
+		try {
+			
+			objPool = DBConnectionMgr.getInstance();
+			objConn = objPool.getConnection();		
+			
+						
+			String sql = "select zipcode, area1, area2, area3, area4 ";
+			         sql += " from tblZipcode where area3 like ?";
+
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, "%"+ area3 +"%");
+			objRS = objPstmt.executeQuery();
+			
+			while (objRS.next()) {
+				ZipcodeBean zipBean = new ZipcodeBean();
+				zipBean.setZipcode(objRS.getString(1));
+				zipBean.setArea1(objRS.getString(2));
+				zipBean.setArea2(objRS.getString(3));
+				zipBean.setArea3(objRS.getString(4));
+				zipBean.setArea4(objRS.getString(5));
+				
+				objList.add(zipBean);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Exception : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn, objPstmt, objRS);
+		} 
+		
+		return objList;
+		
+	}
+	/* 우편번호 찾기 끝 */
 	
 	/* 로그인 시작 */
 	public String mtd_login(String uid, String upw) {

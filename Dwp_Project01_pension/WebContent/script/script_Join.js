@@ -65,18 +65,6 @@ $(function(){
 	});
 	
 	/* ////////// 아이디 비밀번호 유효성 검사 시작 ////////// */
-	function idChk() {
-		let uid = $("input#uid").val().trim();
-		let reg = /[^a-z|A-Z|0-9]/;
-		let ToF = reg.test(uid) || $("#uid").val().length < 3;
-		return ToF; 
-	}
-	function pwChk() {
-		let upw = $("input#upw").val().trim();
-		let reg = /[^a-z|A-Z|0-9|_\-\!@]/;
-		let ToF = reg.test(upw) || $("#upw").val().length < 3;
-		return ToF;
-	}
 	$("input#uid").keyup(function(){
 		$("input#idCheck").val(0);
 		if (idChk()) {
@@ -116,8 +104,7 @@ $(function(){
 	
 			let h = screen.height;    // 1080
 			let popHeight = 320;
-			let topPos = (h - popHeight) / 2; 		
-			
+			let topPos = (h - popHeight) / 2;
 	
 			let prop = "width="+ popWidth +", height="+ popHeight;
 				  prop += ", left=" + leftPos + ", top=" + topPos; 
@@ -162,69 +149,129 @@ $(function(){
 		}
 	});
 	
-	function joinSubmit() {
+	/* 우편번호 찾기 시작 */
+	$("#uZipcode, #findZipBtn").on("click", function(){
 		
-		let uid = $("#uid").val().trim();
-		let upw = $("#upw").val().trim();
-		let upw2 = $("#upw2").val().trim();
-		let uName = $("#uName").val().trim();
-		let uEmail1 = $("#uEmail1").val().trim();
-		let uEmail2 = $("#uEmail2").val().trim();
-		let idCheck = $("#idCheck").val().trim();
+		let url = "/member/zipCheck.jsp";
+		let nickName = "zipChkPop";
+
+		let w = screen.width;     // 1920
+		let popWidth = 640;
+		let leftPos = (w - popWidth) / 2; // left Position 팝업창 왼쪽 시작위치
+
+		let h = screen.height;    // 1080
+		let popHeight = 400;
+		let topPos = (h - popHeight) / 2; 		
 		
-		if (uid == "") {
-			alert("아이디를 입력해주세요.");
-			$("#uid").focus();
-			
-		} else if (idChk()) {
-			alert("아이디는 3~20자의 영문 대소문자, 숫자만 사용 가능합니다.");
-			$("#uid").focus();
-			
-		} else if (idCheck == "") {
-			alert("ID 중복확인 해주세요.");
-			$("#uid").focus();
-			
-		} else if (idCheck == "1") {
-			alert("중복된 아이디입니다.");
-			$("#uid").focus();
-			
-		} else if (upw == "") {
-			alert("비밀번호를 입력해주세요.");
-			$("#upw").focus();
-			
-		} else if (pwChk()) {
-			alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
-			$("#upw").focus();
-			
-		} else if (upw2 == "" || upw != upw2) {
-			alert("비밀번호가 일치하지 않습니다.");
-			$("#upw2").focus();
-			
-		} else if (uName == "") {
-			alert("이름을 입력해주세요.");
-			$("#uName").focus();
-			
-		} else if (uEmail1 == "") {
-			alert("이메일을 입력해주세요.");
-			$("#uEmail1").focus();
-			
-		} else if (uEmail2 == "") {
-			alert("이메일을 입력해주세요.");
-			$("#uEmail2").focus();
-			
-		} else {
-			let uEmail = uEmail1 + "@" + uEmail2;
-			$("input[name=uEmail]").val(uEmail);
-			
-			$("form#joinFrm").submit();
-			
-		}
+		let prop = "width="+ popWidth +", height="+ popHeight;
+			  prop += ", left=" + leftPos + ", top=" + topPos; 
+		window.open(url, nickName, prop);
 		
-	}
+	});
 	
+	// 우편번호 팝업창에서 주소 검색
+	$("#addrSearchBtn").click(function(){
+		let area3 = $("#area3").val().trim();
+		if (area3 == "") {
+			alert("검색어를 입력해주세요.");
+			$("#area3").focus();
+		} else {
+			$("#zipFrm").submit();
+		}
+	});
+	
+	// 우편번호 팝업창에서 주소 선택
+	$("table#zipResTbl td").click(function(){
+		let txtAddr = $(this).children("span").text();
+		let zipcode = txtAddr.substring(0, 7);
+		let addr = txtAddr.substring(8);
+		window.opener.uZipcode.value = zipcode;
+		window.opener.uAddr.value = addr;
+		window.close();
+	});
+	/* 우편번호 찾기 끝 */
 	
 	/* ////////////////////////////////////////////////////////////////////////////// */
 	/* ////////////////// 회원가입 페이지 (/member/join.jsp) 끝 ///////////////// */
 	/* ////////////////////////////////////////////////////////////////////////////// */
 	
 });
+
+
+
+/* 아이디 / 비밀번호 유효성 검사 시작 */
+function idChk() {
+	let uid = $("input#uid").val().trim();
+	let reg = /[^a-z|A-Z|0-9]/;
+	let ToF = reg.test(uid) || $("#uid").val().length < 3;
+	return ToF; 
+}
+function pwChk() {
+	let upw = $("input#upw").val().trim();
+	let reg = /[^a-z|A-Z|0-9|_\-\!@]/;
+	let ToF = reg.test(upw) || $("#upw").val().length < 3;
+	return ToF;
+}
+/* 아이디 / 비밀번호 유효성 검사 끝 */
+
+/* 회원가입 처리 시작 */
+function joinSubmit() {
+	
+	let uid = $("#uid").val().trim();
+	let upw = $("#upw").val().trim();
+	let upw2 = $("#upw2").val().trim();
+	let uName = $("#uName").val().trim();
+	let uEmail1 = $("#uEmail1").val().trim();
+	let uEmail2 = $("#uEmail2").val().trim();
+	let idCheck = $("#idCheck").val().trim();
+	
+	if (uid == "") {
+		alert("아이디를 입력해주세요.");
+		$("#uid").focus();
+		
+	} else if (idChk()) {
+		alert("아이디는 3~20자의 영문 대소문자, 숫자만 사용 가능합니다.");
+		$("#uid").focus();
+		
+	} else if (idCheck == "") {
+		alert("ID 중복확인 해주세요.");
+		$("#uid").focus();
+		
+	} else if (idCheck == "1") {
+		alert("중복된 아이디입니다.");
+		$("#uid").focus();
+		
+	} else if (upw == "") {
+		alert("비밀번호를 입력해주세요.");
+		$("#upw").focus();
+		
+	} else if (pwChk()) {
+		alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
+		$("#upw").focus();
+		
+	} else if (upw2 == "" || upw != upw2) {
+		alert("비밀번호가 일치하지 않습니다.");
+		$("#upw2").focus();
+		
+	} else if (uName == "") {
+		alert("이름을 입력해주세요.");
+		$("#uName").focus();
+		
+	} else if (uEmail1 == "") {
+		alert("이메일을 입력해주세요.");
+		$("#uEmail1").focus();
+		
+	} else if (uEmail2 == "") {
+		alert("이메일을 입력해주세요.");
+		$("#uEmail2").focus();
+		
+	} else {
+		let uEmail = uEmail1 + "@" + uEmail2;
+		$("input[name=uEmail]").val(uEmail);
+		
+		$("form#joinFrm").submit();
+		
+	}
+	
+}
+/* 회원가입 처리 끝 */

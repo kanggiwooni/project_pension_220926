@@ -4,12 +4,12 @@
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>Document</title>
+		<title>로그인</title>
 		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="/style/style_Common.css">
 		<link rel="stylesheet" href="/style/style_Member.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="/script/script_Member.js"></script>
+		<script src="/script/script_Login.js"></script>
 	</head>
 	<body>
 	
@@ -18,9 +18,11 @@
 		<div id="wrap">
 			<h1>로그인 페이지</h1>
 			<form action="/member/loginProc.jsp" id="loginFrm">
-				<input type="text" name="uid" placeholder="아이디">
-				<input type="password" name="upw" placeholder="비밀번호">
-				<button>로그인</button>
+				<input type="text" id="uid" name="uid" 
+				maxlength="20" placeholder="아이디" autofocus>
+				<input type="password" id="upw" name="upw" 
+				maxlength="20" placeholder="비밀번호">
+				<button type="button" id="loginBtn">로그인</button>
 			</form>
 			<!-- loginFrm -->
 			

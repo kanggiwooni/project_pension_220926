@@ -15,7 +15,7 @@ int idCheck = mDAO.mtd_idCheck(uid);
 		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="/style/style_Member.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="/script/script_Member.js"></script>
+		<script src="/script/script_Join.js"></script>
 	</head>
 	<body>
 		<div id="wrap_pop">
