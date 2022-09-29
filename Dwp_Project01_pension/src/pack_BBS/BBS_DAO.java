@@ -62,7 +62,7 @@ public class BBS_DAO {
 			//fileSize, reportingDate, writer) values('제목','테스트용',
 			//'파일이름','서버에저장된파일이름',1,now(),'이용자')
 			sql="insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, ";
-			sql+="fileSize, reportingDate) values(?,?,?,?,?,?,?,now())";
+			sql+="fileSize, reportingDate, views) values(?,?,?,?,?,?,?,now(),0)";
 			
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, uid);
@@ -122,8 +122,6 @@ public class BBS_DAO {
 	//리뷰페이지 자세히보기 페이지 출력 메서드 시작
 	public List<BBS_VO> mtd_reviewsDetail(int num){
 		
-
-		
 		try {
 			objConn = objPool.getConnection();
 			//select title, uid, reportingDate, views, content from BBS_reviews where num=1;
@@ -150,6 +148,24 @@ public class BBS_DAO {
 		return objList;
 	}
 	//리뷰페이지 자세히보기 페이지 출력 메서드 종료
+	
+	
+	//리뷰페이지 자세히보기시 페이지 조회주 증가 메서드 시작
+	public void mtd_upCount(int num) {
+		try {
+			objConn = objPool.getConnection();
+			sql = "update BBS_reviews set views = views+1 where num=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, num);
+			objPstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("Exception : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn, objPstmt);
+		}
+	}
+	//리뷰페이지 자세히보기시 페이지 조회주 증가 메서드 종료
 	
 	
 	//리뷰페이지 자세히보기 페이지 내용 수정 메서드 시작

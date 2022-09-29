@@ -4,7 +4,8 @@
     pageEncoding="UTF-8" autoFlush="true"%>
 <jsp:useBean id="objBBSDAO" class="pack_BBS.BBS_DAO" />
 <%
-	int num = Integer.parseInt(request.getParameter("num"));
+int num = Integer.parseInt(request.getParameter("num"));
+
 List<BBS_VO> objList = objBBSDAO.mtd_reviewsDetail(num);
 BBS_VO objVO = objList.get(0);	
 String uid_Session = (String)session.getAttribute("uidKey");
