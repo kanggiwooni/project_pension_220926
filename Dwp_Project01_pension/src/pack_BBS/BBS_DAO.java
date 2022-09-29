@@ -35,7 +35,6 @@ public class BBS_DAO {
 	//리뷰페이지 글쓰기 메서드 시작	
 	public int mtd_reviewsWrite(HttpServletRequest req, String uid, String uName) {
 
-		System.out.println("들어는왔다!");
 		//String savePath = "D:/Bigdata_Java_220511/wonho/silsp/07_JSP/Dwp_Project01_pension/WebContent/BBS/reviews/reviews_Upload";
 		String savePath = "C:/Users/EZEN201/git/project_pension/Dwp_Project01_pension/WebContent/BBS/reviews/reviews_Upload";
 		int rtn=0;
@@ -58,10 +57,7 @@ public class BBS_DAO {
 				systemFN = objMulti.getFilesystemName("uploadFileName");
 				fileSize=objMulti.getFile("uploadFileName").length();
 			}
-			
-			System.out.println("test1");
 			objConn = objPool.getConnection();
-			System.out.println("test2");
 			//insert into BBS_reviews(title, content, originalFN, systemFN,
 			//fileSize, reportingDate, writer) values('제목','테스트용',
 			//'파일이름','서버에저장된파일이름',1,now(),'이용자')
@@ -98,7 +94,7 @@ public class BBS_DAO {
 		
 		try {
 			objConn = objPool.getConnection();
-			sql = "select num, title, uid, reportingDate, views from BBS_reviews order by num";
+			sql = "select num, title, uid, reportingDate, views from BBS_reviews order by num desc";
 			objStmt = objConn.createStatement();
 			objRS = objStmt.executeQuery(sql);
 			
@@ -121,6 +117,7 @@ public class BBS_DAO {
 		return objList;
 	}
 	//리뷰페이지 출력 메서드 시작
+	
 	
 	//리뷰페이지 자세히보기 페이지 출력 메서드 시작
 	public List<BBS_VO> mtd_reviewsDetail(int num){
@@ -154,4 +151,61 @@ public class BBS_DAO {
 	}
 	//리뷰페이지 자세히보기 페이지 출력 메서드 종료
 	
+	
+	//리뷰페이지 자세히보기 페이지 내용 수정 메서드 시작
+	public  int mtd_reviewsModify(int num, String title, String content) {
+
+		int rtn=0;
+
+		try {
+			objConn = objPool.getConnection();
+			sql="update BBS_reviews set title=?, content=? where num=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, title);
+			objPstmt.setString(2, content);
+			objPstmt.setInt(3, num);
+
+			rtn = objPstmt.executeUpdate();
+
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return rtn;
+	}
+	//리뷰페이지 자세히보기 페이지 내용 수정 메서드 종료
+
+
+	//리뷰페이지 자세히보기 글 삭제 메서드 시작
+	public int mtd_reviewsDelete(int num) {
+		int rtn=0;
+		
+		try {
+			objConn = objPool.getConnection();
+			sql="delete from BBS_reviews where num = ?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, num);
+
+			rtn = objPstmt.executeUpdate();
+
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return rtn;
+	}
+	//리뷰페이지 자세히보기 글 삭제 메서드 종료
+
+
+
+
+
+
+
 }
