@@ -158,4 +158,103 @@ public class MemberDAO {
 	}
 	/* 로그인 끝 */
 	
+	/* 회원 정보 불러오기 시작 */
+	public MemberVO getMemberData(String uid) {
+		
+		MemberVO mVO = new MemberVO();
+		
+		try {
+			
+			objConn = objPool.getConnection();
+			
+			String sql = "select uid, upw, uName, uEmail, gender, uBirth, uZipcode, uAddr";
+			sql += " from member where uid=?";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uid);
+			objRS = objPstmt.executeQuery();
+			
+			if (objRS.next()) {
+				mVO.setUid(objRS.getString("uid"));
+				mVO.setUpw(objRS.getString("upw"));
+				mVO.setuName(objRS.getString("uName"));
+				mVO.setuEmail(objRS.getString("uEmail"));
+				mVO.setGender(objRS.getString("gender"));
+				mVO.setuBirth(objRS.getString("uBirth"));
+				mVO.setuZipcode(objRS.getString("uZipcode"));
+				mVO.setuAddr(objRS.getString("uAddr"));
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return mVO;
+	}
+	/* 회원 정보 불러오기 끝 */
+	
+	/* 회원정보 수정 시작 */
+	public int mtd_modify(String uid, MemberVO objVO) {
+		
+		int rtnCnt = 0;
+		
+		try {
+			
+			objConn = objPool.getConnection();
+			
+			System.out.println("DB접속");
+			
+			String sql = "update member set";
+			sql += " upw=?, uEmail=?, gender=?, uBirth=?, uZipcode=?, uAddr=?";
+			sql += " where uid=?";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, objVO.getUpw());
+			objPstmt.setString(2, objVO.getuEmail());
+			objPstmt.setString(3, objVO.getGender());
+			objPstmt.setString(4, objVO.getuBirth());
+			objPstmt.setString(5, objVO.getuZipcode());
+			objPstmt.setString(6, objVO.getuAddr());
+			objPstmt.setString(7, uid);
+			
+			rtnCnt = objPstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return rtnCnt;
+		
+	}
+	/* 회원정보 수정 끝 */
+
+	/* 회원탈퇴 시작 */
+	public int mtd_delete(String uid) {
+		
+		int rtnCnt = 0;
+		
+		try {
+			
+			objConn = objPool.getConnection();
+			
+			String sql = "delete from member where uid=?";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uid);
+			rtnCnt = objPstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return rtnCnt;
+	}
+	/* 회원탈퇴 끝 */
+	
 }

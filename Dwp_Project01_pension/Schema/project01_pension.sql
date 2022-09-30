@@ -31,6 +31,9 @@ insert into member
 values
 ('test', '1234', '테스트', 'test@naver.com', '1', '000114', '12345', '서울 동대문구 천호대로 00-0길 00-00 101호', now());
 
+update member set
+upw='1234', uEmail='test11@naver.com', gender='2', uBirth='900101', uZipcode='123-123', uAddr='바꾼 주소'
+where uid='test';
 
 select * from member order by num desc;
 select count(*) from member where uid = 'sample';

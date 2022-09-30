@@ -74,7 +74,8 @@ div#wrap.joinWrap table#joinTbl {
 	text-align: center;
 	padding-top: 40px;
 }
-#joinTbl #joinSubmitBtn {
+#joinTbl #joinSubmitBtn,
+#joinTbl #modifySubmitBtn {
 	width: 300px;
 	height: 55px;
 	font-size: 18px;

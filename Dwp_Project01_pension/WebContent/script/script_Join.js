@@ -143,7 +143,7 @@ $(function(){
 	$("button#joinSubmitBtn").click(function(){
 		joinSubmit();
 	});
-	$("input").keyup(function(e){
+	$("#joinFrm input").keyup(function(e){
 		if (e.which == 13) {
 			joinSubmit();
 		}
@@ -195,6 +195,28 @@ $(function(){
 	/* ////////////////// 회원가입 페이지 (/member/join.jsp) 끝 ///////////////// */
 	/* ////////////////////////////////////////////////////////////////////////////// */
 	
+	
+	
+	
+	
+	/* ////////////////////////////////////////////////////////////////////////////// */
+	/* /////////////// 회원정보 수정 페이지 (/member/modify.jsp) 시작 ///////////// */
+	/* ////////////////////////////////////////////////////////////////////////////// */
+	
+	/* 회원정보 수정 버튼 submit 처리 */
+	$("button#modifySubmitBtn").click(function(){
+		modifySubmit();
+	});
+	$("#modifyFrm input").keyup(function(e){
+		if (e.which == 13) {
+			modifySubmit();
+		}
+	});
+	
+	/* ////////////////////////////////////////////////////////////////////////////// */
+	/* /////////////// 회원정보 수정 페이지 (/member/modify.jsp) 끝 ////////////// */
+	/* ////////////////////////////////////////////////////////////////////////////// */
+	
 });
 
 
@@ -217,61 +239,127 @@ function pwChk() {
 /* 회원가입 처리 시작 */
 function joinSubmit() {
 	
-	let uid = $("#uid").val().trim();
-	let upw = $("#upw").val().trim();
-	let upw2 = $("#upw2").val().trim();
-	let uName = $("#uName").val().trim();
-	let uEmail1 = $("#uEmail1").val().trim();
-	let uEmail2 = $("#uEmail2").val().trim();
-	let idCheck = $("#idCheck").val().trim();
+	let chk = confirm("회원가입 하시겠습니까?");
 	
-	if (uid == "") {
-		alert("아이디를 입력해주세요.");
-		$("#uid").focus();
+	if (chk) {
+	
+		let uid = $("#uid").val().trim();
+		let upw = $("#upw").val().trim();
+		let upw2 = $("#upw2").val().trim();
+		let uName = $("#uName").val().trim();
+		let uEmail1 = $("#uEmail1").val().trim();
+		let uEmail2 = $("#uEmail2").val().trim();
+		let idCheck = $("#idCheck").val().trim();
 		
-	} else if (idChk()) {
-		alert("아이디는 3~20자의 영문 대소문자, 숫자만 사용 가능합니다.");
-		$("#uid").focus();
-		
-	} else if (idCheck == "") {
-		alert("ID 중복확인 해주세요.");
-		$("#uid").focus();
-		
-	} else if (idCheck == "1") {
-		alert("중복된 아이디입니다.");
-		$("#uid").focus();
-		
-	} else if (upw == "") {
-		alert("비밀번호를 입력해주세요.");
-		$("#upw").focus();
-		
-	} else if (pwChk()) {
-		alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
-		$("#upw").focus();
-		
-	} else if (upw2 == "" || upw != upw2) {
-		alert("비밀번호가 일치하지 않습니다.");
-		$("#upw2").focus();
-		
-	} else if (uName == "") {
-		alert("이름을 입력해주세요.");
-		$("#uName").focus();
-		
-	} else if (uEmail1 == "") {
-		alert("이메일을 입력해주세요.");
-		$("#uEmail1").focus();
-		
-	} else if (uEmail2 == "") {
-		alert("이메일을 입력해주세요.");
-		$("#uEmail2").focus();
-		
+		if (uid == "") {
+			alert("아이디를 입력해주세요.");
+			$("#uid").focus();
+			
+		} else if (idChk()) {
+			alert("아이디는 3~20자의 영문 대소문자, 숫자만 사용 가능합니다.");
+			$("#uid").focus();
+			
+		} else if (idCheck == "") {
+			alert("ID 중복확인 해주세요.");
+			$("#uid").focus();
+			
+		} else if (idCheck == "1") {
+			alert("중복된 아이디입니다.");
+			$("#uid").focus();
+			
+		} else if (upw == "") {
+			alert("비밀번호를 입력해주세요.");
+			$("#upw").focus();
+			
+		} else if (pwChk()) {
+			alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
+			$("#upw").focus();
+			
+		} else if (upw2 == "" || upw != upw2) {
+			alert("비밀번호가 일치하지 않습니다.");
+			$("#upw2").focus();
+			
+		} else if (uName == "") {
+			alert("이름을 입력해주세요.");
+			$("#uName").focus();
+			
+		} else if (uEmail1 == "") {
+			alert("이메일을 입력해주세요.");
+			$("#uEmail1").focus();
+			
+		} else if (uEmail2 == "") {
+			alert("이메일을 입력해주세요.");
+			$("#uEmail2").focus();
+			
+		} else {
+			let uEmail = uEmail1 + "@" + uEmail2;
+			$("input[name=uEmail]").val(uEmail);
+			
+			$("form#joinFrm").submit();
+			
+		}
 	} else {
-		let uEmail = uEmail1 + "@" + uEmail2;
-		$("input[name=uEmail]").val(uEmail);
-		
-		$("form#joinFrm").submit();
-		
+		alert("취소했습니다.");
 	}
 	
 }
 /* 회원가입 처리 끝 */
+
+
+/* 회원정보 수정 처리 시작 */
+function modifySubmit() {
+	
+	let chk = confirm("회원정보를 수정 하시겠습니까?");
+	
+	if (chk) {
+		
+		let upw = $("#upw").val().trim();
+		let upw2 = $("#upw2").val().trim();
+		let uEmail1 = $("#uEmail1").val().trim();
+		let uEmail2 = $("#uEmail2").val().trim();
+		
+		if (upw == "") {
+			alert("비밀번호를 입력해주세요.");
+			$("#upw").focus();
+			
+		} else if (pwChk()) {
+			alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
+			$("#upw").focus();
+			
+		} else if (upw2 == "" || upw != upw2) {
+			alert("비밀번호가 일치하지 않습니다.");
+			$("#upw2").focus();
+			
+		} else if (uEmail1 == "") {
+			alert("이메일을 입력해주세요.");
+			$("#uEmail1").focus();
+			
+		} else if (uEmail2 == "") {
+			alert("이메일을 입력해주세요.");
+			$("#uEmail2").focus();
+			
+		} else {
+			let uEmail = uEmail1 + "@" + uEmail2;
+			$("input[name=uEmail]").val(uEmail);
+			
+			$("form#modifyFrm").submit();
+			
+		}
+	} else {
+		alert("취소했습니다.");
+	}
+	
+}
+/* 회원정보 수정 처리 끝 */
+
+
+
+function resign() {
+	let chk = confirm("탈퇴하시겠습니까?");
+	if (chk) {
+		location.href = "/member/member_Resign.jsp"
+	} else {
+		alert("취소했습니다.");
+	}
+}
+
