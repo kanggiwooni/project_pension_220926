@@ -42,7 +42,7 @@
 					<tr>
 						<td colspan="2">
 							<button form="reviewsInsert">확인</button>
-							<button type="button">목록보기</button>
+							<button onclick="location.href = '/BBS/reviews/reviews.jsp'">목록보기</button>
 						</td>
 					</tr>
 				</tfoot>

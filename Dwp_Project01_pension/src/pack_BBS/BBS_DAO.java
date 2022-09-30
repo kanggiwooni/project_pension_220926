@@ -88,15 +88,17 @@ public class BBS_DAO {
 
 	
 	//리뷰페이지 출력 메서드 시작
-	public List<BBS_VO> mtd_reviewsList(){
+	public List<BBS_VO> mtd_reviewsList(int start, int end){
 		
 
 		
 		try {
-			objConn = objPool.getConnection();
-			sql = "select num, title, uid, reportingDate, views from BBS_reviews order by num desc";
-			objStmt = objConn.createStatement();
-			objRS = objStmt.executeQuery(sql);
+			objConn = objPool.getConnection();;
+			sql = "select num, title, uid, reportingDate, views from BBS_reviews order by num desc limit ?, ?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, start);
+			objPstmt.setInt(2, end);
+			objRS = objPstmt.executeQuery();
 			
 			objList = new Vector<BBS_VO>();
 			
@@ -219,7 +221,27 @@ public class BBS_DAO {
 	//리뷰페이지 자세히보기 글 삭제 메서드 종료
 
 
-
+	//총 게시물 수 확인 시작
+	public int mtd_getTotalCount() {
+		int totalCnt=0;
+		
+		try {
+			objConn = objPool.getConnection();
+			sql = "select count(*) from BBS_reviews";
+			objStmt = objConn.createStatement();
+			objRS = objStmt.executeQuery(sql);
+			
+			if(objRS.next()) {
+				totalCnt=objRS.getInt(1);
+			}
+		}catch(Exception e) {
+			System.out.print("reviewsList e : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		return  totalCnt;
+	}
+	//총 게시물 수 확인 종료
 
 
 

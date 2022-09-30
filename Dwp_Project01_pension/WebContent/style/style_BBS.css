@@ -41,7 +41,12 @@ div#wrap.bbs_reviewsWrap>table td:nth-child(2):hover{
 	font-weight: bold;
 	cursor: pointer;
 }
-div#wrap.bbs_reviewsWrap>table>tfoot{
+div#wrap.bbs_reviewsWrap>table>tfoot tr td span.nowPageNum{
+	font-weight: bold;
+}
+div#wrap.bbs_reviewsWrap>table>tfoot tr td span.nowPageNum,
+div#wrap.bbs_reviewsWrap>table>tfoot tr td span.pageNum,
+div#wrap.bbs_reviewsWrap>table>tfoot tr td span.moveBlockArea{
 	cursor: pointer;
 }
 /* **************** div#wrap.bbs_reviewsWrap 끝 **************** */
