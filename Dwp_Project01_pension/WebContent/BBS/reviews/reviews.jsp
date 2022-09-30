@@ -5,6 +5,7 @@
 
 <jsp:useBean id="objBBSDAO" class="pack_BBS.BBS_DAO" />
 <%
+String uid_Session = (String)session.getAttribute("uidKey");
 BBS_VO objVO = null;
 
 
@@ -129,11 +130,22 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 				<tfoot>
 					<tr>
 						<td colspan="4"></td>
+						<%
+						if(uid_Session==null){
+						%>
+						<td>
+						</td>
+						<%
+						}else{
+						%>
 						<td>
 							<a href="/BBS/reviews/reviewsInsert.jsp">
 								<button type="button" id="reviewsWrite">글쓰기</button>
 							</a>
-						</td>
+						</td>						
+						<%
+						}
+						%>
 					</tr>
 					<tr>
 						<td colspan="5">
