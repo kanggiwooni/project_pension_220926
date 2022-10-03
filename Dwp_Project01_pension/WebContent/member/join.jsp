@@ -95,7 +95,7 @@ request.setCharacterEncoding("UTF-8");%>
 						<tr>
 							<td>생년월일</td>
 							<td>
-								<input type="text" name="uBirth" maxlength="6">
+								<input type="text" id="uBirth" name="uBirth" maxlength="6">
 								<span class="guideTxt">예시) 930428</span>
 							</td>
 						</tr>

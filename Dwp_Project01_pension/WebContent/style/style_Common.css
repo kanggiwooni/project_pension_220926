@@ -78,6 +78,30 @@ iframe#iframe_footer {
 
 
 
+/* //////////////////////////// 우편번호 찾기 페이지 (/member/zipCheck.jsp) 시작 //////////////////////////// */
+div#wrap_pop {
+	padding: 20px;
+}
+#wrap_pop hr {
+	margin: 10px 0;
+}
+#wrap_pop table#zipFrmTbl {
+	width: 100%;
+}
+#wrap_pop #zipResTbl {
+	width: 100%;
+	margin-top: 10px;
+}
+#wrap_pop #zipResTbl td {
+	padding: 5px 10px;
+	cursor: pointer;
+}
+#wrap_pop #zipResTbl td:hover {
+	text-decoration: underline;
+}
+/* //////////////////////////// 우편번호 찾기 페이지 (/member/zipCheck.jsp) 끝 //////////////////////////// */
+
+
 
 
 /* ////////////////////////////  시작 //////////////////////////// */

@@ -22,11 +22,11 @@ MemberVO mVO = mDAO.getMemberData(uid);
 	
 		<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 		
-		<div id="wrap" class="dFlex">
+		<div id="wrap" class="dFlex modifyWrap">
 			<div id="myPageLnbArea">
-				<ul>
-					<li>예약내역 확인</li>
-					<li>회원정보 수정</li>
+				<ul id="myPageLnb">
+					<li><a>예약내역 확인</a></li>
+					<li><a>회원정보 수정</a></li>
 					<li><a onclick="resign()">회원 탈퇴하기</a></li>
 				</ul>
 			</div>
@@ -131,7 +131,7 @@ MemberVO mVO = mDAO.getMemberData(uid);
 							<tr>
 								<td>생년월일</td>
 								<td>
-									<input type="text" name="uBirth" 
+									<input type="text" id="uBirth" name="uBirth" 
 									maxlength="6" value="<%=mVO.getuBirth()%>">
 									<span class="guideTxt">예시) 930428</span>
 								</td>

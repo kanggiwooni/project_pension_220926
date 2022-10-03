@@ -11,6 +11,7 @@ div#headerWrap {
 	height: 300px;
     /* border: 3px solid #08f; */
     margin: 0 auto;
+    background-color: #9aadcd;
 }
 /* div#headerWap 끝 */
 
@@ -18,7 +19,9 @@ div#headerWrap {
 /* header#header 시작 */
 div#headerWrap>header#header {
 	width: 1200px;
-	border: 1px solid #000;
+	height: 100%;
+	padding-top: 10px;
+	/* border: 1px solid #000; */
     margin: 0 auto;
     justify-content: space-between;
 }
@@ -28,10 +31,9 @@ div#headerWrap>header#header {
 
 /* ////////////////// div#headerLogoArea 시작 ////////////////// */
 div#headerLogoArea {
-	width: 300px;
     height: 100px;
     padding-top: 5px;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     margin: 0 10px;
     cursor: pointer;
 }
@@ -41,14 +43,17 @@ div#headerLogoArea {
 
 /* ////////////////// nav#headerGNBArea 시작 ////////////////// */
 nav#headerGNBArea {
-	width: 300px;
+	/* width: 650px; */
+	height: 100%;
     text-align: center;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     margin: auto 0;
+    margin-top: 20px;
+    flex: 1;
 }
 #headerGNBArea>ul#mainMenu {
-	width: 800px;
-	margin: 0 auto;
+	padding-left: 50px;
+	/* border: 1px solid #000; */
 }
 #headerGNBArea>#mainMenu a {
     width: 150px;
@@ -57,14 +62,15 @@ nav#headerGNBArea {
     text-align: center;
     padding: 16px 10px;
     border: 1px solid rgba(0, 0, 0, 0.6);
-    background-color: rgba(255, 255, 255, 0.6);
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.5);
     display: inline-block;
 }
 
 #headerGNBArea>#mainMenu a:hover {
     /* background-color: rgba(255, 255, 255, 0.9) */
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.6)
+    background-color: rgba(0, 0, 0, 0.5)
 }
 
 #headerGNBArea>#mainMenu>li.mainLi {
@@ -88,20 +94,44 @@ nav#headerGNBArea {
     position: absolute;
     display: none;
 }
-
-/* div#headerMemberArea 시작 */
-div#headerMemberArea {
-	width: 300px;
-	height: 200px;
-	border: 1px solid #000;
-}
-/* div#headerMemberArea 끝 */
-
 /* ////////////////// nav#headerGNBArea 끝 ////////////////// */
 
 
 
-/* ////////////////// footer#footerWrap 시작 ////////////////// */
+/* ////////////////// div#headerMemberArea 시작 ////////////////// */
+div#headerMemberArea {
+	width: 250px;
+	margin-top: 20px;
+}
+#headerMemberArea ul#MemberMenu {
+	justify-content: space-between;
+}
+#headerMemberArea li {
+	width: 100%;
+	text-align: center;
+	margin-right: -1px;
+}
+#headerMemberArea li>a {
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 12px 0;
+	border: 1px solid rgba(0, 0, 0, 0.6);
+	background-color: rgba(255, 255, 255, 0.5);
+	display: inline-block;
+	cursor: pointer;
+}
+#headerMemberArea li:hover a {
+	color: #fff;
+    background-color: rgba(0, 0, 0, 0.5)
+}
+/* ////////////////// div#headerMemberArea 끝 ////////////////// */
+
+
+
+
+/* footer#footerWrap 시작 */
 footer#footerWrap{
 	width: 1200px;
 	height: 100%;
@@ -113,6 +143,6 @@ footer#footerWrap{
 footer#footerWrap>p{
 	background-color: #fff;
 }
-/* ////////////////// footer#footerWrap 끝 ////////////////// */
+/* footer#footerWrap 끝 */
 
 

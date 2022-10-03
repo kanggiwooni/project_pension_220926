@@ -38,7 +38,7 @@ div#wrap.joinAgreementWrap {
 
 /* //////////////////////////// 회원가입 페이지 (/member/join.jps) 시작 //////////////////////////// */
 div#wrap.joinWrap table#joinTbl {
-	width: 1000px;
+	width: 900px;
 	padding: 20px;
 	/* border: 1px solid #aaa; */
 	border-collapse: collapse;
@@ -66,7 +66,7 @@ div#wrap.joinWrap table#joinTbl {
 }
 #joinTbl tbody input[type=text]:focus,
 #joinTbl tbody input[type=password]:focus {
-	border: 2px solid #009cff;
+	border: 3px solid #009cff;
 	outline: none;
 }
 
@@ -80,7 +80,124 @@ div#wrap.joinWrap table#joinTbl {
 	height: 55px;
 	font-size: 18px;
 }
+
+/* input 크기 지정 시작 */
+#joinTbl #uid {
+	width: 150px;
+}
+#joinTbl #upw {
+	width: 260px;
+}
+#joinTbl #upw2 {
+	width: 260px;
+}
+#joinTbl #uName {
+	width: 150px;
+}
+#joinTbl #uEmail1 {
+	width: 160px;
+}
+#joinTbl #uEmail2 {
+	width: 160px;
+}
+#joinTbl #uBirth {
+	width: 200px;
+}
+#joinTbl #uZipcode {
+	width: 200px;
+}
+#joinTbl #uAddr {
+	width: 500px;
+}
+/* input 크기 지정 끝 */
+
 /* //////////////////////////// 회원가입 페이지 (/member/join.jps) 끝 //////////////////////////// */
+
+
+
+
+/* //////////////////////////// 회원정보 수정 페이지 (/member/myPage_Mod.jps) 시작 //////////////////////////// */
+#wrap.modifyWrap {
+	/* border: 1px solid #000; */
+	justify-content: space-between;
+}
+#wrap.modifyWrap table#joinTbl {
+	width: 850px;
+	border-collapse: collapse;
+}
+#wrap.modifyWrap div#myPageArea {
+	width: 890px;
+	padding: 10px;
+	/* border: 1px solid #aaa; */
+}
+
+/* 마이페이지 LNB 메뉴 영역 시작 */ 
+#wrap.modifyWrap div#myPageLnbArea {
+	width: 260px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+}
+#myPageLnbArea ul#myPageLnb {
+	width: 100%;
+}
+#myPageLnbArea #myPageLnb>li {
+	margin: 10px;
+	cursor: pointer;
+}
+#myPageLnbArea #myPageLnb>li>a {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	
+	padding: 17px 0;
+	border: 1px solid #aaa;
+	display: block;
+}
+
+#myPageLnbArea #myPageLnb>li:hover>a {
+	text-decoration: underline;
+	background-color: #ddd;
+}
+/* 마이페이지 LNB 메뉴 영역 끝 */
+
+/* //////////////////////////// 회원정보 수정 페이지 (/member/myPage_Mod.jps) 끝 //////////////////////////// */
+
+
+/* //////////////////////////// 로그인 페이지 (/member/login.jps) 시작 //////////////////////////// */
+div#wrap.loginWrap {
+	width: 1000px;
+}
+#wrap.loginWrap #loginFrm.dFlex {
+	width: 700px;
+	margin: 0 auto;
+	justify-content: space-between;
+}
+#wrap.loginWrap #inputArea {
+	width: 550px;
+}
+#wrap.loginWrap #inputArea input {
+	width: 500px;
+	font-size: 24px;
+	padding: 12px 20px;
+	outline: none;
+	margin: 10px;
+	display: inline-block;
+}
+#wrap.loginWrap #loginBtnArea {
+	padding: 10px;
+}
+#wrap.loginWrap #loginBtnArea button {
+	width: 170px;
+	height: 133px;
+	font-size: 24px;
+	font-weight: bold;
+}
+#wrap.loginWrap input:focus {
+	border: 3px solid #009cff;
+	outline: none;
+}
+/* //////////////////////////// 로그인 수정 페이지 (/member/login.jps) 끝 //////////////////////////// */
+
 
 
 

@@ -15,21 +15,25 @@
 	
 		<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 		
-		<div id="wrap">
+		<div id="wrap" class="loginWrap">
 			<h1>로그인 페이지</h1>
-			<form action="/member/loginProc.jsp" id="loginFrm">
-				<input type="text" id="uid" name="uid" 
-				maxlength="20" placeholder="아이디" autofocus>
-				<input type="password" id="upw" name="upw" 
-				maxlength="20" placeholder="비밀번호">
-				<button type="button" id="loginBtn">로그인</button>
+			<form action="/member/loginProc.jsp" id="loginFrm" class="dFlex">
+				<div id="inputArea">
+					<input type="text" id="uid" name="uid" form="loginFrm"
+					maxlength="20" placeholder="아이디" autofocus>
+					<input type="password" id="upw" name="upw" form="loginFrm"
+					maxlength="20" placeholder="비밀번호">
+				</div>
+				<!-- div#inputArea -->
+				
+				<div id="loginBtnArea">
+					<button type="button" id="loginBtn">로그인</button>
+				</div>
+				<!-- div#loginBtnArea -->
 			</form>
-			<!-- loginFrm -->
-			
-			<hr>
-			<button type="button">회원가입</button>
 		</div>
 		<!-- div#wrap -->
+		
 		
 		<iframe src="/iframe/iframe_footer.jsp" id="iframe_footer" scrolling="no"></iframe>
 		

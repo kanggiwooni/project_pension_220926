@@ -17,9 +17,7 @@ String uid = (String) session.getAttribute("uidKey");
 	    <div id="headerWrap"> 
 	        <header id="header" class="dFlex">
 	            <div id="headerLogoArea">
-	                <a id="mainPage">
-	                    <img src="/images/logo.png" alt="로고이미지" width="210">
-	                </a>
+	                <a id="mainPage"><img src="/images/logo_header.png" alt="로고이미지" width="210"></a>
 	            </div>
 	            <!-- div#headerLogoArea -->
 
@@ -62,13 +60,23 @@ String uid = (String) session.getAttribute("uidKey");
 	            <!-- nav#headerGNBArea -->
 	            
 	            <div id="headerMemberArea">
+	            	<ul id="MemberMenu" class="dFlex">
 	            	<% if (uid == null) { %>
-						<a id="loginPage">로그인</a>
-						<a id="joinPage">회원가입</a>
+	            		<li>
+							<a id="loginPage">로그인</a>
+						</li>
+						<li>
+							<a id="joinPage">회원가입</a>
+						</li>
 	            	<% } else { %>
-	            		<a id="logoutPage">로그아웃</a>
-						<a id="myPage">마이페이지</a>
+	            		<li>
+		            		<a id="logoutPage">로그아웃</a>
+	            		</li>
+	            		<li>
+							<a id="myPage">마이페이지</a>
+	            		</li>
 	            	<% } %>
+		            </ul>
 	            </div>
 	            <!-- div#headerMemArea -->
 
