@@ -21,8 +21,10 @@ String uName = (String) session.getAttribute("uNameKey");
 		
 		<div id="wrap" class="RoomWrap">
 		
-			<div id="SlideShowFrame">
-            	<div id="pansionSlideShowImg">
+			<div class="SlideShowFrame">
+            <button class="leftBtn" onclick="fnSlide_prev()">&lt;</button>
+            <button class="rightBtn" onclick="fnSlide_next()">&gt;</button>
+            	<div id="Room_B_SlideShowImg" class="pansionSlideShowImg">
 	                <img src="/Room/Room_B_img/펜션B_1.jpg" alt="펜션B_1">
 	                <img src="/Room/Room_B_img/펜션B_2.jpg" alt="펜션B_2">
 	                <img src="/Room/Room_B_img/펜션B_3.jpg" alt="펜션B_3">
