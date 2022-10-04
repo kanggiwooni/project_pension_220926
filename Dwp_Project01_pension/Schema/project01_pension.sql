@@ -87,14 +87,42 @@ select * from BBS_reviews;
 drop table roomInfo;
 create table roomInfo (
 num				int				auto_increment	,	#번호
-rName			char(20)		not null				,	#객실 이름
-rLimit		int				not null				,	#최대인원
+rName			char(30)		not null				,	#객실 이름
+rLimit			int				not null				,	#최대인원
 rPrice			int				not null				,	#객실가격
 constraint primary key (num)
 );
 desc roomInfo;
 
-insert into roonInfo (rName, rMaxLimit, ) values ();
+insert into roomInfo (rName, rLimit, rPrice) 
+values ('바다 객실 A호', 8, 80000);
+
+select * from roomInfo order by num desc;
+
+
+
+
+####################################
+############ 예약 정보 테이블 #############
+####################################
+drop table roomBooking;
+create table roomBooking (
+bNum		int				auto_increment	,	#예약번호
+bDate		timestamp	not null				,	#예약 날짜
+rNum			int				not null				,	#예약 객실번호
+rName		char(30)		not null				,	#예약 객실 이름
+uid			char(30)		not null				,	#예약자 아이디
+uName		char(30)		not null				,	#예약자 이름
+uPhone		char(30)		not null				,	#예약자 연락처
+payPrice		int				not null				,	#결제 금액
+constraint primary key (bNum)
+);
+desc roomBooking;
+
+
+
+
+
 
 
 
