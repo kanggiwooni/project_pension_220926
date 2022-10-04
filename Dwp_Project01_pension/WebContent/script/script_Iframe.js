@@ -32,6 +32,12 @@ $(function () {
 	$("a#reviewsPage").click(function(){
 		window.parent.location.href="/BBS/reviews/reviews.jsp";
 	});
+	$("a#Room_A_Page").click(function(){
+		window.parent.location.href="/Room/Room_A.jsp";
+	});
+	$("a#Room_B_Page").click(function(){
+		window.parent.location.href="/Room/Room_B.jsp";
+	});
 	/* GNB 이동관련 소스 끝 */
 	
 });
