@@ -38,6 +38,9 @@ $(function () {
 	$("a#Room_B_Page").click(function(){
 		window.parent.location.href="/Room/Room_B.jsp";
 	});
+	$("a#bookingPage").click(function(){
+		window.parent.location.href="/booking/bookCalendar.jsp";
+	});
 	/* GNB 이동관련 소스 끝 */
 	
 });

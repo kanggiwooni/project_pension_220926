@@ -24,6 +24,8 @@ String uid = objVO.getUid();
 	</head>
 	<body>
 	
+		<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
+	
 		<div id="wrap">
 			<h1>이용후기</h1>
 			<hr>
@@ -60,6 +62,8 @@ String uid = objVO.getUid();
 			
 		</div>
 		<!-- div#wrap -->
+		
+		<iframe src="/iframe/iframe_footer.jsp" id="iframe_footer" scrolling="no"></iframe>
 	
 	</body>
 </html>

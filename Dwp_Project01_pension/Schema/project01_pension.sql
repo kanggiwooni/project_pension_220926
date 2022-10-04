@@ -80,3 +80,22 @@ insert into BBS_reviews(title, content, originalFN, systemFN, fileSize, reportin
 select * from BBS_reviews;
 
 
+
+####################################
+############ 객실 정보 테이블 #############
+####################################
+drop table roomInfo;
+create table roomInfo (
+num				int				auto_increment	,	#번호
+rName			char(20)		not null				,	#객실 이름
+rLimit		int				not null				,	#최대인원
+rPrice			int				not null				,	#객실가격
+constraint primary key (num)
+);
+desc roomInfo;
+
+insert into roonInfo (rName, rMaxLimit, ) values ();
+
+
+
+

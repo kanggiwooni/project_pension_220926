@@ -34,7 +34,9 @@ String uid = (String) session.getAttribute("uidKey");
 	                    <li class="mainLi">
 	                        <a>예약안내</a>
 	                        <ul class="subMenu">
-	                            <li class="subLi"><a>예약하기</a></li>
+	                            <li class="subLi">
+	                            	<a id="bookingPage">예약하기</a>
+	                            </li>
 	                        </ul>
 	                    </li>
 	
