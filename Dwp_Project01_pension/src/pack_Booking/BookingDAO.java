@@ -63,7 +63,7 @@ public class BookingDAO {
 		try {
 			objConn = objPool.getConnection();;
 			
-			String sql = "select num, rName, rLimit, rPrice from roomInfo";
+			String sql = "select num, rName, rLimit, rPrice, rPictures from roomInfo";
 			sql += " where num = ?";
 			
 			objPstmt = objConn.prepareStatement(sql);
@@ -75,6 +75,7 @@ public class BookingDAO {
 				rVO.setrName(objRS.getString("rName"));
 				rVO.setrLimit(objRS.getInt("rLimit"));
 				rVO.setrPrice(objRS.getInt("rPrice"));
+				rVO.setrPictures(objRS.getInt("rPictures"));
 			}
 			
 		} catch (Exception e) {

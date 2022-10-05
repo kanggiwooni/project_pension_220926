@@ -36,13 +36,13 @@ objVO = objDAO.mtd_getRoomInfo(type);
 	            <button class="rightBtn" onclick="fnSlide_next()">&gt;</button>
 				
             	<div id="Room_A_SlideShowImg" class="pansionSlideShowImg">
-<%--             	<%
+             	<%
             	for(int i=1;i<=objVO.getrPictures();i++){
             	%>
 	                <img src="/Room/Room_img/<%=objVO.getrName() %>_<%=i %>.jpg" alt="<%=objVO.getrName() %>_<%=i %>이미지">            		
             	<%
             	}
-            	%> --%>
+            	%>
 	            </div>
 	        </div>
 	        
