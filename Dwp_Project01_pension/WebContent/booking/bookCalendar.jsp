@@ -1,13 +1,19 @@
+<%@page import="pack_Booking.BookingVO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
+    
+<jsp:useBean id="bDAO" class="pack_Booking.BookingDAO" />
 <%
 Calendar nowCal = Calendar.getInstance(); // 오늘 날짜 캘린더
 String[] weekArr = {"일", "월", "화", "수", "목", "금", "토"};
 
-String format = "yyyy년 MM월 dd일 (E)";
-SimpleDateFormat sdf = new SimpleDateFormat(format);
+String dateFormat = "yyyy년 MM월 dd일 (E)";
+SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+
+String df
 
 int nowYear = nowCal.get(Calendar.YEAR);				// 오늘 연도
 int nowMonth = nowCal.get(Calendar.MONTH) + 1;		// 오늘 월
@@ -48,6 +54,8 @@ int lastDay = cal.getActualMaximum(Calendar.DATE); // 이번달의 마지막 날
 
 cal.set(Calendar.MONTH, 10);
 cal.set(Calendar.DATE, 1);
+
+List<BookingVO> objList = bDAO.mtd_getRoomInfo();
 
 %>
 <!DOCTYPE html>

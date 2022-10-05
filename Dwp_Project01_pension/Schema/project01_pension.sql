@@ -95,7 +95,11 @@ constraint primary key (num)
 desc roomInfo;
 
 insert into roomInfo (rName, rLimit, rPrice) 
-values ('바다 객실 A호', 8, 80000);
+values ('바다 객실 A호', 8,120000);
+insert into roomInfo (rName, rLimit, rPrice) 
+values ('바다 객실 B호', 4, 80000);
+insert into roomInfo (rName, rLimit, rPrice) 
+values ('산 객실 C호', 4, 100000);
 
 select * from roomInfo order by num desc;
 
