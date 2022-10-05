@@ -7,7 +7,7 @@
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>이용후기 글쓰기 페이지</title>
+		<title>공지사항 글쓰기 페이지</title>
 		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="/style/style_Common.css">
 		<link rel="stylesheet" href="/style/style_BBS.css">
@@ -16,9 +16,9 @@
 	</head>
 	<body>
 		<iframe src="/iframe/iframe_header.jsp" scrolling="no" id="iframe_header"></iframe> 
-		<div id="wrap" class="bbs_reviewsWrap">
+		<div id="wrap" class="bbs_noticeWrap">
 			
-			<h1>이용후기 Review</h1>
+			<h1>공지사항 Notice</h1>
 			<hr>
 			<table>
 				<tbody>
@@ -27,22 +27,22 @@
 					</tr>
 					<tr>
 						<td>제목</td>
-						<td><input type="text" name="title" form="reviewsInsert"></td>
+						<td><input type="text" name="title" form="noticeInsert"></td>
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td><textarea name="content" form="reviewsInsert"></textarea></td>
+						<td><textarea name="content" form="noticeInsert"></textarea></td>
 					</tr>
 					<tr>
 						<td>파일첨부</td>
-						<td><input type="file" name="uploadFileName" form="reviewsInsert"></td>
+						<td><input type="file" name="uploadFileName" form="noticeInsert"></td>
 					</tr>
 				</tbody>
 				<tfoot>
 					<tr>
 						<td colspan="2">
-							<button form="reviewsInsert">확인</button>
-							<button onclick="location.href = '/BBS/reviews/reviews.jsp'">목록보기</button>
+							<button form="noticeInsert">확인</button>
+							<button onclick="location.href = '/BBS/notice/notice.jsp'">목록보기</button>
 						</td>
 					</tr>
 				</tfoot>
@@ -50,7 +50,7 @@
 
 		</div>
 		<!-- div#wrap -->
-		<form action="/BBS/reviews/reviewsInsertProc.jsp" id="reviewsInsert" method="post" enctype="multipart/form-data"></form>
+		<form action="/BBS/notice/noticeInsertProc.jsp" id="noticeInsert" method="post" enctype="multipart/form-data"></form>
 		<iframe src="/iframe/iframe_footer.jsp" scrolling="no" id="iframe_footer"></iframe>
 	</body>
 </html>

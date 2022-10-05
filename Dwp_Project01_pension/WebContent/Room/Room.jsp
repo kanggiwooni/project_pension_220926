@@ -1,16 +1,14 @@
-<%@page import="java.util.List"%>
-<%@page import="pack_Room.Room_VO"%>
+<%@page import="pack_Booking.BookingVO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
-<jsp:useBean id="objDAO" class="pack_Room.Room_DAO" />
+<jsp:useBean id="objDAO" class="pack_Booking.BookingDAO" />
 <%
 String uName = (String) session.getAttribute("uNameKey");
-Room_VO objVO = null;
-List<Room_VO> objList = null;
-
+BookingVO objVO = null;
 int type = Integer.parseInt(request.getParameter("type"));
-objList = objDAO.mtd_roomInfo(type);
-objVO = objList.get(0);
+objVO = objDAO.mtd_getRoomInfo(type);
+
 
 %>
 <!DOCTYPE html>
@@ -38,13 +36,13 @@ objVO = objList.get(0);
 	            <button class="rightBtn" onclick="fnSlide_next()">&gt;</button>
 				
             	<div id="Room_A_SlideShowImg" class="pansionSlideShowImg">
-            	<%
+<%--             	<%
             	for(int i=1;i<=objVO.getrPictures();i++){
             	%>
 	                <img src="/Room/Room_img/<%=objVO.getrName() %>_<%=i %>.jpg" alt="<%=objVO.getrName() %>_<%=i %>이미지">            		
             	<%
             	}
-            	%>
+            	%> --%>
 	            </div>
 	        </div>
 	        

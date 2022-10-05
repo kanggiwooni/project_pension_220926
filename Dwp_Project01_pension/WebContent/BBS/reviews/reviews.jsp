@@ -7,6 +7,7 @@
 <%
 String uid_Session = (String)session.getAttribute("uidKey");
 BBS_VO objVO = null;
+String bbs="reviews";
 
 
 ///////////////////////페이징 관련 속성 값 시작///////////////////////////
@@ -62,7 +63,7 @@ select * from BBS_reviews order by num desc limit 10, 10;
 3페이지    80~71
 */
 
-totalRecord =objBBSDAO.mtd_getTotalCount();   
+totalRecord =objBBSDAO.mtd_getReviewsTotalCount();   
 //전체 데이터 수 반환
 
 totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
@@ -98,7 +99,7 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 						<th>조회</th>
 					</tr>
 					<%
-					List<BBS_VO> objList = objBBSDAO.mtd_reviewsList(start,end);
+					List<BBS_VO> objList = objBBSDAO.mtd_bbsList(start,end,bbs);
 					listSize=objList.size();
 					if(objList.isEmpty()){//게시글이없을경우
 					%>

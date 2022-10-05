@@ -57,19 +57,44 @@ select * from tblZipcode limit 0, 10;
 
 
 ####################################
+############ 공지사항 테이블 #############
+####################################
+
+create table BBS_notice(
+num				int				primary key		auto_increment 			,#번호
+uid 				char(30)		not null													,#아이디
+uName			char(30)		not null													,#이름
+title				char(50)		not null													,#제목
+content			text				not null													,#내용
+originalFN		char(200)		null														,#원본파일이름
+systemFN		char(200)		null														,#시스템파일이름
+fileSize			long				null														,#파일크기
+reportingDate	datetime		not null													,#작성일,작성시간
+views			int				null														 #조회수
+);
+
+desc BBS_notice;
+drop table BBS_notice;
+
+insert into BBS_notice(title, content, originalFN, systemFN, fileSize, reportingDate, writer) values('제목','테스트용','파일이름','서버에저장된파일이름',1,now(),'이용자');
+select * from BBS_notice;
+
+
+
+####################################
 ############ 리뷰 테이블 #############
 ####################################
 
 create table BBS_reviews(
 num				int				primary key		auto_increment 			,#번호
-uid 				char(30)		not null												,#아이디
-uName			char(30)		not null												,#이름
-title				char(50)		not null												,#제목
-content			text				not null												,#내용
+uid 				char(30)		not null													,#아이디
+uName			char(30)		not null													,#이름
+title				char(50)		not null													,#제목
+content			text				not null													,#내용
 originalFN		char(200)		null														,#원본파일이름
 systemFN		char(200)		null														,#시스템파일이름
 fileSize			long				null														,#파일크기
-reportingDate	datetime		not null												,#작성일,작성시간
+reportingDate	datetime		not null													,#작성일,작성시간
 views			int				null														 #조회수
 );
 
@@ -77,7 +102,7 @@ desc BBS_reviews;
 drop table BBS_reviews;
 
 insert into BBS_reviews(title, content, originalFN, systemFN, fileSize, reportingDate, writer) values('제목','테스트용','파일이름','서버에저장된파일이름',1,now(),'이용자');
-select * from BBS_reviews;
+select * from BBS_reviews order by num desc;
 
 
 
@@ -89,20 +114,19 @@ create table roomInfo (
 num				int				auto_increment	,	#번호
 rName			char(30)		not null				,	#객실 이름
 rLimit			int				not null				,	#최대인원
-rPrice			int				not null					,	#객실가격
+rPrice				int				not null				,	#객실가격
+rPictures		int				not null				,	#객실 사진개수
 constraint primary key (num)
 );
 desc roomInfo;
 
-insert into roomInfo (rName, rLimit, rPrice) 
-values ('바다 객실 A호', 8,120000);
-insert into roomInfo (rName, rLimit, rPrice) 
-values ('바다 객실 B호', 4, 80000);
-insert into roomInfo (rName, rLimit, rPrice) 
-values ('산 객실 C호', 4, 100000);
+insert into roomInfo (rName, rLimit, rPrice,rPictures) 
+values ('101호', 2, 70000,6);
+insert into roomInfo (rName, rLimit, rPrice,rPictures) 
+values ('102호(복층)', 2, 100000,7);
 
 select * from roomInfo order by num desc;
-
+select rName, rLimit, rPrice, rPictures from roomInfo where num='2';
 
 
 

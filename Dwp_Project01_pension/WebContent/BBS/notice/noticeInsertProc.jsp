@@ -7,8 +7,8 @@
 request.setCharacterEncoding("UTF-8");
 String uid = (String)session.getAttribute("uidKey");
 String uName = (String)session.getAttribute("uNameKey");
-String bbs="reviews";
-int rtn = objBBSDAO.mtd_reviewsWrite(request,uid,uName);
+String bbs = "notice";
+int rtn = objBBSDAO.mtd_noticeWrite(request,uid,uName);
 
 if(rtn==1){
 	response.sendRedirect("/BBS/bbsInsertEnd.jsp?bbs="+bbs);

@@ -3,6 +3,8 @@
 <jsp:useBean id="objBBSDAO" class="pack_BBS.BBS_DAO" />
 <%
 int num = Integer.parseInt(request.getParameter("num"));
-objBBSDAO.mtd_upCount(num);
-response.sendRedirect("/BBS/reviews/reviewsDetail.jsp?num="+num);
+String bbs = request.getParameter("bbs");
+String url="/BBS/"+bbs+"/"+bbs;
+objBBSDAO.mtd_bbsUpCount(num,bbs);
+response.sendRedirect(url+"Detail.jsp?num="+num);
 %>

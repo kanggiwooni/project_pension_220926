@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
 <%
-int num = Integer.parseInt(request.getParameter("num"));
+String bbs=request.getParameter("bbs");
+String bbsComment = "";
+String url="/BBS/"+bbs+"/"+bbs+".jsp";
+if(bbs=="review"){
+	bbsComment = "이용후기";
+}else if(bbs=="notice"){
+	bbsComment = "공지사항";
+}
 %>
-
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>Document</title>
+		<title><%=bbsComment%> 글쓰기 저장 완료</title>
 		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="/style/style_Common.css">
 		<link rel="stylesheet" href="/style/style_BBS.css">
@@ -18,9 +24,9 @@ int num = Integer.parseInt(request.getParameter("num"));
 	<body>
 	
 		<div id="wrap">
-			<h1>수정되었습니다.</h1>
-			
-			<button onclick="location.href = '/BBS/reviews/reviewsDetail.jsp?num='+<%=num%>">확인</button>
+			<h1>저장되었습니다.</h1>
+			<hr>
+			<button onclick="location.href='<%=url%>'">메인</button>
 			
 		</div>
 		<!-- div#wrap -->

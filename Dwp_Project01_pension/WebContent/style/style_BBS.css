@@ -18,7 +18,33 @@ div#wrap.bbs_noticeWrap>table>tfoot{
 	cursor: pointer;
 }
 
-/* //////////////////// div#wrap.bbs_noticeWrap 끝 ////////////////////// */
+/* //////////////////// 공지사항 게시판 스타일작업 시작 //////////////////// */
+
+/* **************** div#wrap.bbs_noticeWrap 시작 **************** */
+div#wrap.bbs_noticeWrap{
+	margin-top: 0;
+	border: 1px solid #000;
+}
+div#wrap.bbs_noticeWrap>table{
+	width: 100%;
+	border: 1px solid #000;
+}
+div#wrap.bbs_noticeWrap>table td:not(:nth-child(2)){
+	text-align: center;
+}
+div#wrap.bbs_noticeWrap>table td:nth-child(2):hover{
+	font-weight: bold;
+	cursor: pointer;
+}
+div#wrap.bbs_noticeWrap>table>tfoot tr td span.nowPageNum{
+	font-weight: bold;
+}
+div#wrap.bbs_noticeWrap>table>tfoot tr td span.nowPageNum,
+div#wrap.bbs_noticeWrap>table>tfoot tr td span.pageNum,
+div#wrap.bbs_noticeWrap>table>tfoot tr td span.moveBlockArea{
+	cursor: pointer;
+}
+/* **************** div#wrap.bbs_noticeWrap 끝 **************** */
 
 /* //////////////////// 공지사항 게시판 스타일작업 끝 //////////////////// */
 
