@@ -1,19 +1,30 @@
+<%@page import="java.util.List"%>
+<%@page import="pack_Room.Room_VO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
+<jsp:useBean id="objDAO" class="pack_Room.Room_DAO" />
 <%
 String uName = (String) session.getAttribute("uNameKey");
+Room_VO objVO = null;
+List<Room_VO> objList = null;
+
+int type = Integer.parseInt(request.getParameter("type"));
+objList = objDAO.mtd_roomInfo(type);
+objVO = objList.get(0);
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>객실A</title>
+		<title>객실</title>
 		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="/style/style_Common.css">
 		<link rel="stylesheet" href="/style/style_Room.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="/script/script_Iframe.js"></script>
 		<script src="/script/script_Room.js"></script>
+		
 	</head>
 	<body>
 		
@@ -22,15 +33,18 @@ String uName = (String) session.getAttribute("uNameKey");
 		<div id="wrap" class="RoomWrap">
 		
 			<div class="SlideShowFrame">
-			<button class="leftBtn" onclick="fnSlide_prev()">&lt;</button>
-            <button class="rightBtn" onclick="fnSlide_next()">&gt;</button>
+				
+				<button class="leftBtn" onclick="fnSlide_prev()">&lt;</button>
+	            <button class="rightBtn" onclick="fnSlide_next()">&gt;</button>
+				
             	<div id="Room_A_SlideShowImg" class="pansionSlideShowImg">
-	                <img src="/Room/Room_A_img/펜션A_1.jpg" alt="펜션A_1">
-	                <img src="/Room/Room_A_img/펜션A_2.jpg" alt="펜션A_2">
-	                <img src="/Room/Room_A_img/펜션A_3.jpg" alt="펜션A_3">
-	                <img src="/Room/Room_A_img/펜션A_4.jpg" alt="펜션A_4">
-	                <img src="/Room/Room_A_img/펜션A_5.jpg" alt="펜션A_5">
-	                <img src="/Room/Room_A_img/펜션A_6.jpg" alt="펜션A_6">
+            	<%
+            	for(int i=1;i<=objVO.getrPictures();i++){
+            	%>
+	                <img src="/Room/Room_img/<%=objVO.getrName() %>_<%=i %>.jpg" alt="<%=objVO.getrName() %>_<%=i %>이미지">            		
+            	<%
+            	}
+            	%>
 	            </div>
 	        </div>
 	        
@@ -44,8 +58,8 @@ String uName = (String) session.getAttribute("uNameKey");
 	        				<th colspan="2">성수기</th>	        				
 	        			</tr>
 	        			<tr>
-	        				<td rowspan="2">203호</td>
-	        				<td rowspan="2">2인</td>
+	        				<td rowspan="2"><%=objVO.getrName() %></td>
+	        				<td rowspan="2"><%=objVO.getrLimit() %>인</td>
 	        				<td>주중</td>
 	        				<td>주말</td>
 	        				<td>주중</td>
@@ -54,10 +68,10 @@ String uName = (String) session.getAttribute("uNameKey");
 	        			<tr>
 	        			
 	        			
-	        				<td>70,000</td>	        				
-	        				<td>90,000</td>
-	        				<td>90,000</td>
-	        				<td>110,000</td>
+	        				<td><%=objVO.getrPrice()%></td>	  			
+	        				<td><%=objVO.getrPrice()+20000 %></td>
+	        				<td><%=objVO.getrPrice()+20000 %></td>
+	        				<td><%=objVO.getrPrice()+40000 %></td>
 	        			</tr>
 	        		</tbody>
 	        	</table>
@@ -77,12 +91,11 @@ String uName = (String) session.getAttribute("uNameKey");
         
 			<% if (uName != null) { %>
 			<h1>
-				환영합니다
-				<%= uName %>님
+				예약하기
 			</h1>
 			<% } else { %>
 			<h1>
-				로그인 해주세요
+				로그인 하기
 			</h1>
 			<% } %>
 			
