@@ -33,10 +33,10 @@ $(function () {
 		window.parent.location.href="/BBS/reviews/reviews.jsp";
 	});
 	$("a#Room_A_Page").click(function(){
-		window.parent.location.href="/Room/Room_A.jsp";
+		window.parent.location.href="/Room/Room.jsp?type=1";
 	});
 	$("a#Room_B_Page").click(function(){
-		window.parent.location.href="/Room/Room_B.jsp";
+		window.parent.location.href="/Room/Room.jsp?type=2";
 	});
 	$("a#bookingPage").click(function(){
 		window.parent.location.href="/booking/bookCalendar.jsp";
