@@ -1,11 +1,11 @@
-<%@page import="pack_Booking.BookingVO"%>
+<%@page import="pack_Booking.RoomVO"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
 <jsp:useBean id="objDAO" class="pack_Booking.BookingDAO" />
 <%
 String uName = (String) session.getAttribute("uNameKey");
-BookingVO objVO = null;
+RoomVO objVO = null;
 int type = Integer.parseInt(request.getParameter("type"));
 objVO = objDAO.mtd_getRoomInfo(type);
 

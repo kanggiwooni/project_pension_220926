@@ -106,6 +106,7 @@ select * from BBS_reviews order by num desc;
 
 
 
+
 ####################################
 ############ 객실 정보 테이블 #############
 ####################################
@@ -114,19 +115,20 @@ create table roomInfo (
 num				int				auto_increment	,	#번호
 rName			char(30)		not null				,	#객실 이름
 rLimit			int				not null				,	#최대인원
-rPrice				int				not null				,	#객실가격
-rPictures		int				not null				,	#객실 사진개수
+rPrice			int				not null				,	#객실가격
+rPictures		int				not null				,	#객실정보 사진 갯수
 constraint primary key (num)
 );
 desc roomInfo;
 
-insert into roomInfo (rName, rLimit, rPrice,rPictures) 
-values ('101호', 2, 70000,6);
-insert into roomInfo (rName, rLimit, rPrice,rPictures) 
-values ('102호(복층)', 2, 100000,7);
+insert into roomInfo (rName, rLimit, rPrice) 
+values ('바다 객실 A호', 8,120000);
+insert into roomInfo (rName, rLimit, rPrice) 
+values ('바다 객실 B호', 4, 80000);
+insert into roomInfo (rName, rLimit, rPrice) 
+values ('산 객실 C호', 4, 100000);
 
 select * from roomInfo order by num desc;
-select rName, rLimit, rPrice, rPictures from roomInfo where num='2';
 
 
 
@@ -137,6 +139,7 @@ drop table roomBooking;
 create table roomBooking (
 bNum		int				auto_increment	,	#예약번호
 bDate		timestamp	not null				,	#예약 날짜
+bPeople		int				not null				,	#예약 인원 수
 rNum			int				not null				,	#예약 객실번호
 rName		char(30)		not null				,	#예약 객실 이름
 uid			char(30)		not null				,	#예약자 아이디
@@ -146,6 +149,17 @@ payPrice		int				not null				,	#결제 금액
 constraint primary key (bNum)
 );
 desc roomBooking;
+
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
+values ('2022-10-24', 3, 1, '바다 객실 A호', 'sample', '샘플', '010-1234-5678', 120000);
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
+values ('2022-10-12', 2, 3, '산 객실 C호', 'guest', '게스트', '010-1234-5678', 100000);
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
+values ('2022-10-14', 4, 2, '바다 객실 B호', 'test', '테스트', '010-1234-5678', 80000);
+
+select * from roomBooking order by bNum desc;
+select count(*) from roomBooking 
+where rNum = 1 and bDate like '2022-10-24%';
 
 
 

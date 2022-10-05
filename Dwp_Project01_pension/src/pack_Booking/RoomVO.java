@@ -1,11 +1,19 @@
-package pack_Room;
+package pack_Booking;
 
-public class Room_VO {
-	String rName;
-	int rLimit;
-	int rPrice;
-	int rPictures;
+public class RoomVO {
 	
+	private int num;
+	private String rName;
+	private int rLimit;
+	private int rPrice;
+	private int rPictures;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getrName() {
 		return rName;
 	}
@@ -31,6 +39,4 @@ public class Room_VO {
 		this.rPictures = rPictures;
 	}
 	
-	
-		
 }

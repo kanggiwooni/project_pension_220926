@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Vector;
 
-import pack_BBS.BBS_VO;
 import pack_DBCP.DBConnectionMgr;
 
 public class BookingDAO {
@@ -23,9 +22,9 @@ public class BookingDAO {
 	}
 	
 	/* 모든 객실 정보 불러오기 시작 */
-	public List<BookingVO> mtd_getRoomInfo() {
+	public List<RoomVO> mtd_getRoomInfo() {
 		
-		List<BookingVO> objList = new Vector<BookingVO>();
+		List<RoomVO> objList = new Vector<RoomVO>();
 		
 		try {
 			objConn = objPool.getConnection();;
@@ -37,12 +36,12 @@ public class BookingDAO {
 			objRS = objStmt.executeQuery(sql);
 			
 			while (objRS.next()) {
-				BookingVO bVO = new BookingVO();
-				bVO.setNum(objRS.getInt("num"));
-				bVO.setrName(objRS.getString("rName"));
-				bVO.setrLimit(objRS.getInt("rLimit"));
-				bVO.setrPrice(objRS.getInt("rPrice"));
-				objList.add(bVO);
+				RoomVO rVO = new RoomVO();
+				rVO.setNum(objRS.getInt("num"));
+				rVO.setrName(objRS.getString("rName"));
+				rVO.setrLimit(objRS.getInt("rLimit"));
+				rVO.setrPrice(objRS.getInt("rPrice"));
+				objList.add(rVO);
 			}
 			
 		} catch (Exception e) {
@@ -57,9 +56,9 @@ public class BookingDAO {
 	/* 모든 객실 정보 불러오기 끝 */
 	
 	/* 선택한 객실 정보 불러오기 시작 */
-	public BookingVO mtd_getRoomInfo(int num) {
+	public RoomVO mtd_getRoomInfo(int num) {
 		
-		BookingVO bVO = new BookingVO();
+		RoomVO rVO = new RoomVO();
 		
 		try {
 			objConn = objPool.getConnection();;
@@ -72,10 +71,10 @@ public class BookingDAO {
 			objRS = objPstmt.executeQuery();
 			
 			if (objRS.next()) {
-				bVO.setNum(objRS.getInt("num"));
-				bVO.setrName(objRS.getString("rName"));
-				bVO.setrLimit(objRS.getInt("rLimit"));
-				bVO.setrPrice(objRS.getInt("rPrice"));
+				rVO.setNum(objRS.getInt("num"));
+				rVO.setrName(objRS.getString("rName"));
+				rVO.setrLimit(objRS.getInt("rLimit"));
+				rVO.setrPrice(objRS.getInt("rPrice"));
 			}
 			
 		} catch (Exception e) {
@@ -84,9 +83,42 @@ public class BookingDAO {
 			objPool.freeConnection(objConn);
 		}
 		
-		return bVO;
+		return rVO;
 		
 	}
 	/* 선택한 객실 정보 불러오기 끝 */
+	
+	/* 해당 날짜 예약 여부 확인 시작 */
+	public boolean mtd_chkBooking(int rNum, String date) {
+		
+		boolean chk = false;
+		
+		try {
+			objConn = objPool.getConnection();;
+			
+			String sql = "select count(*) from roomBooking";
+			sql += " where rNum=? and bDate like ?";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, rNum);
+			objPstmt.setString(2, date+"%");
+			objRS = objPstmt.executeQuery();
+			
+			if (objRS.next()) {
+				if (objRS.getInt(1) > 0) {
+					chk = true;
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.print("e : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return chk;
+		
+	}
+	/* 해당 날짜 예약 여부 확인 끝 */
 	
 }
