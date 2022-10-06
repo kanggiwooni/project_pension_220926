@@ -78,24 +78,42 @@ select * from BBS_notice;
 
 
 ####################################
-############ 리뷰 테이블 #############
+############ 리뷰 테이블 #################
 ####################################
 
 create table BBS_reviews(
-num				int				primary key		auto_increment 	,#번호
-uid 				char(30)		not null										,#아이디
-uName			char(30)		not null										,#이름
-title				char(50)		not null										,#제목
-content			text				not null										,#내용
-originalFN		char(200)		null												,#원본파일이름
-systemFN		char(200)		null												,#시스템파일이름
-fileSize			long				null												,#파일크기
-reportingDate	datetime		not null										,#작성일,작성시간
-views			int				null												 #조회수
+num				int				primary key		auto_increment 		,#번호
+uid 				char(30)		not null												,#아이디
+uName			char(30)		not null												,#이름
+title				char(50)		not null												,#제목
+content			text				not null												,#내용
+originalFN		char(200)		null													,#원본파일이름
+systemFN		char(200)		null													,#시스템파일이름
+fileSize			long				null													,#파일크기
+reportingDate	datetime		not null												,#작성일,작성시간
+views			int				null													 #조회수
 );
 desc BBS_reviews;
 
 select * from BBS_reviews order by num desc;
+
+
+
+####################################
+############ 리뷰 댓글 테이블 ###############
+####################################
+
+create table BBS_reviewsComment(
+num				int				primary key		auto_increment 		,#번호
+parentNum		int				not null												,#댓글이 작성된 글 번호
+uid 				char(30)		not null												,#아이디
+uName			char(30)		not null												,#이름
+comment		text				not null												,#댓글내용
+reportingDate	datetime		not null												#작성일,작성시간
+);
+desc BBS_reviews;
+select * from BBS_reviewsComment order by num desc;
+select * from BBS_reviewsComment where parentNum = '1' order by num desc;
 
 
 
