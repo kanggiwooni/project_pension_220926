@@ -11,7 +11,7 @@ String bbs = "notice";
 int rtn = objBBSDAO.mtd_noticeWrite(request,uid,uName);
 
 if(rtn==1){
-	response.sendRedirect("/BBS/bbsInsertEnd.jsp?bbs="+bbs);
+	response.sendRedirect("/BBS/notice/notice.jsp");
 }else if(rtn==0){
 	out.print("연결실패 ㅠㅠ");
 }

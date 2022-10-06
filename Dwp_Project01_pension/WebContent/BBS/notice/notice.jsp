@@ -9,6 +9,7 @@ String uid_Session = (String)session.getAttribute("uidKey");
 BBS_VO objVO = null;
 String bbs = "notice";
 
+
 ///////////////////////페이징 관련 속성 값 시작///////////////////////////
 int totalRecord = 0;        // 전체 데이터 수(DB에 저장된 row 개수)
 int numPerPage =  3;    // 페이지당 출력하는 데이터 수(=게시글 숫자)
@@ -86,7 +87,6 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 		<iframe src="/iframe/iframe_header.jsp" scrolling="no" id="iframe_header"></iframe> 
 		<div id="wrap" class="bbs_noticeWrap">
 			<h1>공지사항</h1>
-			<hr>
 			
 			<table>
 				<tbody>
@@ -116,8 +116,9 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 					%>
 					<tr>
 						<td><%=objVO.getNum()%></td>
-						<td class="noticeTitle">
-							<%=objVO.getTitle()%>
+						<td class="noticeTitle"><%=objVO.getTitle()%></td>
+						<td>
+							<input type="hidden" value="<%=nowPage%>">
 						</td>
 						<td><%=objVO.getuName()%></td>
 						<td><%=objVO.getReportingDate()%></td>
@@ -158,7 +159,7 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 							
 							if(nowBlock>1){ //페이지블럭이 2개이상있고 현재 페이지 블럭이 첫번째 블럭이 아닐경우							
 						%>
-							<span class="moveBlockArea" onclick="moveBlock('<%=nowBlock%>','<%=pagePerBlock%>','prev')">&lt;</span>
+							<span class="moveBlockArea" onclick="notice_moveBlock('<%=nowBlock%>','<%=pagePerBlock%>','prev')">&lt;</span>
 						<%
 							}
 							// 페이지 나누기용 번호출력 시작
@@ -169,7 +170,7 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 									<%
 								}else{
 									%>
-									<span class="pageNum" onclick="movePage(<%=i%>)"><%=i %> </span>
+									<span class="pageNum" onclick="notice_movePage(<%=i%>)"><%=i %> </span>
 									<%
 								}
 							}
@@ -177,7 +178,7 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 							
 							if(totalBlock>nowBlock){ //페이블럭이 더있을경우
 								%>
-								<span class="moveBlockArea" onclick="moveBlock('<%=nowBlock%>','<%=pagePerBlock%>','next')">&gt;</span>
+								<span class="moveBlockArea" onclick="notice_moveBlock('<%=nowBlock%>','<%=pagePerBlock%>','next')">&gt;</span>
 								<%
 							}
 						}

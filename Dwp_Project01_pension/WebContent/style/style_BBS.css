@@ -1,33 +1,21 @@
 @charset "UTF-8";
 
-
-
 /* //////////////////// 공지사항 게시판 스타일작업 시작 //////////////////// */
-
-/* //////////////////// div#wrap.bbs_noticeWrap 시작 //////////////////// */
-div#wrap.bbs_noticeWrap{
-	margin-top: 0;
-	border: 1px solid #000;
-}
-
-div#wrap.bbs_noticeWrap>table{
-	width: 100%;
-	border: 1px solid #000;
-}
-div#wrap.bbs_noticeWrap>table>tfoot{
-	cursor: pointer;
-}
-
-/* //////////////////// 공지사항 게시판 스타일작업 시작 //////////////////// */
-
 /* **************** div#wrap.bbs_noticeWrap 시작 **************** */
 div#wrap.bbs_noticeWrap{
+	width: 1200px;
 	margin-top: 0;
 	border: 1px solid #000;
 }
 div#wrap.bbs_noticeWrap>table{
-	width: 100%;
+	width: 900px;
 	border: 1px solid #000;
+	margin: 0 auto;
+}
+div#wrap.bbs_noticeWrap>table textarea{
+	resize : none;
+	width: 700px;
+	height: 400px;
 }
 div#wrap.bbs_noticeWrap>table td:not(:nth-child(2)){
 	text-align: center;
@@ -46,19 +34,49 @@ div#wrap.bbs_noticeWrap>table>tfoot tr td span.moveBlockArea{
 }
 /* **************** div#wrap.bbs_noticeWrap 끝 **************** */
 
+/* **************** div#wrap.bbs_noticeWrap 시작 **************** */
+div#wrap.bbs_detailWrap{
+	width: 1200px;
+}
+div#wrap.bbs_detailWrap>table.noticeDetailTBL{
+	width: 900px;
+	margin: 0 auto;
+	border: 1px solid #000;
+	border-collapse: collapse;
+	margin-bottom: 50px;
+}
+
+div#wrap.bbs_detailWrap>table.noticeDetailTBL td{
+	padding-top: 20px;
+	padding-left: 20px;
+	line-height: 20px;
+}
+div#wrap.bbs_detailWrap>table.noticeDetailTBL td.userName{
+	width: 60%;
+}
+/* **************** div#wrap.bbs_noticeWrap 끝 **************** */
+
 /* //////////////////// 공지사항 게시판 스타일작업 끝 //////////////////// */
 
 
-/* //////////////////// 리뷰 게시판 스타일작업 시작 //////////////////// */
 
+/* //////////////////// 리뷰 게시판 스타일작업 시작 //////////////////// */
 /* **************** div#wrap.bbs_reviewsWrap 시작 **************** */
 div#wrap.bbs_reviewsWrap{
+	width: 1200px;
 	margin-top: 0;
 	border: 1px solid #000;
 }
 div#wrap.bbs_reviewsWrap>table{
-	width: 100%;
+	width: 900px;
+	margin: 0 auto;
 	border: 1px solid #000;
+}
+
+div#wrap.bbs_reviewsWrap>table textarea{
+	resize : none;
+	width: 700px;
+	height: 400px;
 }
 div#wrap.bbs_reviewsWrap>table td:not(:nth-child(2)){
 	text-align: center;
@@ -77,10 +95,38 @@ div#wrap.bbs_reviewsWrap>table>tfoot tr td span.moveBlockArea{
 }
 /* **************** div#wrap.bbs_reviewsWrap 끝 **************** */
 
+/* **************** div#wrap.bbs_detailWrap 시작 **************** */
+div#wrap.bbs_detailWrap>table.reviewsDetailTBL{
+	width: 100%;
+	border: 1px solid #000;
+	border-collapse: collapse;
+	margin-bottom: 50px;
+}
+
+div#wrap.bbs_detailWrap>table.reviewsDetailTBL td{
+	padding-top: 20px;
+	padding-left: 20px;
+	line-height: 20px;
+}
+div#wrap.bbs_detailWrap>table.reviewsDetailTBL td.userName{
+	width: 60%;
+}
+
+div#wrap.bbs_detailWrap>table.reviewsDetailCommentTBL textarea{
+	resize: none;
+	width: 600px;
+	height: 70px;
+}
+div#wrap.bbs_detailWrap>table.reviewsDetailCommentTBL td#commentTD{
+	padding-top: 50px;
+	font-weight: bold;
+	font-size: 32px;
+}
+/* **************** div#wrap.bbs_detailWrap 끝 **************** */
+
 /* //////////////////// 리뷰 게시판 스타일작업 끝 //////////////////// */
 
-/* ////////// 시작 ////////// */
-/* ////////// 끝 //////////// */
+
 
 /* ////////// 시작 ////////// */
 /* ////////// 끝 //////////// */

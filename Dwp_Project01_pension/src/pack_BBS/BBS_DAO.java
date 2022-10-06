@@ -42,7 +42,7 @@ public class BBS_DAO {
 
 		
 		try {
-			objConn = objPool.getConnection();
+			objConn = objPool.getConnection();;
 			sql = "select num, title, uid, uName, reportingDate, views from BBS_"+bbs+" order by num desc limit ?, ?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, start);
@@ -197,31 +197,7 @@ public class BBS_DAO {
 		return rtn;
 	}
 	//공지사항 페이지 글쓰기 메서드 종료
-	
-	//공지사항 페이지 출력 메서드 시작 // 공통사항으로 대체
-	/*
-	 * public List<BBS_VO> mtd_noticeList(int start, int end){
-	 * 
-	 * 
-	 * 
-	 * try { objConn = objPool.getConnection();; sql =
-	 * "select num, title, uid, uName, reportingDate, views from BBS_notice order by num desc limit ?, ?"
-	 * ; objPstmt = objConn.prepareStatement(sql); objPstmt.setInt(1, start);
-	 * objPstmt.setInt(2, end); objRS = objPstmt.executeQuery();
-	 * 
-	 * objList = new Vector<BBS_VO>();
-	 * 
-	 * while(objRS.next()) { objVO = new BBS_VO();
-	 * objVO.setNum(objRS.getInt("num")); objVO.setTitle(objRS.getString("title"));
-	 * objVO.setUid(objRS.getString("uid"));
-	 * objVO.setuName(objRS.getString("uName"));
-	 * objVO.setReportingDate(objRS.getString("reportingDate"));
-	 * objVO.setViews(objRS.getInt("views")); objList.add(objVO); } }catch(Exception
-	 * e) { System.out.print("reviewsList e : " + e.getMessage()); } finally {
-	 * objPool.freeConnection(objConn); } return objList; }
-	 */
-	//공지사항 페이지 출력 메서드 종료 // 공통사항으로 대체
-	
+		
 	
 	//공지사항 페이지 자세히보기 페이지 출력 메서드 시작
 	public List<BBS_VO> mtd_noticeDetail(int num){
@@ -254,57 +230,6 @@ public class BBS_DAO {
 		return objList;
 	}
 	//공지사항 페이지 자세히보기 페이지 출력 메서드 종료
-	
-
-	//공지사항 페이지 자세히보기 페이지 내용 수정 메서드 시작
-//	public  int mtd_noticeModify(int num, String title, String content) {
-//
-//		int rtn=0;
-//
-//		try {
-//			objConn = objPool.getConnection();
-//			sql="update BBS_notice set title=?, content=? where num=?";
-//			objPstmt = objConn.prepareStatement(sql);
-//			objPstmt.setString(1, title);
-//			objPstmt.setString(2, content);
-//			objPstmt.setInt(3, num);
-//
-//			rtn = objPstmt.executeUpdate();
-//
-//			
-//		}catch(Exception e) {
-//			System.out.println(e.getMessage());
-//		}finally {
-//			objPool.freeConnection(objConn);
-//		}
-//		
-//		return rtn;
-//	}
-	//공지사항 페이지 자세히보기 페이지 내용 수정 메서드 종료
-	
-	
-	//공지사항 페이지 자세히보기 글 삭제 메서드 시작//공통사항으로 대체
-//	public int mtd_noticeDelete(int num) {
-//		int rtn=0;
-//		
-//		try {
-//			objConn = objPool.getConnection();
-//			sql="delete from BBS_notice where num = ?";
-//			objPstmt = objConn.prepareStatement(sql);
-//			objPstmt.setInt(1, num);
-//
-//			rtn = objPstmt.executeUpdate();
-//
-//			
-//		}catch(Exception e) {
-//			System.out.println(e.getMessage());
-//		}finally {
-//			objPool.freeConnection(objConn);
-//		}
-//		
-//		return rtn;
-//	}
-	//공지사항 페이지 자세히보기 글 삭제 메서드 종료//공통사항으로 대체
 	
 	
 	//총 게시물 수 확인 시작
@@ -393,30 +318,6 @@ public class BBS_DAO {
 		return rtn;
 	}
 	//리뷰페이지 글쓰기 메서드 종료
-
-	
-	//리뷰페이지 출력 메서드 시작 // 공통사항으로 대체
-	/*
-	 * public List<BBS_VO> mtd_reviewsList(int start, int end){
-	 * 
-	 * 
-	 * 
-	 * try { objConn = objPool.getConnection();; sql =
-	 * "select num, title, uid, reportingDate, views from BBS_reviews order by num desc limit ?, ?"
-	 * ; objPstmt = objConn.prepareStatement(sql); objPstmt.setInt(1, start);
-	 * objPstmt.setInt(2, end); objRS = objPstmt.executeQuery();
-	 * 
-	 * objList = new Vector<BBS_VO>();
-	 * 
-	 * while(objRS.next()) { objVO = new BBS_VO();
-	 * objVO.setNum(objRS.getInt("num")); objVO.setTitle(objRS.getString("title"));
-	 * objVO.setUid(objRS.getString("uid"));
-	 * objVO.setReportingDate(objRS.getString("reportingDate"));
-	 * objVO.setViews(objRS.getInt("views")); objList.add(objVO); } }catch(Exception
-	 * e) { System.out.print("reviewsList e : " + e.getMessage()); } finally {
-	 * objPool.freeConnection(objConn); } return objList; }
-	 */
-	//리뷰페이지 출력 메서드 종료 // 공통사항으로 대체
 	
 	
 	//리뷰페이지 자세히보기 페이지 출력 메서드 시작
@@ -451,55 +352,35 @@ public class BBS_DAO {
 	//리뷰페이지 자세히보기 페이지 출력 메서드 종료
 	
 	
-	//리뷰페이지 자세히보기 페이지 내용 수정 메서드 시작
-//	public  int mtd_reviewsModify(int num, String title, String content) {
-//
-//		int rtn=0;
-//
-//		try {
-//			objConn = objPool.getConnection();
-//			sql="update BBS_reviews set title=?, content=? where num=?";
-//			objPstmt = objConn.prepareStatement(sql);
-//			objPstmt.setString(1, title);
-//			objPstmt.setString(2, content);
-//			objPstmt.setInt(3, num);
-//
-//			rtn = objPstmt.executeUpdate();
-//
-//			
-//		}catch(Exception e) {
-//			System.out.println(e.getMessage());
-//		}finally {
-//			objPool.freeConnection(objConn);
-//		}
-//		
-//		return rtn;
-//	}
-	//리뷰페이지 자세히보기 페이지 내용 수정 메서드 종료
-
-
-	//리뷰페이지 자세히보기 글 삭제 메서드 시작//공통사항으로 대체
-//	public int mtd_reviewsDelete(int num) {
-//		int rtn=0;
-//		
-//		try {
-//			objConn = objPool.getConnection();
-//			sql="delete from BBS_reviews where num = ?";
-//			objPstmt = objConn.prepareStatement(sql);
-//			objPstmt.setInt(1, num);
-//
-//			rtn = objPstmt.executeUpdate();
-//
-//			
-//		}catch(Exception e) {
-//			System.out.println(e.getMessage());
-//		}finally {
-//			objPool.freeConnection(objConn);
-//		}
-//		
-//		return rtn;
-//	}
-	//리뷰페이지 자세히보기 글 삭제 메서드 종료//공통사항으로 대체
+	//리뷰페이지 자세히보기 페이지 댓글 출력 메서드 시작
+	public List<BBS_VO> mtd_reviewsDetailComment(int parentNum){
+		
+		try {
+			objConn = objPool.getConnection();
+			//select uid, uName, comment, reportingDate from BBS_reviewsComment where parentNum = '2' order by num desc;
+			sql = "select uid, uName, comment, reportingDate from BBS_reviewsComment where parentNum ='"+parentNum+"' order by num desc";
+			objStmt = objConn.createStatement();
+			objRS = objStmt.executeQuery(sql);
+			
+			objList = new Vector<BBS_VO>();
+			
+			while(objRS.next()) {
+					objVO = new BBS_VO();
+					objVO.setUid(objRS.getString("uid"));
+					objVO.setuName(objRS.getString("uName"));
+					objVO.setComment(objRS.getString("comment"));
+					objVO.setReportingDate(objRS.getString("reportingDate"));
+					
+					objList.add(objVO);
+			}
+		}catch(Exception e) {
+			System.out.print("reviewsList e : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		return objList;
+	}
+	//리뷰페이지 자세히보기 페이지 댓글 출력 메서드 종료
 
 
 	//총 게시물 수 확인 시작
@@ -523,6 +404,36 @@ public class BBS_DAO {
 		return  totalCnt;
 	}
 	//총 게시물 수 확인 종료
+	
+	//리뷰페이지 댓글쓰기 메서드 시작	
+	public int mtd_reviewsCommentWrite(int parentNum, String uid, String uName, String comment) {
+
+		int rtn=0;
+		
+		try {
+
+			objConn = objPool.getConnection();
+
+			sql="insert into BBS_reviewsComment(parentNum, uid, uName, comment, reportingDate) values(?,?,?,?,now())";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, parentNum);
+			objPstmt.setString(2, uid);
+			objPstmt.setString(3, uName);
+			objPstmt.setString(4, comment);
+
+			rtn = objPstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.getStackTrace();
+			//System.out.println(e.getMessage());
+		}finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return rtn;
+	}
+	//리뷰페이지 댓글쓰기 메서드 종료
 
 	//////////////////////////////////////////////////////////
 	/////////////////////리뷰BBS 끝//////////////////////////

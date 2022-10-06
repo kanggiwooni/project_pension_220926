@@ -5,6 +5,7 @@
 <jsp:useBean id="objBBSDAO" class="pack_BBS.BBS_DAO" />
 <%
 int num = Integer.parseInt(request.getParameter("num"));
+int nowPage = Integer.parseInt(request.getParameter("nowPage"));
 
 List<BBS_VO> objList = objBBSDAO.mtd_noticeDetail(num);
 BBS_VO objVO = objList.get(0);	
@@ -26,18 +27,17 @@ String uid = objVO.getUid();
 	
 		<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 	
-		<div id="wrap">
+		<div id="wrap" class="bbs_detailWrap">
 			<h1>공지사항</h1>
-			<hr>
 			
-			<table>
+			<table class="noticeDetailTBL">
 				<tbody>
 					<tr>
 						<td colspan="2"><%=objVO.getTitle()%></td>
 
 					</tr>
 					<tr>
-						<td>글쓴이 : <%=objVO.getuName()%></td>
+						<td class="userName">글쓴이 : <%=objVO.getuName()%></td>
 						<td>작성일 : <%=objVO.getReportingDate()%> 조회 : <%=objVO.getViews()%></td>
 					</tr>
 					<tr>
@@ -47,7 +47,7 @@ String uid = objVO.getUid();
 					<tr>
 						<td></td>
 						<td>
-							<button onclick="location.href = '/BBS/notice/notice.jsp'">목록보기</button>
+							<button onclick="location.href = '/BBS/notice/notice.jsp?nowPage=<%=nowPage%>'">목록보기</button>
 							<%
 								if(uid.equals(uid_Session)){
 							%>

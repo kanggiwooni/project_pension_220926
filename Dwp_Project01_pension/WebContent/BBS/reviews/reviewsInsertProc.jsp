@@ -11,7 +11,7 @@ String bbs="reviews";
 int rtn = objBBSDAO.mtd_reviewsWrite(request,uid,uName);
 
 if(rtn==1){
-	response.sendRedirect("/BBS/bbsInsertEnd.jsp?bbs="+bbs);
+	response.sendRedirect("/BBS/reviews/reviews.jsp");
 }else if(rtn==0){
 	out.print("연결실패 ㅠㅠ");
 }

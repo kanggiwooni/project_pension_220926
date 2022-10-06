@@ -11,8 +11,24 @@ public class BBS_VO {
 	long fileSize;
 	String reportingDate;
 	int views;
+	int parentNum;
+	String comment;
 	
 	
+	
+	
+	public int getParentNum() {
+		return parentNum;
+	}
+	public void setParentNum(int parentNum) {
+		this.parentNum = parentNum;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 	public int getNum() {
 		return num;
 	}

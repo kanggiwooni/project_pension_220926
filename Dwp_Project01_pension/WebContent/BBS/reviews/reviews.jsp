@@ -87,8 +87,7 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 		<iframe src="/iframe/iframe_header.jsp" scrolling="no" id="iframe_header"></iframe> 
 		<div id="wrap" class="bbs_reviewsWrap">
 			<h1>이용후기</h1>
-			<hr>
-			
+
 			<table>
 				<tbody>
 					<tr>
@@ -118,6 +117,9 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 					<tr>
 						<td><%=objVO.getNum()%></td>
 						<td class="reviewsTitle"><%=objVO.getTitle()%></td>
+						<td>
+							<input type="hidden" value="<%=nowPage%>">
+						</td>
 						<td><%=objVO.getUid()%></td>
 						<td><%=objVO.getReportingDate()%></td>
 						<td><%=objVO.getViews()%></td>
@@ -131,22 +133,24 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 				<tfoot>
 					<tr>
 						<td colspan="4"></td>
+
+						<td>
 						<%
 						if(uid_Session==null){
 						%>
-						<td>
-						</td>
+							<a href="/member/login.jsp">
+								<button type="button" id="reviewsWrite" onclick="fnWarning()">글쓰기</button>
+							</a>
 						<%
 						}else{
 						%>
-						<td>
 							<a href="/BBS/reviews/reviewsInsert.jsp">
 								<button type="button" id="reviewsWrite">글쓰기</button>
 							</a>
-						</td>						
 						<%
 						}
 						%>
+						</td>						
 					</tr>
 					<tr>
 						<td colspan="5">
@@ -157,7 +161,7 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 							
 							if(nowBlock>1){ //페이지블럭이 2개이상있고 현재 페이지 블럭이 첫번째 블럭이 아닐경우							
 						%>
-							<span class="moveBlockArea" onclick="moveBlock('<%=nowBlock%>','<%=pagePerBlock%>','prev')">&lt;</span>
+							<span class="moveBlockArea" onclick="reviews_moveBlock('<%=nowBlock%>','<%=pagePerBlock%>','prev')">&lt;</span>
 						<%
 							}
 							// 페이지 나누기용 번호출력 시작
@@ -168,7 +172,7 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 									<%
 								}else{
 									%>
-									<span class="pageNum" onclick="movePage(<%=i%>)"><%=i %> </span>
+									<span class="pageNum" onclick="reviews_movePage(<%=i%>)"><%=i %> </span>
 									<%
 								}
 							}
@@ -176,7 +180,7 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 							
 							if(totalBlock>nowBlock){ //페이블럭이 더있을경우
 								%>
-								<span class="moveBlockArea" onclick="moveBlock('<%=nowBlock%>','<%=pagePerBlock%>','next')">&gt;</span>
+								<span class="moveBlockArea" onclick="reviews_moveBlock('<%=nowBlock%>','<%=pagePerBlock%>','next')">&gt;</span>
 								<%
 							}
 						}
