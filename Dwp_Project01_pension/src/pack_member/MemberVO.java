@@ -5,9 +5,10 @@ public class MemberVO {
 	private String uid;
 	private String upw;
 	private String uName;
+	private String uBirth;
+	private String uPhone;
 	private String uEmail;
 	private String gender;
-	private String uBirth;
 	private String uZipcode;
 	private String uAddr;
 	
@@ -29,6 +30,18 @@ public class MemberVO {
 	public void setuName(String uName) {
 		this.uName = uName;
 	}
+	public String getuBirth() {
+		return uBirth;
+	}
+	public void setuBirth(String uBirth) {
+		this.uBirth = uBirth;
+	}
+	public String getuPhone() {
+		return uPhone;
+	}
+	public void setuPhone(String uPhone) {
+		this.uPhone = uPhone;
+	}
 	public String getuEmail() {
 		return uEmail;
 	}
@@ -40,12 +53,6 @@ public class MemberVO {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-	public String getuBirth() {
-		return uBirth;
-	}
-	public void setuBirth(String uBirth) {
-		this.uBirth = uBirth;
 	}
 	public String getuZipcode() {
 		return uZipcode;

@@ -64,11 +64,6 @@ div#wrap.joinWrap table#joinTbl {
 	line-height: 2em;
 	vertical-align: bottom;
 }
-#joinTbl tbody input[type=text]:focus,
-#joinTbl tbody input[type=password]:focus {
-	border: 3px solid #009cff;
-	outline: none;
-}
 
 #joinTbl tfoot td {
 	text-align: center;
@@ -191,10 +186,6 @@ div#wrap.loginWrap {
 	height: 133px;
 	font-size: 24px;
 	font-weight: bold;
-}
-#wrap.loginWrap input:focus {
-	border: 3px solid #009cff;
-	outline: none;
 }
 /* //////////////////////////// 로그인 수정 페이지 (/member/login.jps) 끝 //////////////////////////// */
 

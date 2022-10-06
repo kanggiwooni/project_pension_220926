@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" autoFlush="true"%>
 <jsp:useBean id="mDAO" class="pack_member.MemberDAO" />
+<jsp:useBean id="mVO" class="pack_member.MemberVO" />
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -13,6 +14,9 @@ String uName = mDAO.mtd_login(uid, upw);
 if (uName != null) {
 	session.setAttribute("uidKey", uid);
 	session.setAttribute("uNameKey", uName);
+
+	mVO = mDAO.getMemberData(uid);
+	session.setAttribute("bean", mVO);
 %>
 	location.href="/index.jsp";
 <%

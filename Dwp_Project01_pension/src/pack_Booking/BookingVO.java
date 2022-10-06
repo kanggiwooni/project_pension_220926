@@ -6,10 +6,12 @@ public class BookingVO {
 	private String bDate;
 	private int bPeople;
 	private int rNum;
-	private String bName;
+	private String rName;
 	private String uid;
 	private String uName;
 	private String uPhone;
+	private String uEmail;
+	private String uRequest;
 	private int payPrice;
 	
 	public int getbNum() {
@@ -36,11 +38,11 @@ public class BookingVO {
 	public void setrNum(int rNum) {
 		this.rNum = rNum;
 	}
-	public String getbName() {
-		return bName;
+	public String getrName() {
+		return rName;
 	}
-	public void setbName(String bName) {
-		this.bName = bName;
+	public void setrName(String rName) {
+		this.rName = rName;
 	}
 	public String getUid() {
 		return uid;
@@ -60,11 +62,23 @@ public class BookingVO {
 	public void setuPhone(String uPhone) {
 		this.uPhone = uPhone;
 	}
+	public String getuEmail() {
+		return uEmail;
+	}
+	public void setuEmail(String uEmail) {
+		this.uEmail = uEmail;
+	}
+	public String getuRequest() {
+		return uRequest;
+	}
+	public void setuRequest(String uRequest) {
+		this.uRequest = uRequest;
+	}
 	public int getPayPrice() {
 		return payPrice;
 	}
 	public void setPayPrice(int payPrice) {
 		this.payPrice = payPrice;
 	}
-	
+
 }

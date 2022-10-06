@@ -9,9 +9,22 @@ h1 {
 	margin: 20px 0;
 }
 input[type=text],
-input[type=password] {
+input[type=password],
+input[type=number],
+select,
+textarea {
 	font-size: 18px;
 	padding: 6px 12px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=number]:focus,
+select:focus,
+textarea:focus {
+	border: 1px solid #009cff;
+	outline: none;
 }
 input[type=checkbox],
 input[type=radio] {
@@ -27,9 +40,10 @@ button {
 	border: none;
 	background-color: #009cff;
 }
-select {
-	font-size: 18px;
-	padding: 6px 12px;
+.accent {
+	color: #f80;
+	font-size: 20px;
+	font-weight: bold;
 }
 /* //////////////////////////// 공통요소 끝 //////////////////////////// */
 

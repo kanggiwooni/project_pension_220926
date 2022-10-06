@@ -42,7 +42,7 @@ public class BBS_DAO {
 
 		
 		try {
-			objConn = objPool.getConnection();;
+			objConn = objPool.getConnection();
 			sql = "select num, title, uid, uName, reportingDate, views from BBS_"+bbs+" order by num desc limit ?, ?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, start);

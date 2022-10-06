@@ -89,6 +89,40 @@ public class BookingDAO {
 	}
 	/* 선택한 객실 정보 불러오기 끝 */
 	
+	/* 객실이름으로 객실 정보 불러오기 시작 */
+	public RoomVO mtd_getRoomInfo(String rName) {
+		
+		RoomVO rVO = new RoomVO();
+		
+		try {
+			objConn = objPool.getConnection();;
+			
+			String sql = "select num, rName, rLimit, rPrice, rPictures from roomInfo";
+			sql += " where rName = ?";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, rName);
+			objRS = objPstmt.executeQuery();
+			
+			if (objRS.next()) {
+				rVO.setNum(objRS.getInt("num"));
+				rVO.setrName(objRS.getString("rName"));
+				rVO.setrLimit(objRS.getInt("rLimit"));
+				rVO.setrPrice(objRS.getInt("rPrice"));
+				rVO.setrPictures(objRS.getInt("rPictures"));
+			}
+			
+		} catch (Exception e) {
+			System.out.print("e : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return rVO;
+		
+	}
+	/* 객실이름으로 객실 정보 불러오기 끝 */
+	
 	/* 해당 날짜 예약 여부 확인 시작 */
 	public boolean mtd_chkBooking(int rNum, String date) {
 		
@@ -121,5 +155,41 @@ public class BookingDAO {
 		
 	}
 	/* 해당 날짜 예약 여부 확인 끝 */
+	
+	/* 예약 정보 입력 시작 */
+	public int mtd_insertBooking(BookingVO bVO) {
+		
+		int rtnCnt = 0;
+		
+		try {
+			objConn = objPool.getConnection();;
+			
+			String sql = "insert into roomBooking";
+			sql += " (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)";
+			sql += " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, bVO.getbDate());
+			objPstmt.setInt(2, bVO.getbPeople());
+			objPstmt.setInt(3, bVO.getrNum());
+			objPstmt.setString(4, bVO.getrName());
+			objPstmt.setString(5, bVO.getUid());
+			objPstmt.setString(6, bVO.getuName());
+			objPstmt.setString(7, bVO.getuPhone());
+			objPstmt.setString(8, bVO.getuEmail());
+			objPstmt.setString(9, bVO.getuRequest());
+			objPstmt.setInt(10, bVO.getPayPrice());
+			rtnCnt = objPstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.print("e : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return rtnCnt;
+		
+	}
+	/* 예약 정보 입력 끝 */
 	
 }

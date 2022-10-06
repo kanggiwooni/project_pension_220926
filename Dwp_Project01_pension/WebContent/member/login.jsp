@@ -16,7 +16,7 @@
 		<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 		
 		<div id="wrap" class="loginWrap">
-			<h1>로그인 페이지</h1>
+			<h1>로그인</h1>
 			<form action="/member/loginProc.jsp" id="loginFrm" class="dFlex">
 				<div id="inputArea">
 					<input type="text" id="uid" name="uid" form="loginFrm"

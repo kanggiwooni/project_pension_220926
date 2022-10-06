@@ -31,18 +31,19 @@ public class MemberDAO {
 			objConn = objPool.getConnection();
 			
 			String sql = "insert into member";
-			sql += " (uid, upw, uName, uEmail, gender, uBirth, uZipcode, uAddr, joinTM)";
-			sql += " values (?, ?, ?, ?, ?, ?, ?, ?, now())";
+			sql += " (uid, upw, uName, uBirth, uPhone, uEmail, gender, uZipcode, uAddr, joinTM)";
+			sql += " values (?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
 			
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, objVO.getUid());
 			objPstmt.setString(2, objVO.getUpw());
 			objPstmt.setString(3, objVO.getuName());
-			objPstmt.setString(4, objVO.getuEmail());
-			objPstmt.setString(5, objVO.getGender());
-			objPstmt.setString(6, objVO.getuBirth());
-			objPstmt.setString(7, objVO.getuZipcode());
-			objPstmt.setString(8, objVO.getuAddr());
+			objPstmt.setString(4, objVO.getuBirth());
+			objPstmt.setString(5, objVO.getuPhone());
+			objPstmt.setString(6, objVO.getuEmail());
+			objPstmt.setString(7, objVO.getGender());
+			objPstmt.setString(8, objVO.getuZipcode());
+			objPstmt.setString(9, objVO.getuAddr());
 			rtnCnt = objPstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -167,7 +168,7 @@ public class MemberDAO {
 			
 			objConn = objPool.getConnection();
 			
-			String sql = "select uid, upw, uName, uEmail, gender, uBirth, uZipcode, uAddr";
+			String sql = "select uid, upw, uName, uBirth, uPhone, uEmail, gender, uZipcode, uAddr";
 			sql += " from member where uid=?";
 			
 			objPstmt = objConn.prepareStatement(sql);
@@ -178,9 +179,10 @@ public class MemberDAO {
 				mVO.setUid(objRS.getString("uid"));
 				mVO.setUpw(objRS.getString("upw"));
 				mVO.setuName(objRS.getString("uName"));
+				mVO.setuBirth(objRS.getString("uBirth"));
+				mVO.setuPhone(objRS.getString("uPhone"));
 				mVO.setuEmail(objRS.getString("uEmail"));
 				mVO.setGender(objRS.getString("gender"));
-				mVO.setuBirth(objRS.getString("uBirth"));
 				mVO.setuZipcode(objRS.getString("uZipcode"));
 				mVO.setuAddr(objRS.getString("uAddr"));
 			}
@@ -207,17 +209,18 @@ public class MemberDAO {
 			System.out.println("DB접속");
 			
 			String sql = "update member set";
-			sql += " upw=?, uEmail=?, gender=?, uBirth=?, uZipcode=?, uAddr=?";
+			sql += " upw=?, uBirth=?, uPhone=?, uEmail=?, gender=?, uZipcode=?, uAddr=?";
 			sql += " where uid=?";
 			
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, objVO.getUpw());
-			objPstmt.setString(2, objVO.getuEmail());
-			objPstmt.setString(3, objVO.getGender());
-			objPstmt.setString(4, objVO.getuBirth());
-			objPstmt.setString(5, objVO.getuZipcode());
-			objPstmt.setString(6, objVO.getuAddr());
-			objPstmt.setString(7, uid);
+			objPstmt.setString(2, objVO.getuBirth());
+			objPstmt.setString(3, objVO.getuPhone());
+			objPstmt.setString(4, objVO.getuEmail());
+			objPstmt.setString(5, objVO.getGender());
+			objPstmt.setString(6, objVO.getuZipcode());
+			objPstmt.setString(7, objVO.getuAddr());
+			objPstmt.setString(8, uid);
 			
 			rtnCnt = objPstmt.executeUpdate();
 			

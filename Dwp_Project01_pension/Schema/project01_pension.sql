@@ -9,31 +9,34 @@ use project01_pension;
 ####################################
 
 create table member (
-num int unique auto_increment,	#번호
-uid char(30) primary key,				#아이디
-upw char(30) not null,					#비밀번호
-uName char(30) not null,				#이름
-uEmail char(100) not null,				#이메일
-gender char(2),								#성별
-uBirth char(10),								#생일
-uZipcode char(8),							#우편번호
-uAddr char(100),							#주소
-joinTM timestamp not null			#가입시간
+num			int				auto_increment	,	#번호
+uid			char(30)		not null				,	#아이디
+upw			char(30)		not null				,	#비밀번호
+uName		char(30)		not null				,	#이름
+uBirth		char(10)		not null				,	#생일
+uPhone		char(11)		not null				,	#연락처
+uEmail		char(100)									,	#이메일
+gender		char(2)										,	#성별
+uZipcode	char(8)										,	#우편번호
+uAddr		char(100)									,	#주소
+joinTM		timestamp not null					,	#가입시간
+constraint primary key (uid),
+constraint unique (num)
 );
 desc member;
 
 insert into member 
-(uid, upw, uName, uEmail, joinTM)
+(uid, upw, uName, uBirth, uPhone, joinTM)
 values
-('admin', '1234', '관리자', 'admin@google.com', now());
+('admin', '1234', '관리자', '010101', '01012345678', now());
 insert into member 
-(uid, upw, uName, uEmail, joinTM)
+(uid, upw, uName, uBirth, uPhone, joinTM)
 values
-('test', '1234', '테스트', 'test@naver.com', now());
+('test', '1234', '테스트', '010101', '01012345678', now());
 insert into member 
-(uid, upw, uName, uEmail, joinTM)
+(uid, upw, uName, uBirth, uPhone, joinTM)
 values
-('guest', '1234', '게스트', 'admin@daum.net', now());
+('guest', '1234', '게스트', '010101', '01012345678', now());
 
 select * from member order by num desc;
 
@@ -154,20 +157,23 @@ rNum			int				not null				,	#예약 객실번호
 rName		char(30)		not null				,	#예약 객실 이름
 uid			char(30)		not null				,	#예약자 아이디
 uName		char(30)		not null				,	#예약자 이름
-uPhone		char(30)		not null				,	#예약자 연락처
+uPhone		char(11)		not null				,	#예약자 연락처
+uEmail		char(100)									,	#예약자 이메일
+uRequest	char(200)									,	#예약 요청사항
 payPrice		int				not null				,	#결제 금액
+bookTM		timestamp	not null				,	#예약한 시간
 constraint primary key (bNum)
 );
 desc roomBooking;
 
-insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
-values ('2022-10-24', 3, 1, '바다 객실 A호', 'sample', '샘플', '010-1234-5678', 120000);
-insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
-values ('2022-10-14', 4, 2, '바다 객실 B호', 'test', '테스트', '010-1234-5678', 80000);
-insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
-values ('2022-10-08', 4, 1, '바다 객실 A호', 'admin', '관리자', '010-1234-5678', 120000);
-insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
-values ('2022-10-08', 4, 2, '바다 객실 B호', 'test', '테스트', '010-1234-5678', 80000);
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
+values ('2022-10-24', 3, 1, '바다 객실 A호', 'sample', '샘플', '01012345678', null, '바베큐 그릴은 17시에 준비해주세요', 120000, now());
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
+values ('2022-10-14', 4, 2, '바다 객실 B호', 'test', '테스트', '01012345678', 'test@naver.com', null, 80000, now());
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
+values ('2022-10-08', 4, 1, '바다 객실 A호', 'admin', '관리자', '01012345678', null, null, 140000, now());
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
+values ('2022-10-08', 4, 2, '바다 객실 B호', 'test', '테스트', '01012345678', 'test@naver.com', null, 100000, now());
 
 select * from roomBooking order by bNum desc;
 select count(*) from roomBooking 

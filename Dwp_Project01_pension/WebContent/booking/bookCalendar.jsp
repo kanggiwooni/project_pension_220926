@@ -12,30 +12,11 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-/*
-현재 날짜/시간 => cal.getTime()
-현재 날짜의 요일 => cal.get(Calendar.DAY_OF_WEEK) : 일요일 1 ~ 토요일 7
-현재 연도 => cal.get(Calendar.YEAR)
-현재 월 => cal.get(Calendar.MONTH) : 0부터 시작 => 4 = 5월
-현재 일 => cal.get(Calendar.DATE)
-
-이번 연도의 몇째주 => cal.get(Calendar.WEEK_OF_YEAR)
-이번 달의 몇째주 => cal.get(Calendar.WEEK_OF_MONTH)
-
-이번 달의 시작 일의 요일 => (date = 1로 set 후) cal.get(Calendar.DAY_OF_WEEK)
-이번 달의 마지막 일 => cal.getActualMaximum(Calendar.DATE)
-이번 달의 마지막 주 => cal.getActualMaximum(Calendar.WEEK_OF_MONTH)
-
-cal.set(Calendar.YEAR,2021);
-cal.set(Calendar.MONTH,5);
-cal.set(Calendar.DATE,1);
-*/
+String decimalFormat = "#,###";
+DecimalFormat df = new DecimalFormat(decimalFormat);
 
 String dateFormat = "yyyy년 MM월 dd일 (E)";
 SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-
-String decimalFormat = "#,###";
-DecimalFormat df = new DecimalFormat(decimalFormat);
 
 Calendar nowCal = Calendar.getInstance(); // 오늘 날짜 캘린더
 String[] weekArr = {"일", "월", "화", "수", "목", "금", "토"};
@@ -175,8 +156,9 @@ List<RoomVO> objList = bDAO.mtd_getRoomInfo();
 							String rName = rVO.getrName();
 							int rPrice = rVO.getrPrice();
 							
-							// 주말 요금 +10000원
-							if (dayWeek == 1 || dayWeek == 7) rPrice += 10000;
+							// 주말 요금 +20000원
+							int weekendPrice = 20000;
+							if (dayWeek == 1 || dayWeek == 7) rPrice += weekendPrice;
 							
 							// 예약 여부 확인
 							int rNum = rVO.getNum();
@@ -213,6 +195,23 @@ List<RoomVO> objList = bDAO.mtd_getRoomInfo();
 				%>
 			</tbody>
 		</table>
+		
+		<%
+		dateFormat = "yyyy-MM-";
+		sdf = new SimpleDateFormat(dateFormat);
+		String bDate = sdf.format(cal.getTime());
+
+		String uid = null;
+		if (session.getAttribute("uidKey") != null) {
+			uid = (String)session.getAttribute("uidKey");
+		}
+		%>
+		<input type="hidden" id="uid" name="uid" value="<%=uid%>">
+		
+		<form action="/booking/booking.jsp" id="bookingFrm">
+			<input type="hidden" id="rName" name="rName" value="">
+			<input type="hidden" id="bDate" name="bDate" value="<%=bDate%>">
+		</form>
 		
 	</div>
 	<!-- div#wrap -->

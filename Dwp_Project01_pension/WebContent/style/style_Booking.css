@@ -92,6 +92,84 @@ div#wrap.calendarWrap {
 
 
 
+/* //////////////////////////// 예약결제 페이지 (/booking/booking.jps) 시작 //////////////////////////// */
+div#wrap.bookWrap table#bookTbl {
+	width: 900px;
+	padding: 20px;
+	/* border: 1px solid #aaa; */
+	border-collapse: collapse;
+	margin: 30px auto;
+}
+#bookTbl caption {
+	text-align: right;
+	padding-bottom: 10px;
+}
+#bookTbl tbody td {
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+#bookTbl tbody td textarea {
+	width: 100%;
+	resize: none;
+}
+#bookTbl tbody td:first-child {
+	text-align: right;
+	background-color: #fafafa;
+}
+#bookTbl tbody .guideTxt {
+	color: #888;
+	font-size: 14px;
+}
+#bookTbl tbody p.guideTxt {
+	line-height: 2em;
+	vertical-align: bottom;
+}
+
+#bookTbl tfoot td {
+	text-align: center;
+	padding-top: 40px;
+}
+#bookTbl #bookSubmitBtn,
+#bookTbl #modifySubmitBtn {
+	width: 300px;
+	height: 55px;
+	font-size: 18px;
+}
+#bookTbl #bookCalendarBtn {
+	width: 300px;
+	height: 55px;
+	color: #aaa;
+	font-size: 18px;
+	border: 3px solid #aaa;
+	background-color: #fff;
+}
+
+/* input 크기 지정 시작 */
+
+#bookTbl #uName {
+	width: 150px;
+}
+#bookTbl #uBirth {
+	width: 150px;
+}
+#bookTbl #uPhone {
+	width: 200px;
+}
+#bookTbl #uEmail1 {
+	width: 160px;
+}
+#bookTbl #uEmail2 {
+	width: 160px;
+}
+/* input 크기 지정 끝 */
+
+/* //////////////////////////// 예약결제 페이지 (/booking/booking.jps) 끝 //////////////////////////// */
+
+
+
+
+
+
 /* ////////////////////////////  시작 //////////////////////////// */
 /* ////////////////////////////  끝 //////////////////////////// */
 /* ///////////////  시작 /////////////// */

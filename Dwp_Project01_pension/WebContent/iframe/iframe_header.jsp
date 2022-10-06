@@ -48,10 +48,6 @@ String uid = (String) session.getAttribute("uidKey");
 	                            </li>
 	                            
 	                            <li class="subLi">
-	                            	<a>QnA</a>
-	                            </li>
-	                            
-	                            <li class="subLi">
 	                            	<a id="reviewsPage">이용후기</a>
 	                            </li>
 	                        </ul>
@@ -75,7 +71,7 @@ String uid = (String) session.getAttribute("uidKey");
 		            		<a id="logoutPage">로그아웃</a>
 	            		</li>
 	            		<li>
-							<a id="myPage">마이페이지</a>
+							<a id="myPage">마이페이지 (수정중)</a>
 	            		</li>
 	            	<% } %>
 		            </ul>

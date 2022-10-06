@@ -139,16 +139,6 @@ $(function(){
 		$("input#uEmail2").val(email);
 	});
 	
-	/* 회원가입 버튼 submit 처리 */
-	$("button#joinSubmitBtn").click(function(){
-		joinSubmit();
-	});
-	$("#joinFrm input").keyup(function(e){
-		if (e.which == 13) {
-			joinSubmit();
-		}
-	});
-	
 	/* 우편번호 찾기 시작 */
 	$("#uZipcode, #findZipBtn").on("click", function(){
 		
@@ -191,6 +181,16 @@ $(function(){
 	});
 	/* 우편번호 찾기 끝 */
 	
+	/* 회원가입 버튼 submit 처리 */
+	$("button#joinSubmitBtn").click(function(){
+		joinSubmit();
+	});
+	$("#joinFrm input").keyup(function(e){
+		if (e.which == 13) {
+			joinSubmit();
+		}
+	});
+
 	/* ////////////////////////////////////////////////////////////////////////////// */
 	/* ////////////////// 회원가입 페이지 (/member/join.jsp) 끝 ///////////////// */
 	/* ////////////////////////////////////////////////////////////////////////////// */
@@ -236,70 +236,79 @@ function pwChk() {
 }
 /* 아이디 / 비밀번호 유효성 검사 끝 */
 
+	
 /* 회원가입 처리 시작 */
 function joinSubmit() {
 	
-	let chk = confirm("회원가입 하시겠습니까?");
+	let uid = $("#uid").val().trim();
+	let upw = $("#upw").val().trim();
+	let upw2 = $("#upw2").val().trim();
+	let uName = $("#uName").val().trim();
+	let uBirth = $("#uBirth").val().trim();
+	let uPhone = $("#uPhone").val().trim();
+	let uEmail1 = $("#uEmail1").val().trim();
+	let uEmail2 = $("#uEmail2").val().trim();
+	let idCheck = $("#idCheck").val().trim();
 	
-	if (chk) {
-	
-		let uid = $("#uid").val().trim();
-		let upw = $("#upw").val().trim();
-		let upw2 = $("#upw2").val().trim();
-		let uName = $("#uName").val().trim();
-		let uEmail1 = $("#uEmail1").val().trim();
-		let uEmail2 = $("#uEmail2").val().trim();
-		let idCheck = $("#idCheck").val().trim();
+	if (uid == "") {
+		alert("아이디를 입력해주세요.");
+		$("#uid").focus();
 		
-		if (uid == "") {
-			alert("아이디를 입력해주세요.");
-			$("#uid").focus();
-			
-		} else if (idChk()) {
-			alert("아이디는 3~20자의 영문 대소문자, 숫자만 사용 가능합니다.");
-			$("#uid").focus();
-			
-		} else if (idCheck == "") {
-			alert("ID 중복확인 해주세요.");
-			$("#uid").focus();
-			
-		} else if (idCheck == "1") {
-			alert("중복된 아이디입니다.");
-			$("#uid").focus();
-			
-		} else if (upw == "") {
-			alert("비밀번호를 입력해주세요.");
-			$("#upw").focus();
-			
-		} else if (pwChk()) {
-			alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
-			$("#upw").focus();
-			
-		} else if (upw2 == "" || upw != upw2) {
-			alert("비밀번호가 일치하지 않습니다.");
-			$("#upw2").focus();
-			
-		} else if (uName == "") {
-			alert("이름을 입력해주세요.");
-			$("#uName").focus();
-			
-		} else if (uEmail1 == "") {
-			alert("이메일을 입력해주세요.");
-			$("#uEmail1").focus();
-			
-		} else if (uEmail2 == "") {
-			alert("이메일을 입력해주세요.");
-			$("#uEmail2").focus();
-			
-		} else {
+	} else if (idChk()) {
+		alert("아이디는 3~20자의 영문 대소문자, 숫자만 사용 가능합니다.");
+		$("#uid").focus();
+		
+	} else if (idCheck == "") {
+		alert("ID중복 확인해주세요.");
+		$("#uid").focus();
+		
+	} else if (idCheck == "1") {
+		alert("중복된 아이디입니다.");
+		$("#uid").focus();
+		
+	} else if (upw == "") {
+		alert("비밀번호를 입력해주세요.");
+		$("#upw").focus();
+		
+	} else if (pwChk()) {
+		alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
+		$("#upw").focus();
+		
+	} else if (upw2 == "" || upw != upw2) {
+		alert("비밀번호가 일치하지 않습니다.");
+		$("#upw2").focus();
+		
+	} else if (uName == "") {
+		alert("이름을 입력해주세요.");
+		$("#uName").focus();
+		
+	} else if (uBirth == "") {
+		alert("생년월일을 입력해주세요.");
+		$("#uBirth").focus();
+		
+	} else if (isNaN(uBirth)) {
+		alert("숫자만 입력해주세요.");
+		$("#uBirth").val("");
+		$("#uBirth").focus();
+		
+	} else if (isNaN(uPhone)) {
+		alert("숫자만 입력해주세요.");
+		$("#uPhone").val("");
+		$("#uPhone").focus();
+		
+	} else {
+		let chk = confirm("회원가입 하시겠습니까?");
+	
+		if (chk) {
 			let uEmail = uEmail1 + "@" + uEmail2;
 			$("input[name=uEmail]").val(uEmail);
 			
 			$("form#joinFrm").submit();
 			
+		} else {
+			alert("취소했습니다.");
 		}
-	} else {
-		alert("취소했습니다.");
+		
 	}
 	
 }
