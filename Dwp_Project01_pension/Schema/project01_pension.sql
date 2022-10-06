@@ -1,3 +1,4 @@
+drop database project01_pension;
 create database project01_pension;
 use project01_pension;
 
@@ -6,10 +7,9 @@ use project01_pension;
 ####################################
 ############ 회원가입 테이블 #############
 ####################################
-drop table member;
 
 create table member (
-num int unique auto_increment,		#번호
+num int unique auto_increment,	#번호
 uid char(30) primary key,				#아이디
 upw char(30) not null,					#비밀번호
 uName char(30) not null,				#이름
@@ -27,16 +27,15 @@ insert into member
 values
 ('admin', '1234', '관리자', 'admin@google.com', now());
 insert into member 
-(uid, upw, uName, uEmail, gender, uBirth, uZipcode, uAddr, joinTM)
+(uid, upw, uName, uEmail, joinTM)
 values
-('test', '1234', '테스트', 'test@naver.com', '1', '000114', '12345', '서울 동대문구 천호대로 00-0길 00-00 101호', now());
-
-update member set
-upw='1234', uEmail='test11@naver.com', gender='2', uBirth='900101', uZipcode='123-123', uAddr='바꾼 주소'
-where uid='test';
+('test', '1234', '테스트', 'test@naver.com', now());
+insert into member 
+(uid, upw, uName, uEmail, joinTM)
+values
+('guest', '1234', '게스트', 'admin@daum.net', now());
 
 select * from member order by num desc;
-select count(*) from member where uid = 'sample';
 
 ######### 세션 : uidKey
 
@@ -61,22 +60,19 @@ select * from tblZipcode limit 0, 10;
 ####################################
 
 create table BBS_notice(
-num				int				primary key		auto_increment 			,#번호
-uid 				char(30)		not null													,#아이디
-uName			char(30)		not null													,#이름
-title				char(50)		not null													,#제목
-content			text				not null													,#내용
-originalFN		char(200)		null														,#원본파일이름
-systemFN		char(200)		null														,#시스템파일이름
-fileSize			long				null														,#파일크기
-reportingDate	datetime		not null													,#작성일,작성시간
-views			int				null														 #조회수
+num				int				primary key		auto_increment 	,#번호
+uid 				char(30)		not null										,#아이디
+uName			char(30)		not null										,#이름
+title				char(50)		not null										,#제목
+content			text				not null										,#내용
+originalFN		char(200)		null												,#원본파일이름
+systemFN		char(200)		null												,#시스템파일이름
+fileSize			long				null												,#파일크기
+reportingDate	datetime		not null										,#작성일,작성시간
+views			int				null												 #조회수
 );
-
 desc BBS_notice;
-drop table BBS_notice;
 
-insert into BBS_notice(title, content, originalFN, systemFN, fileSize, reportingDate, writer) values('제목','테스트용','파일이름','서버에저장된파일이름',1,now(),'이용자');
 select * from BBS_notice;
 
 
@@ -86,22 +82,19 @@ select * from BBS_notice;
 ####################################
 
 create table BBS_reviews(
-num				int				primary key		auto_increment 			,#번호
-uid 				char(30)		not null													,#아이디
-uName			char(30)		not null													,#이름
-title				char(50)		not null													,#제목
-content			text				not null													,#내용
-originalFN		char(200)		null														,#원본파일이름
-systemFN		char(200)		null														,#시스템파일이름
-fileSize			long				null														,#파일크기
-reportingDate	datetime		not null													,#작성일,작성시간
-views			int				null														 #조회수
+num				int				primary key		auto_increment 	,#번호
+uid 				char(30)		not null										,#아이디
+uName			char(30)		not null										,#이름
+title				char(50)		not null										,#제목
+content			text				not null										,#내용
+originalFN		char(200)		null												,#원본파일이름
+systemFN		char(200)		null												,#시스템파일이름
+fileSize			long				null												,#파일크기
+reportingDate	datetime		not null										,#작성일,작성시간
+views			int				null												 #조회수
 );
-
 desc BBS_reviews;
-drop table BBS_reviews;
 
-insert into BBS_reviews(title, content, originalFN, systemFN, fileSize, reportingDate, writer) values('제목','테스트용','파일이름','서버에저장된파일이름',1,now(),'이용자');
 select * from BBS_reviews order by num desc;
 
 
@@ -110,22 +103,22 @@ select * from BBS_reviews order by num desc;
 ####################################
 ############ 객실 정보 테이블 #############
 ####################################
-drop table roomInfo;
+
 create table roomInfo (
 num				int				auto_increment	,	#번호
 rName			char(30)		not null				,	#객실 이름
 rLimit			int				not null				,	#최대인원
 rPrice			int				not null				,	#객실가격
 rPictures		int				not null				,	#객실정보 사진 갯수
-constraint primary key (num)
+constraint primary key (num),
+constraint unique (rName)
 );
 desc roomInfo;
 
 insert into roomInfo (rName, rLimit, rPrice, rPictures) 
-values ('바다 객실 A호', 8,120000, 6);
+values ('바다 객실 A호', 8, 120000, 6);
 insert into roomInfo (rName, rLimit, rPrice, rPictures) 
 values ('바다 객실 B호', 4, 80000, 7);
-
 
 select * from roomInfo order by num desc;
 
@@ -134,10 +127,10 @@ select * from roomInfo order by num desc;
 ####################################
 ############ 예약 정보 테이블 #############
 ####################################
-drop table roomBooking;
+
 create table roomBooking (
 bNum		int				auto_increment	,	#예약번호
-bDate		timestamp	not null				,	#예약 날짜
+bDate		date				not null				,	#예약 날짜
 bPeople		int				not null				,	#예약 인원 수
 rNum			int				not null				,	#예약 객실번호
 rName		char(30)		not null				,	#예약 객실 이름
@@ -152,9 +145,11 @@ desc roomBooking;
 insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
 values ('2022-10-24', 3, 1, '바다 객실 A호', 'sample', '샘플', '010-1234-5678', 120000);
 insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
-values ('2022-10-12', 2, 3, '산 객실 C호', 'guest', '게스트', '010-1234-5678', 100000);
-insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
 values ('2022-10-14', 4, 2, '바다 객실 B호', 'test', '테스트', '010-1234-5678', 80000);
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
+values ('2022-10-08', 4, 1, '바다 객실 A호', 'admin', '관리자', '010-1234-5678', 120000);
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, payPrice)
+values ('2022-10-08', 4, 2, '바다 객실 B호', 'test', '테스트', '010-1234-5678', 80000);
 
 select * from roomBooking order by bNum desc;
 select count(*) from roomBooking 
