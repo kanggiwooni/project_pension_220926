@@ -5,10 +5,12 @@
 request.setCharacterEncoding("UTF-8");
 
 int num = Integer.parseInt(request.getParameter("num"));
+int nowPage = Integer.parseInt(request.getParameter("nowPage"));
+
 String title = request.getParameter("title");
 String content = request.getParameter("content");
 String bbs = request.getParameter("bbs");
-String url ="/BBS/"+bbs+"/"+bbs+"Detail.jsp?num="+num;
+String url ="/BBS/"+bbs+"/"+bbs+"Detail.jsp?num="+num+"&nowPage="+nowPage;
 
 int rtn = objBBSDAO.mtd_bbsModify(num, title, content,bbs);
 if(rtn==1){

@@ -52,7 +52,7 @@ String uid = objVO.getUid();
 							<%
 								if(uid.equals(uid_Session)){
 							%>
-							<button onclick="location.href = '/BBS/reviews/reviewsModify.jsp?num='+<%=num%>">수정</button>
+							<button onclick="location.href = '/BBS/reviews/reviewsModify.jsp?num='+<%=num%>+'&nowPage=<%=nowPage%>'">수정</button>
 							<%-- <button onclick="location.href = '/BBS/reviews/reviewsDelete.jsp?num='+<%=num%>">삭제</button> --%>
 							<button id="reviewsDeleteBtn" value="<%=num%>">삭제</button>
 							<%} %>

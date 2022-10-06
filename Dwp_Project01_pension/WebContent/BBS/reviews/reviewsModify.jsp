@@ -5,6 +5,8 @@
 <jsp:useBean id="objBBSDAO" class="pack_BBS.BBS_DAO" />
 <%
 int num = Integer.parseInt(request.getParameter("num"));
+int nowPage = Integer.parseInt(request.getParameter("nowPage"));
+
 String bbs="reviews";
 List<BBS_VO> objList = objBBSDAO.mtd_reviewsDetail(num);
 BBS_VO objVO = objList.get(0);	
@@ -29,6 +31,7 @@ String uid = objVO.getUid();
 			<h1>수정 페이지</h1>
 			<hr>
 			<input type="hidden" name="num" form="reviewsModify" value="<%=num%>">
+			<input type="hidden" name="nowPage" form="reviewsModify" value="<%=nowPage%>">
 			<input type="hidden" name="bbs" form="reviewsModify" value="<%=bbs%>">
 			<table>
 				<tbody>
@@ -52,7 +55,7 @@ String uid = objVO.getUid();
 					<tr>
 						<td colspan="2">
 							<button form="reviewsModify">수정</button>
-							<button onclick="location.href = '/BBS/reviews/reviewsDetail.jsp?num='+<%=num%>">목록보기</button>
+							<button onclick="location.href = '/BBS/reviews/reviewsDetail.jsp?num='+<%=num%>+'&nowPage=<%=nowPage%>'">목록보기</button>
 						</td>
 					</tr>
 				</tfoot>

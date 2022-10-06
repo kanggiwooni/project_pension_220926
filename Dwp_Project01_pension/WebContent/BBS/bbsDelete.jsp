@@ -4,9 +4,10 @@
 <%
 int num = Integer.parseInt(request.getParameter("num"));
 String bbs=request.getParameter("bbs");
+String url="/BBS/"+bbs+"/"+bbs+".jsp";
 int rtn = objBBSDAO.mtd_bbsDelete(num,bbs);
 if(rtn==1){
-	response.sendRedirect("/BBS/bbsDeleteEnd.jsp?bbs="+bbs);
+	response.sendRedirect(url);
 }else if (rtn==0){
 	//삭제 안되쓰
 }
