@@ -32,7 +32,7 @@ values
 insert into member 
 (uid, upw, uName, uBirth, uPhone, joinTM)
 values
-('test', '1234', '테스트', '010101', '01012345678', now());
+('tester', '1234', '테스터', '010101', '01012345678', now());
 insert into member 
 (uid, upw, uName, uBirth, uPhone, joinTM)
 values
@@ -78,6 +78,38 @@ desc BBS_notice;
 
 select * from BBS_notice;
 
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목1','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목2','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목3','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목4','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목5','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목6','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목7','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목8','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목9','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목10','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목11','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목12','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목13','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목14','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목15','내용','','',0,now(),0);
+insert into BBS_notice(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'admin', '관리자', '제목16','내용','','',0,now(),0);
 
 
 ####################################
@@ -100,6 +132,38 @@ desc BBS_reviews;
 
 select * from BBS_reviews order by num desc;
 
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목1','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목2','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목3','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목4','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목5','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목6','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목7','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목8','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목9','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목10','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목11','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목12','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목13','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목14','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목15','내용','','',0,now(),0);
+insert into BBS_reviews(uid, uName, title, content, originalFN, systemFN, fileSize, reportingDate, views) value(
+'tester', '테스터', '제목16','내용','','',0,now(),0);
 
 
 ####################################

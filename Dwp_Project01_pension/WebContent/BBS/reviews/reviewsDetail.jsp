@@ -108,7 +108,7 @@ List<BBS_VO> objCommentList = objBBSDAO.mtd_reviewsDetailComment(num);
 						<%							
 						}else{
 						%>
-						<td><button onclick="fnWarning()" form="commentFrm">등록</button></td>
+						<td><button onclick="fnWarning()" type="button">등록</button></td>
 						<%
 						}
 						%>
@@ -118,6 +118,7 @@ List<BBS_VO> objCommentList = objBBSDAO.mtd_reviewsDetailComment(num);
 			<input type="hidden" form="commentFrm" value="<%=num%>" name="num">
 			<input type="hidden" form="commentFrm" value="<%=uName%>" name="uName">
 			<input type="hidden" form="commentFrm" value="<%=uid%>" name="uid">
+			<input type="hidden" form="commentFrm" value="<%=nowPage%>" name="nowPage">
 			<form action="/BBS/reviews/reviewsCommentProc.jsp" id="commentFrm"></form>
 			
 		</div>
