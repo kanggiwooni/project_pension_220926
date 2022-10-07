@@ -26,6 +26,7 @@ int nowMonth = nowCal.get(Calendar.MONTH);			// 오늘 월
 int nowDate = nowCal.get(Calendar.DATE);					// 오늘 일
 int nowDay = nowCal.get(Calendar.DAY_OF_WEEK);		// 오늘 요일
 
+// //////////////////////// 달력 넘기기 처리 시작 ////////////////////////
 int monthParam = 0; // 이전 월 또는 다음 월 버튼 파라미터
 int nowPageYear = 0; // 현재 페이지 연도
 int nowPageMonth = 0; // 현재 페이지 월
@@ -65,6 +66,7 @@ if (request.getParameter("monthParam") != null) {
 	cal.set(Calendar.YEAR, nowYear); // 현재 연도로 초기화
 	cal.set(Calendar.MONTH, nowMonth); // 현재 월로 초기화
 }
+// //////////////////////// 달력 넘기기 처리 끝 ////////////////////////
 
 cal.set(Calendar.DATE, 1); // 1일로 초기화
 
@@ -83,7 +85,7 @@ List<RoomVO> objList = bDAO.mtd_getRoomInfo();
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title>예약페이지</title>
+	<title>예약현황</title>
 	<link rel="shortcut icon" href="#">
 	<link rel="stylesheet" href="/style/style_Common.css">
 	<link rel="stylesheet" href="/style/style_Booking.css">
@@ -136,7 +138,7 @@ List<RoomVO> objList = bDAO.mtd_getRoomInfo();
 						for (int j = 1; j < dayWeek; j++) { out.print("<td></td>"); }
 					}
 					
-					if (dayWeek == 1) {
+					if (dayWeek == 1) { // 일요일부터 시작
 						out.print("<tr>");
 					}
 					
@@ -173,15 +175,15 @@ List<RoomVO> objList = bDAO.mtd_getRoomInfo();
 								chkBooking = "noBooked";
 							}
 							
+							// 출력부분
 							out.print("<p class='dFlex' style='justify-content: space-between'>");
 							out.print("<a class='" + chkBooking + "'>" + rName + "</a>");
 							out.print("<span>" + df.format(rPrice) + "</span></p>");
 						}
 					}
-					
 					out.print("</td>");
 					
-					if (dayWeek == 7 && i < lastDay) {
+					if (dayWeek == 7 && i < lastDay) { // 토요일 줄바꿈
 						out.print("</tr>");
 					}
 					

@@ -42,7 +42,12 @@ $(function(){
 	});
 	
 	$("#bookSubmitBtn").click(function(){
-		$("form#bookFrm").submit();
+		let chk = confirm("예약하시겠습니까?");
+		if (chk) {
+			$("form#bookFrm").submit();
+		} else {
+			alert("예약을 취소했습니다.");
+		}
 	});
 
 });

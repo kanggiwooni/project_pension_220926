@@ -4,26 +4,24 @@
 <jsp:useBean id="mDAO" class="pack_member.MemberDAO" />
 <%
 request.setCharacterEncoding("UTF-8");
-
 String uid = (String)session.getAttribute("uidKey");
-out.print(uid);
 
 mVO.setUpw(request.getParameter("upw"));
+mVO.setuBirth(request.getParameter("uBirth"));
+mVO.setuPhone(request.getParameter("uPhone"));
 mVO.setuEmail(request.getParameter("uEmail"));
 mVO.setGender(request.getParameter("gender"));
-mVO.setuBirth(request.getParameter("uBirth"));
 mVO.setuZipcode(request.getParameter("uZipcode"));
 mVO.setuAddr(request.getParameter("uAddr"));
 
-mDAO.mtd_modify(uid, mVO);
+int rtnCnt = mDAO.mtd_modify(uid, mVO);
+
+if (rtnCnt == 1) {
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>수정 처리</h1>
-</body>
-</html>
+<script>
+	alert("회원정보를 수정했습니다.");
+	location.href = "/index.jsp";
+</script>
+<%
+}
+%>	

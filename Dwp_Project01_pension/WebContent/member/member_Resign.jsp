@@ -9,13 +9,14 @@ int rtnCnt = mDAO.mtd_delete(uid);
 <script>
 <%
 if (rtnCnt == 1) {
+	session.invalidate();
 %>
-	alert("회원탈퇴 성공");
+	alert("회원을 탈퇴했습니다.");
 	location.href="/index.jsp";
 <%
 } else {
 %>	
-	alert("회원탈퇴 실패");
+	alert("회원탈퇴 오류");
 	location.href="/index.jsp";
 <%
 }

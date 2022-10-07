@@ -49,7 +49,7 @@ rVO = bDAO.mtd_getRoomInfo(rName);
 	<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 
 	<div id="wrap" class="bookWrap">
-		<form action="/member/bookProc.jsp" id="bookFrm">
+		<form action="/booking/bookProc.jsp" id="bookFrm">
 			<table id="bookTbl">
 				<caption>* 표시는 필수 입력사항입니다.</caption>
 				<tbody>
@@ -65,7 +65,7 @@ rVO = bDAO.mtd_getRoomInfo(rName);
 						<td class="accent">
 							<%=sdf.format(cal.getTime())%>
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button">날짜 변경하기 (미구현)</button>
+							<button type="button">날짜 변경하기(미구현)</button>
 						</td>
 					</tr>
 					

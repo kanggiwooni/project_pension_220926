@@ -17,7 +17,7 @@ String uid = (String) session.getAttribute("uidKey");
 	    <div id="headerWrap"> 
 	        <header id="header" class="dFlex">
 	            <div id="headerLogoArea">
-	                <a id="mainPage"><img src="/images/logo_header.png" alt="로고이미지" width="210"></a>
+	                <a id="mainPage"><img src="/images/logo.png" alt="로고이미지" width="210"></a>
 	            </div>
 	            <!-- div#headerLogoArea -->
 
@@ -35,7 +35,7 @@ String uid = (String) session.getAttribute("uidKey");
 	                        <a>예약안내</a>
 	                        <ul class="subMenu">
 	                            <li class="subLi">
-	                            	<a id="bookingPage">예약하기</a>
+	                            	<a id="bookingPage">예약현황</a>
 	                            </li>
 	                        </ul>
 	                    </li>
@@ -71,7 +71,7 @@ String uid = (String) session.getAttribute("uidKey");
 		            		<a id="logoutPage">로그아웃</a>
 	            		</li>
 	            		<li>
-							<a id="myPage">마이페이지 (수정중)</a>
+							<a id="myPage">마이페이지</a>
 	            		</li>
 	            	<% } %>
 		            </ul>

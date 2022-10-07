@@ -291,6 +291,10 @@ function joinSubmit() {
 		$("#uBirth").val("");
 		$("#uBirth").focus();
 		
+	} else if (uPhone == "") {
+		alert("연락처를 입력해주세요.");
+		$("#uPhone").focus();
+		
 	} else if (isNaN(uPhone)) {
 		alert("숫자만 입력해주세요.");
 		$("#uPhone").val("");
@@ -300,8 +304,13 @@ function joinSubmit() {
 		let chk = confirm("회원가입 하시겠습니까?");
 	
 		if (chk) {
-			let uEmail = uEmail1 + "@" + uEmail2;
-			$("input[name=uEmail]").val(uEmail);
+			if (uEmail1 == "" || uEmail2 == "") {
+				$("#uEmail1").val("");
+				$("#uEmail2").val("");
+			} else {
+				let uEmail = uEmail1 + "@" + uEmail2;
+				$("input[name=uEmail]").val(uEmail);
+			}
 			
 			$("form#joinFrm").submit();
 			
@@ -318,44 +327,54 @@ function joinSubmit() {
 /* 회원정보 수정 처리 시작 */
 function modifySubmit() {
 	
-	let chk = confirm("회원정보를 수정 하시겠습니까?");
+	let upw = $("#upw").val().trim();
+	let upw2 = $("#upw2").val().trim();
+	let uBirth = $("#uBirth").val().trim();
+	let uPhone = $("#uPhone").val().trim();
+	let uEmail1 = $("#uEmail1").val().trim();
+	let uEmail2 = $("#uEmail2").val().trim();
 	
-	if (chk) {
+	if (upw == "") {
+		alert("비밀번호를 입력해주세요.");
+		$("#upw").focus();
 		
-		let upw = $("#upw").val().trim();
-		let upw2 = $("#upw2").val().trim();
-		let uEmail1 = $("#uEmail1").val().trim();
-		let uEmail2 = $("#uEmail2").val().trim();
+	} else if (pwChk()) {
+		alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
+		$("#upw").focus();
 		
-		if (upw == "") {
-			alert("비밀번호를 입력해주세요.");
-			$("#upw").focus();
-			
-		} else if (pwChk()) {
-			alert("비밀번호는 3~20자의 영문 대소문자, 숫자, 특수기호(_),(-),(!),(@)만 사용 가능합니다.");
-			$("#upw").focus();
-			
-		} else if (upw2 == "" || upw != upw2) {
-			alert("비밀번호가 일치하지 않습니다.");
-			$("#upw2").focus();
-			
-		} else if (uEmail1 == "") {
-			alert("이메일을 입력해주세요.");
-			$("#uEmail1").focus();
-			
-		} else if (uEmail2 == "") {
-			alert("이메일을 입력해주세요.");
-			$("#uEmail2").focus();
-			
-		} else {
+	} else if (upw2 == "" || upw != upw2) {
+		alert("비밀번호가 일치하지 않습니다.");
+		$("#upw2").focus();
+		
+	}  else if (uBirth == "") {
+		alert("생년월일을 입력해주세요.");
+		$("#uBirth").focus();
+		
+	} else if (isNaN(uBirth)) {
+		alert("숫자만 입력해주세요.");
+		$("#uBirth").val("");
+		$("#uBirth").focus();
+		
+	} else if (uPhone == "") {
+		alert("연락처를 입력해주세요.");
+		$("#uPhone").focus();
+		
+	} else if (isNaN(uPhone)) {
+		alert("숫자만 입력해주세요.");
+		$("#uPhone").val("");
+		$("#uPhone").focus();
+		
+	} else {
+		let chk = confirm("회원정보를 수정 하시겠습니까?");
+		
+		if (chk) {
 			let uEmail = uEmail1 + "@" + uEmail2;
 			$("input[name=uEmail]").val(uEmail);
-			
 			$("form#modifyFrm").submit();
-			
+		} else {
+			alert("취소했습니다.");
 		}
-	} else {
-		alert("취소했습니다.");
+		
 	}
 	
 }

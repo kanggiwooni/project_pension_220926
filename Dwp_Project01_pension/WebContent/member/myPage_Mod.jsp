@@ -11,7 +11,7 @@ MemberVO mVO = mDAO.getMemberData(uid);
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>마이페이지</title>
+		<title>회원정보 수정</title>
 		<link rel="shortcut icon" href="#">
 		<link rel="stylesheet" href="/style/style_Common.css">
 		<link rel="stylesheet" href="/style/style_Member.css">
@@ -25,7 +25,7 @@ MemberVO mVO = mDAO.getMemberData(uid);
 		<div id="wrap" class="dFlex modifyWrap">
 			<div id="myPageLnbArea">
 				<ul id="myPageLnb">
-					<li><a>예약내역 확인</a></li>
+					<li><a>예약내역 확인(미구현)</a></li>
 					<li><a>회원정보 수정</a></li>
 					<li><a onclick="resign()">회원 탈퇴하기</a></li>
 				</ul>
@@ -85,13 +85,42 @@ MemberVO mVO = mDAO.getMemberData(uid);
 								</td>
 							</tr>
 							<tr>
-								<td>*이메일</td>
+								<td>*생년월일</td>
+								<td>
+									<%
+									String uBirth = "";
+									if (mVO.getuBirth() != null) uBirth = mVO.getuBirth();
+									%>
+									<input type="text" id="uBirth" name="uBirth" 
+									maxlength="6" value="<%=uBirth%>">
+									<span class="guideTxt">생년월일 6자리를 입력해주세요. 예시) 930428</span>
+								</td>
+							</tr>
+							<tr>
+								<td>*연락처</td>
+								<td>
+									<%
+									String uPhone = "";
+									if (mVO.getuBirth() != null) uPhone = mVO.getuPhone();
+									%>
+									<input type="text" id="uPhone" name="uPhone" 
+									maxlength="11" value="<%=uPhone%>">
+									<span class="guideTxt">숫자만 입력해주세요. 예시) 01012345678</span>
+								</td>
+							</tr>
+							<tr>
+								<td>이메일</td>
 								<td>
 									<%
 									String uEmail = mVO.getuEmail();
-									int idxEmail = uEmail.indexOf('@');
-									String uEmail1 = uEmail.substring(0, idxEmail);
-									String uEmail2 = uEmail.substring(idxEmail + 1);
+									int idxEmail = 0;
+									String uEmail1 = "";
+									String uEmail2 = "";
+									if (uEmail != null) {
+										idxEmail = uEmail.indexOf('@');
+										uEmail1 = uEmail.substring(0, idxEmail);
+										uEmail2 = uEmail.substring(idxEmail + 1);
+									}
 									%>
 									<input type="text" id="uEmail1" name="uEmail" value="<%=uEmail1%>">
 									@
@@ -109,14 +138,22 @@ MemberVO mVO = mDAO.getMemberData(uid);
 								<td>
 									<%
 									String gender = mVO.getGender();
+									String noChk = "checked";
 									String mailChk = "";
 									String femailChk = "";
-									if (gender.equals("1")) {
-										mailChk = "checked";
-									} else if (gender.equals("2")) {
-										femailChk = "checked";
+									if (gender != null) {
+										if (gender.equals("1")) {
+											mailChk = "checked";
+										} else if (gender.equals("2")) {
+											femailChk = "checked";
+										}
 									}
 									%>
+									<label>
+										선택 안함 <input type="radio" name="gender"
+										value="" <%=noChk%>>
+									</label>
+									&nbsp;&nbsp;
 									<label>
 										남 <input type="radio" name="gender"
 										value="1" <%=mailChk%>>
@@ -129,26 +166,26 @@ MemberVO mVO = mDAO.getMemberData(uid);
 								</td>
 							</tr>
 							<tr>
-								<td>생년월일</td>
-								<td>
-									<input type="text" id="uBirth" name="uBirth" 
-									maxlength="6" value="<%=mVO.getuBirth()%>">
-									<span class="guideTxt">예시) 930428</span>
-								</td>
-							</tr>
-							<tr>
 								<td>우편번호</td>
 								<td>
+									<%
+									String uZipcode = "";
+									if (mVO.getuZipcode() != null) uZipcode = mVO.getuZipcode();
+									%>
 									<input type="text" id="uZipcode" name="uZipcode"
-									maxlength="7" readonly value="<%=mVO.getuZipcode()%>">
+									maxlength="7" readonly value="<%=uZipcode%>">
 									<button type="button" id="findZipBtn">우편번호 찾기</button>
 								</td>
 							</tr>
 							<tr>
 								<td>주소</td>
 								<td>
+									<%
+									String uAddr = "";
+									if (mVO.getuAddr() != null) uAddr = mVO.getuAddr();
+									%>
 									<input type="text" id="uAddr" name="uAddr"
-										maxlength="100" value="<%=mVO.getuAddr()%>">
+										maxlength="100" value="<%=uAddr%>">
 								</td>
 							</tr>
 						</tbody>

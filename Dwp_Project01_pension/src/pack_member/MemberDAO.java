@@ -206,8 +206,6 @@ public class MemberDAO {
 			
 			objConn = objPool.getConnection();
 			
-			System.out.println("DB접속");
-			
 			String sql = "update member set";
 			sql += " upw=?, uBirth=?, uPhone=?, uEmail=?, gender=?, uZipcode=?, uAddr=?";
 			sql += " where uid=?";
