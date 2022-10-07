@@ -231,21 +231,19 @@ constraint primary key (bNum)
 desc roomBooking;
 
 insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
-values ('2022-10-24', 3, 1, '바다 객실 A호', 'sample', '샘플', '01012345678', null, '바베큐 그릴은 17시에 준비해주세요', 120000, now());
+values ('2022-10-24', 3, 1, '바다 객실 A호', 'guest', '게스트', '01012345678', null, '바베큐 그릴은 17시에 준비해주세요', 120000, now());
 insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
-values ('2022-10-14', 4, 2, '바다 객실 B호', 'test', '테스트', '01012345678', 'test@naver.com', null, 80000, now());
+values ('2022-10-14', 4, 2, '바다 객실 B호', 'tester', '테스트', '01012345678', 'test@naver.com', null, 80000, now());
 insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
 values ('2022-10-08', 4, 1, '바다 객실 A호', 'admin', '관리자', '01012345678', null, null, 140000, now());
 insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
-values ('2022-10-08', 4, 2, '바다 객실 B호', 'test', '테스트', '01012345678', 'test@naver.com', null, 100000, now());
+values ('2022-10-08', 4, 2, '바다 객실 B호', 'tester', '테스트', '01012345678', 'test@naver.com', null, 100000, now());
+insert into roomBooking (bDate, bPeople, rNum, rName, uid, uName, uPhone, uEmail, uRequest, payPrice, bookTM)
+values ('2022-10-23', 1, 2, '바다 객실 B호', 'guest', '게스트', '01012345678', 'guest@naver.com', '18시에 체크인 예정입니다', 100000, now());
 
 select * from roomBooking order by bNum desc;
 select count(*) from roomBooking 
 where rNum = 1 and bDate like '2022-10-24%';
-
-
-
-
 
 
 
