@@ -24,13 +24,13 @@ MemberVO mVO = mDAO.getMemberData(uid);
 		
 		<div id="wrap" class="dFlex modifyWrap">
 			<div id="myPageLnbArea">
-				<ul id="myPageLnb">
-					<li><a>예약내역 확인(미구현)</a></li>
-					<li><a>회원정보 수정</a></li>
-					<li><a onclick="resign()">회원 탈퇴하기</a></li>
-				</ul>
-			</div>
-			<!-- div#myPageLnbArea -->
+			<ul id="myPageLnb">
+				<li><a href="/member/myPage_Booked.jsp">예약내역 확인</a></li>
+				<li><a href="/member/myPage_Mod.jsp">회원정보 수정</a></li>
+				<li><a onclick="resign()">회원 탈퇴하기</a></li>
+			</ul>
+		</div>
+		<!-- div#myPageLnbArea -->
 			
 			<div id="myPageArea">
 				<h1>회원정보 수정</h1>

@@ -51,3 +51,12 @@ $(function(){
 	});
 
 });
+
+function resign() {
+	let chk = confirm("탈퇴하시겠습니까?");
+	if (chk) {
+		location.href = "/member/member_Resign.jsp"
+	} else {
+		alert("취소했습니다.");
+	}
+}

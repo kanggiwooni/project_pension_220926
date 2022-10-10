@@ -192,4 +192,46 @@ public class BookingDAO {
 	}
 	/* 예약 정보 입력 끝 */
 	
+	/* 예약 내역 조회 시작 */
+	public List<BookingVO> mtd_bookInfo(String uid) {
+		
+		List<BookingVO> objList = new Vector<BookingVO>();
+		
+		try {
+			objConn = objPool.getConnection();;
+			
+			String sql = "select bNum, bDate, bPeople, rName, uid, uName";
+			sql += ", uPhone, uEmail, uRequest, payPrice";
+			sql += " from roomBooking where uid=? order by bNum desc";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uid);
+			objRS = objPstmt.executeQuery();
+			
+			while (objRS.next()) {
+				BookingVO bVO = new BookingVO();
+				bVO.setbNum(Integer.parseInt(objRS.getString("bNum")));
+				bVO.setbDate(objRS.getString("bDate"));
+				bVO.setbPeople(Integer.parseInt(objRS.getString("bPeople")));
+				bVO.setrName(objRS.getString("rName"));
+				bVO.setUid(objRS.getString("uid"));
+				bVO.setuName(objRS.getString("uName"));
+				bVO.setuPhone(objRS.getString("uPhone"));
+				bVO.setuEmail(objRS.getString("uEmail"));
+				bVO.setuRequest(objRS.getString("uRequest"));
+				bVO.setPayPrice(Integer.parseInt(objRS.getString("payPrice")));
+				objList.add(bVO);
+			}
+			
+		} catch (Exception e) {
+			System.out.print("e : " + e.getMessage());
+		} finally {
+			objPool.freeConnection(objConn);
+		}
+		
+		return objList;
+		
+	}
+	/* 예약 내역 조회 끝 */
+	
 }

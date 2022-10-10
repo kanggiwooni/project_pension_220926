@@ -24,7 +24,7 @@ $(function () {
 		window.parent.location.href="/member/logoutProc.jsp";
 	});
 	$("a#myPage").click(function(){
-		window.parent.location.href="/member/myPage_Mod.jsp";
+		window.parent.location.href="/member/myPage_Booked.jsp";
 	});
 	$("a#noticePage").click(function(){
 		window.parent.location.href="/BBS/notice/notice.jsp";

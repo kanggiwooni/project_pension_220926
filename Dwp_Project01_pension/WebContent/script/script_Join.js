@@ -139,6 +139,7 @@ $(function(){
 		$("input#uEmail2").val(email);
 	});
 	
+	
 	/* 우편번호 찾기 시작 */
 	$("#uZipcode, #findZipBtn").on("click", function(){
 		
@@ -180,6 +181,8 @@ $(function(){
 		window.close();
 	});
 	/* 우편번호 찾기 끝 */
+	
+	
 	
 	/* 회원가입 버튼 submit 처리 */
 	$("button#joinSubmitBtn").click(function(){

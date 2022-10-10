@@ -126,35 +126,6 @@ div#wrap.joinWrap table#joinTbl {
 	/* border: 1px solid #aaa; */
 }
 
-/* 마이페이지 LNB 메뉴 영역 시작 */ 
-#wrap.modifyWrap div#myPageLnbArea {
-	width: 260px;
-	border: 1px solid #aaa;
-	border-radius: 5px;
-}
-#myPageLnbArea ul#myPageLnb {
-	width: 100%;
-}
-#myPageLnbArea #myPageLnb>li {
-	margin: 10px;
-	cursor: pointer;
-}
-#myPageLnbArea #myPageLnb>li>a {
-	font-size: 20px;
-	font-weight: bold;
-	text-align: center;
-	
-	padding: 17px 0;
-	border: 1px solid #aaa;
-	display: block;
-}
-
-#myPageLnbArea #myPageLnb>li:hover>a {
-	text-decoration: underline;
-	background-color: #ddd;
-}
-/* 마이페이지 LNB 메뉴 영역 끝 */
-
 /* //////////////////////////// 회원정보 수정 페이지 (/member/myPage_Mod.jps) 끝 //////////////////////////// */
 
 
