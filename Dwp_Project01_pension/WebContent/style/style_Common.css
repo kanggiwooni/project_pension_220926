@@ -40,6 +40,14 @@ button {
 	border: none;
 	background-color: #009cff;
 }
+table {
+	border-collapse: collapse; 
+}
+table>tbody th,
+table>tbody td {
+	padding: 10px;
+	border: 1px solid #aaa;
+}
 .accent {
 	color: #f80;
 	font-size: 20px;
@@ -116,11 +124,12 @@ div#wrap_pop {
 /* //////////////////////////// 우편번호 찾기 페이지 (/member/zipCheck.jsp) 끝 //////////////////////////// */
 
 
-/* 마이페이지 LNB 메뉴 영역 시작 */ 
+/* //////////////////////////// 마이페이지 LNB 메뉴 영역 시작 //////////////////////////// */ 
 div#myPageLnbArea {
 	width: 260px;
 	border: 1px solid #aaa;
 	border-radius: 5px;
+	margin-right: 20px;
 }
 #myPageLnbArea ul#myPageLnb {
 	width: 100%;
@@ -143,7 +152,7 @@ div#myPageLnbArea {
 	text-decoration: underline;
 	background-color: #ddd;
 }
-/* 마이페이지 LNB 메뉴 영역 끝 */
+/* //////////////////////////// 마이페이지 LNB 메뉴 영역 끝 //////////////////////////// */
 
 
 

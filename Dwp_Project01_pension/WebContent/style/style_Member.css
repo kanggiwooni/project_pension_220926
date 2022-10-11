@@ -109,26 +109,6 @@ div#wrap.joinWrap table#joinTbl {
 /* //////////////////////////// 회원가입 페이지 (/member/join.jps) 끝 //////////////////////////// */
 
 
-
-
-/* //////////////////////////// 회원정보 수정 페이지 (/member/myPage_Mod.jps) 시작 //////////////////////////// */
-#wrap.modifyWrap {
-	/* border: 1px solid #000; */
-	justify-content: space-between;
-}
-#wrap.modifyWrap table#joinTbl {
-	width: 850px;
-	border-collapse: collapse;
-}
-#wrap.modifyWrap div#myPageArea {
-	width: 890px;
-	padding: 10px;
-	/* border: 1px solid #aaa; */
-}
-
-/* //////////////////////////// 회원정보 수정 페이지 (/member/myPage_Mod.jps) 끝 //////////////////////////// */
-
-
 /* //////////////////////////// 로그인 페이지 (/member/login.jps) 시작 //////////////////////////// */
 div#wrap.loginWrap {
 	width: 1000px;
@@ -158,8 +138,50 @@ div#wrap.loginWrap {
 	font-size: 24px;
 	font-weight: bold;
 }
-/* //////////////////////////// 로그인 수정 페이지 (/member/login.jps) 끝 //////////////////////////// */
+/* //////////////////////////// 로그인 페이지 (/member/login.jps) 끝 //////////////////////////// */
 
+
+
+/* //////////////////////////// 회원정보 수정 페이지 (/member/myPage_Mod.jps) 시작 //////////////////////////// */
+#wrap.modifyWrap {
+	/* border: 1px solid #000; */
+	justify-content: space-between;
+}
+#wrap.modifyWrap table#joinTbl {
+	width: 850px;
+	border-collapse: collapse;
+}
+#wrap.modifyWrap div#myPageArea {
+	width: 890px;
+	padding: 10px;
+	/* border: 1px solid #aaa; */
+}
+
+/* //////////////////////////// 회원정보 수정 페이지 (/member/myPage_Mod.jps) 끝 //////////////////////////// */
+
+
+
+/* //////////////////////////// 예약내역 확인 페이지 (/myPage_Booked.jsp) 시작 //////////////////////////// */
+div#bookInfoArea {
+	width: 100%;
+	/* border: 1px solid #aaa; */
+	margin: 0 auto;
+}
+#bookInfoArea table#bookTbl {
+	width: 800px;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+#bookTbl th, 
+#bookTbl td {
+	text-align: right;
+	padding: 10px;
+	border: 1px solid #aaa;
+}
+#bookTbl th {
+	background-color: #fafafa;
+}
+/* //////////////////////////// 예약내역 확인 페이지 (/myPage_Booked.jsp) 끝 //////////////////////////// */
 
 
 

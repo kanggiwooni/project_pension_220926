@@ -116,7 +116,9 @@ totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
 					%>
 					<tr>
 						<td><%=objVO.getNum()%></td>
-						<td class="noticeTitle"><%=objVO.getTitle()%></td>
+						<td class="noticeTitle">
+							<%=objVO.getTitle()%>
+						</td>
 						<td>
 							<input type="hidden" value="<%=nowPage%>">
 						</td>

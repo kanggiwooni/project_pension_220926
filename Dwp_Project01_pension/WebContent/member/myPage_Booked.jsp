@@ -25,7 +25,7 @@ List<BookingVO> objList =  bDAO.mtd_bookInfo(uid);
 
 	<iframe src="/iframe/iframe_header.jsp" id="iframe_header" scrolling="no"></iframe>
 
-	<div id="wrap" class="dFlex">
+	<div id="wrap" class="dFlex bookedWrap">
 		<div id="myPageLnbArea">
 			<ul id="myPageLnb">
 				<li><a href="/member/myPage_Booked.jsp">예약내역 확인</a></li>
